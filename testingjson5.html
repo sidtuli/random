@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <title>JSON Sample</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script type="text/javascript" src="js/testingjson5.js"></script>
+	
+</head>
+<body ng-controller="DataController">
+    <input type="text" placeholder="type drug here" ng-model="drug"/>
+	<button ng-click="search()">Search Drug</button>
+	<div id="brandName">
+		<h2>Brand Name</h2>
+        {{drug}}
+	</div>
+	<div id="genericName">
+		<h2>Generic Name </h2>
+        {{generic}}
+	</div>
+	<div id="purpose">
+		<h2> Purpose </h2>
+        {{purpose}}
+	</div>
+	<div id="sideEffects">
+		<h2> Side Effects </h2>
+        {{effects}}
+	</div>
+	
+</body>
+</html>
