@@ -1,0 +1,16 @@
+<html ng-app="myApp">
+    <head>
+        <meta charset ="UTF-8" />
+        <title>My third angular app: ng-repeat example</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        <script src="js/angtut3.js"></script>
+    </head>
+    <body ng-controller="MainController">
+        <h2>ng-repeat on array of strings</h2>
+        <ul><li ng-repeat="friend in friendlist">{{friend}}</li></ul>
+        <h2>ng-repeat on an array of objects</h2>
+        <ul><li ng-repeat="friend in emails">{{friend.name}} : {{friend.email}}</li></ul>
+    </body>
+
+</html>

@@ -1,0 +1,13 @@
+<html ng-app="myApp">
+    <head>
+        <meta charset ="UTF-8" />
+        <title>My second angular app: 2-way data binding example</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        <script src="js/angtut2.js"></script>
+    </head>
+    <body ng-controller="MainController">
+        <input type="text" placeholder="enter name here" ng-model="yourname"/>
+        <p>Welcome to {{appname}} made by {{yourname}}</p>
+    </body>
+
+</html>
