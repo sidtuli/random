@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Parsing State Capitals?</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        <script src="js/wikiparsing.js"></script>
+    </head>
+    <body
+ng-controller="DataController">
+        <div>
+            <!--{{display}}-->
+            <ul ng-repeat="val in cleansed"><li>{{val[0]}} : {{val[1]}}</li></ul>
+        </div>
+    </body>
+</html>
