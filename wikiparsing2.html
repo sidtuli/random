@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Parsing Birth to Death Info?</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        <script src="js/wikiparsing2.js"></script>
+    </head>
+    <body ng-controller="DataController">
+        <input type="text" placeholder="Enter Name Here" ng-model="name"/>
+        <button ng-click="search()">Search</button>
+        {{data}}
+        <h3>Birth Date</h3>
+        {{birthdate}}
+        <h3>Birth Place</h3>
+        {{birthplace}}
+        <h3>Death Date</h3>
+        {{deathdate}}
+        <h3>Death Place</h3>
+        {{deathplace}}
+    </body>
+</html>
