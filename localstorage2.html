@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Click Counting</title>
+        <script type="text/javascript" src="js/localstorage2.js"></script>
+    </head>
+    <body>
+        <button onclick="addNum()">Click!</button>
+        <div id="shownum"></div>
+        <script>
+            function addNum() {
+                if(supportsLocalStorage()){
+                    if(localStorage.getItem("clicks") === null){
+                        localStorage.setItem("clicks",1);
+                    } else {
+                        var num = parseInt(localStorage.getItem("clicks"));
+                        localStorage.setItem("clicks",num + 1);
+                    }
+                    document.getElementById('shownum').innerHTML = "You have clicked "+localStorage.getItem("clicks")+" times.";
+                } else {
+                 document.getElementById('shownum').innerHTML = "Can't use local storage! The button is meaningless";
+                }
+            }
+        </script>
+    </body>
+</html>
