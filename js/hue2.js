@@ -36,15 +36,15 @@ function formatVisit(color) {
 function changeColor() {
     if(supportsLocalStorage()){
         document.getElementById("message").innerHTML = "";
-        if(localStorage.getItem("color") === null){
-            localStorage.setItem("color",formatTime());
+        if(localStorage.getItem("colors") === null){
+            localStorage.setItem("colors",formatTime());
             document.body.style.backgroundColor = formatTime();
             document.getElementById("message").innerHTML = "You visited this page at "+formatVisit(formatTime()) +" and got the rgb color: "+formatTime()+"."; 
         } else {
             document.body.removeChild(document.getElementById("message"));
-            oldColor = localStorage.getItem("color");
-            localStorage.setItem("color",oldColor+","+formatTime());
-            colors = localStorage.getItem("color").split(",");
+            oldColor = localStorage.getItem("colors");
+            localStorage.setItem("colors",oldColor+","+formatTime());
+            colors = localStorage.getItem("colors").split(",");
             var i;
             for(i = 0; i < colors.length; i++) {
                 var newDiv = document.createElement('div');
