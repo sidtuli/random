@@ -1,0 +1,14 @@
+<!doctype html>
+<html ng-app="geoApp">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>A List of World Capitals</title>
+        <script src="js/angular.min.js"></script>
+        <script src="js/geoworldcaps.js"></script>
+    </head>
+    <body ng-controller="GeoController">
+        <ul><li ng-repeat="cap in caps">{{cap}}</li></ul>
+        {{caps}}
+        {{text}}
+    </body>
+</html>
