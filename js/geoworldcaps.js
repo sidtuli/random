@@ -9,9 +9,9 @@ geoApp.factory('geoFactory',function($http) {
             
         }).success(function(data) {
             angular.forEach(data["geonames"], function(key,value){
-                arr.push("'"+key['countryCode'].toLocaleLowerCase()+"':'"+key['capital']+"'")
+                arr.push("\""+key['countryCode'].toLocaleLowerCase()+"\":\""+key['capital']+"\" ,")
                 //arr[key['fipsCode']] = key['capital'];
-                console.log("'"+key['countryCode']+"':'"+key['capital']+"'");
+                console.log("\""+key['countryCode']+"\":\""+key['capital']+"\" ,");
             });
             
             
