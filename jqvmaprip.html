@@ -1,0 +1,21 @@
+<!doctype html>
+<html ng-app="regApp">
+    <head>
+        <title>jQuery Vector Map Region List</title>
+        <meta charset="UTF-8"/>
+        <script src="js/angular.min.js"></script>
+        <script src="js/jqvmaprip.js"></script>
+        <style>
+            input{
+                width:100%;
+                height:50%;
+            }
+        </style>
+    </head>
+    <body ng-controller="regionController">
+        <input ng-model="data"/>
+        <button ng-click="print()">Parse Jquery Vector Map Json</button>
+        <p>{{info}}</p>
+        <ul><li ng-repeat="region in regions">{{region}}</li></ul>
+    </body>
+</html>
