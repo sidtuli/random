@@ -18,7 +18,7 @@
                 }
             }
             function addClick(elt) {
-                elt.onclick = function(){alert(elt.id+".svg")}
+                elt.onclick = function(){document.getElementById("svg").data = "imgs/"+elt.id+".svg"}
             }
             
         </script>
