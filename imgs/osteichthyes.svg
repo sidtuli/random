@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 300.2 340.6" style="enable-background:new 0 0 300.2 340.6;" xml:space="preserve">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 viewBox="0 0 300.2 340.6" preserveAspectRatio="xMinYMin meet">
 <style type="text/css">
-	.st0{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st0{fill:transparent;stroke:#000000;stroke-miterlimit:10;}
 </style>
 <image style="overflow:visible;" width="1251" height="1419" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEBLAEsAAD/4RYFRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUA
 AAABAAAAYgEbAAUAAAABAAAAagEoAAMAAAABAAIAAAExAAIAAAAeAAAAcgEyAAIAAAAUAAAAkIdp
@@ -1644,7 +1642,7 @@ vjsyIl64mN417fV+r/LYudX37I3rOAerXuoRx1ALIljdixEMYsvLHb47Lo6tE01MBXlOWalDPrT6
 wRsc0A5NWOy6REXLUMAMfmGPy9LnV9+yN6zgH/4OFR0QwbZYBXTMDrDttkdlVtaoRSInEzBiW2Eg
 HYgX/wDhz//Z" transform="matrix(0.24 0 0 0.24 0 0)">
 </image>
-<rect x="120" y="94" class="st0" width="20.5" height="50.5"/>
-<rect x="101.5" y="298" class="st0" width="75.5" height="15"/>
-<rect x="183" y="247.5" class="st0" width="61" height="14"/>
+<rect id="amniota" x="120" y="94" class="st0" width="20.5" height="50.5"/>
+<rect id="sarcopterygii" x="101.5" y="298" class="st0" width="75.5" height="15"/>
+<rect id="tetrapoda" x="183" y="247.5" class="st0" width="61" height="14"/>
 </svg>

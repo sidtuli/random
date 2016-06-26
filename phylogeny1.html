@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Phylogeny SVG Climbing</title>
+        <meta charset="UTF-8"/>
+        
+    </head>
+    <body>
+        <object id="svg" type="image/svg+xml" data="imgs/acanthodii.svg">Your browser doesn't support svg</object>
+        <script>
+            console.log(new Date());
+            window.onload = function() {
+                var a = document.getElementById("svg");
+                var svgDoc = a.contentDocument;
+                var s = svgDoc.getElementsByClassName("st0");
+                
+                for(i = 0; i < s.length; i++) {
+                    addClick(s[i]);
+                    console.log(s[i]);
+                }
+                console.log(new Date());
+                
+            }
+            function addClick(elt) {
+                elt.onclick = function(){
+                    document.getElementById("svg").data = "imgs/"+elt.id+".svg";
+                    
+                    var a = document.getElementById("svg");
+                    a.addEventListener('load', function(){
+                        var svgDoc = a.contentDocument;
+                        var s = svgDoc.getElementsByClassName("st0");
+                
+                        for(i = 0; i < s.length; i++) {
+                            addClick(s[i]);
+                            console.log(s[i]);
+                        }
+                        console.log(new Date())
+                    })
+                    
+                }
+            }
+        </script>
+    </body>
+</html>
