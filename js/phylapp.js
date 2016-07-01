@@ -11,6 +11,18 @@ phylogeny.config(['$routeProvider', function($routeProvider){
         templateUrl: 'phyl/osteichthyes.html',
         controller: 'acontroller'
     }).
+    when('/amniota',{
+        templateUrl:'phyl/amniota.html',
+        controller:'acontroller'
+    }).
+    when('/chondrichthyes',{
+        templateUrl:'phyl/chondrichthyes.html',
+        controller:'acontroller'
+    }).
+    when('/gnathostomata',{
+        templateUrl:'phyl/gnathostomata.html',
+        controller:'acontroller'
+    }).
     otherwise({
         redirectTo: '/acanthodii'
     });
@@ -18,32 +30,24 @@ phylogeny.config(['$routeProvider', function($routeProvider){
 }]);
 
 phylogeny.controller('acontroller',function($scope,$location){
-    $scope.go = function() {
-        console.log("Hello!");
-    }
+    
     $scope.addClick = function(elt) {
+        console.log(elt.id);
         elt.onclick = function() {
             
-            $location.path('/osteichthyes');
+            //$location.path('/osteichthyes');
             console.log(elt.id);
-            window.location.href = "#/osteichthyes"
+            window.location.href = "#/"+elt.id;
         }
-        console.log(elt.onclick);
+        //console.log(elt.onclick);
     }
     //$scope.go();
     
     var a = document.getElementById("svg");
     a.addEventListener('load', loadSVG(a), false);
-    
-    function hello() {
-        console.log("loaded!");
-        console.log(document.getElementById("svg"))
-        console.log(a);
-        console.log(a.getElementsByClassName("st0"))
-    };
     //console.log(document.getElementById("svg"))
     function loadSVG(svgElt) {
-        console.log(svgElt);
+        //console.log(svgElt);
         console.log(svgElt.getElementsByClassName("st0"))
         var clickables = svgElt.getElementsByClassName("st0");
         for(i = 0; i < clickables.length; i++) {
