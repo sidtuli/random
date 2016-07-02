@@ -23,6 +23,58 @@ phylogeny.config(['$routeProvider', function($routeProvider){
         templateUrl:'phyl/gnathostomata.html',
         controller:'acontroller'
     }).
+    when('/sarcopterygii',{
+        templateUrl:'phyl/sarcopterygii.html',
+         controller:'acontroller'
+    }).
+    when('/tetrapoda',{
+        templateUrl:'phyl/tetrapoda.html',
+        controller:'acontroller'
+    }).
+    when('/tetrapoda2',{
+        templateUrl:'phyl/tetrapoda2.html',
+        controller:'acontroller'
+    }).
+    when('/sauria',{
+        templateUrl:'phyl/sauria.html',
+        controller:'acontroller'
+    }).
+    when('/scleroglossa',{
+        templateUrl:'phyl/scleroglossa.html',
+        controller:'acontroller'
+    }).
+    when('/choanata',{
+        templateUrl:'phyl/choanata.html',
+        controller:'acontroller'
+    }).
+    when('/synapsida',{
+        templateUrl:'phyl/synapsida.html',
+        controller:'acontroller'
+    }).
+    when('/craniata',{
+        templateUrl:'phyl/craniata.html',
+        controller:'acontroller'
+    }).
+    when('/craniata2',{
+        templateUrl:'phyl/craniata2.html',
+        controller:'acontroller'
+    }).
+    when('/deuterostomia',{
+        templateUrl:'phyl/deuterostomia.html',
+        controller:'acontroller'
+    }).
+    when('/mammalia',{
+        templateUrl:'phyl/mammalia.html',
+        controller:'acontroller'
+    }).
+    when('/metazoa',{
+        templateUrl:'phyl/metazoa.html',
+        controller:'acontroller'
+    }).
+    when('/sauropsida',{
+        templateUrl:'phyl/sauropsida.html',
+        controller:'acontroller'
+    }).
     otherwise({
         redirectTo: '/acanthodii'
     });
