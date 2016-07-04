@@ -1,0 +1,14 @@
+<!doctype html>
+<html ng-app="listCapApp">
+    <head>
+        <title>List Capitals</title>
+        <meta charset="UTF-8"/>
+        <script src="js/angular.min.js"></script>
+        <script src="js/listcaps.js"></script>
+    </head>
+    <body ng-controller="capController">
+        <input type="text" placeholder="enter name here" ng-model="country"/>
+        <button ng-click="search()">Search</button>
+        <ul><li ng-repeat="item in list">{{item}}</li></ul>
+    </body>
+</html>
