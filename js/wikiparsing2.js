@@ -3,7 +3,7 @@ var myApp = angular.module('myApp',[]);
 myApp.controller('DataController',['$scope','$http',function($scope,$http){
     $scope.name = '';
     $scope.search = function(){
-        $http.jsonp('https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles='+$scope.name+'&rvprop=content&rvsection=0&rvcontentformat=text%2Fx-wiki&callback=JSON_CALLBACK').success(function(data){
+        $http.jsonp('https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&rvprop=content&rvsection=0&callback=JSON_CALLBACK&titles='+$scope.name+'').success(function(data){
             $scope.info = data;
             $scope.data = data.query.pages;
             angular.forEach($scope.data,function(value){
