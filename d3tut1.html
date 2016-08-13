@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>D3 Tutorial #1</title>
+        <script src="js/d3.js"></script>
+    </head>
+    <body>
+        <p>Bacon ipsum dolor amet alcatra strip steak tongue short ribs, tenderloin shankle turducken fatback salami swine landjaeger. Picanha flank landjaeger sausage shank tri-tip turkey chicken. Strip steak ham hock pastrami cow beef shank frankfurter tail pancetta. Pig boudin hamburger, beef alcatra jowl filet mignon rump shankle meatloaf prosciutto chuck corned beef ham hock drumstick. Tail tongue flank, ham pastrami frankfurter beef ribs beef landjaeger.</p>
+        <p>Pork loin ribeye corned beef, porchetta biltong tri-tip hamburger turducken kielbasa meatball turkey. Cow pork loin fatback, swine pork belly kevin short loin beef shankle venison ham tenderloin prosciutto andouille. Pork chop pancetta meatball, spare ribs ribeye shoulder corned beef jerky kielbasa. Kevin doner ham hock fatback, turducken ham jowl andouille pork belly drumstick shoulder chicken.</p>
+        <p>Pork belly kielbasa shoulder chicken turkey filet mignon pork. Sausage cow corned beef ground round. Biltong boudin kielbasa, salami t-bone meatloaf venison fatback sirloin swine corned beef. Tail fatback hamburger ribeye sausage kielbasa pastrami ball tip, shankle pancetta landjaeger. Shankle bacon picanha andouille, sausage turducken venison ham ribeye flank ham hock corned beef beef ribs boudin porchetta.</p>
+        <p>Chuck chicken corned beef cupim, turducken bresaola t-bone prosciutto kielbasa drumstick doner ball tip ground round. Ball tip fatback jowl beef ribs turducken. Sirloin ball tip landjaeger short ribs. Ham hock bresaola ribeye, brisket cow sirloin boudin. Capicola kevin landjaeger, shoulder ham hock spare ribs bacon pork corned beef boudin fatback jerky filet mignon chicken. Shoulder porchetta cow, bacon frankfurter ball tip beef ribs tenderloin ground round. Rump strip steak pastrami, alcatra ball tip pig picanha tenderloin prosciutto leberkas beef.</p>
+        <p>Doner pork ribeye frankfurter meatloaf pastrami jerky swine, chicken chuck brisket picanha filet mignon landjaeger short ribs. Tenderloin landjaeger ribeye, swine spare ribs ground round pancetta frankfurter leberkas jerky cupim doner pork loin kielbasa alcatra. Beef porchetta drumstick, pork belly sausage brisket ground round pork chop ribeye salami spare ribs tongue tenderloin beef ribs. Prosciutto biltong kevin, cupim meatloaf shoulder sirloin. Swine pig kielbasa shankle.</p>
+        <button onclick="colorize()">Make Random Colors</button>
+        <button onclick="greyAlternate()">Alternate Greys</button>
+        <button onclick="changeFtSize()">Change Font Size</button>
+        <script>
+            function colorize(){
+                d3.selectAll("p").style("color", function() {
+                    return "hsl(" + Math.random() * 360 + ",100%,50%)";
+                });
+            }
+            function greyAlternate() {
+                d3.selectAll("p").style("color", function(d,i) {
+                    return i % 2 ? "#999" : "#fff";
+                });
+            }
+            function changeFtSize() {
+                d3.selectAll("p")
+                    .data([4, 8, 15, 16, 23])
+                    .style("font-size", function(d) { return d + "px"; });
+            }
+            
+        </script>
+    </body>
+</html>
