@@ -21,30 +21,57 @@
                 .selectAll("p")
                 .data(amiiboData);
                 
+                d3.select("body").append("h2").text("Tournament #1");
+                d3.select("body").append("br");
+               
                 p.enter().append("span")
                     .style("font-size", function(d) { return (Math.abs(d["Tournament #1"] - 15) * 3) + "px"; })
                     .text(function(d) { return d.Character; });
+                
                 d3.select("body").append("br");
+                d3.select("body").append("h2").text("Tournament #2");
+                d3.select("body").append("br");
+                
                 p.enter().append("span")
                     .style("font-size", function(d) { return (Math.abs(d["Tournament #2"] - 15) * 3) + "px"; })
                     .text(function(d) { return d.Character; });
+                
                 d3.select("body").append("br");
+                d3.select("body").append("h2").text("Tournament #3");
+                d3.select("body").append("br");
+                
                 p.enter().append("span")
                     .style("font-size", function(d) { return (Math.abs(d["Tournament #3"] - 15) * 3) + "px"; })
                     .text(function(d) { return d.Character; });
+               
                 d3.select("body").append("br");
+                d3.select("body").append("h2").text("Tournament #4");
+                d3.select("body").append("br");
+                
                 p.enter().append("span")
                     .style("font-size", function(d) { return (Math.abs(d["Tournament #4"] - 15) * 3) + "px"; })
                     .text(function(d) { return d.Character; });
+                
                 d3.select("body").append("br");
+                d3.select("body").append("h2").text("Tournament #5");
+                d3.select("body").append("br");
+                
                 p.enter().append("span")
                     .style("font-size", function(d) { return (Math.abs(d["Tournament #5"] - 15) * 3) + "px"; })
                     .text(function(d) { return d.Character; });
+                
                 d3.select("body").append("br");
+                d3.select("body").append("h2").text("Tournament #6");
+                d3.select("body").append("br");
+                
                 p.enter().append("span")
                     .style("font-size", function(d) { return (Math.abs(d["Tournament #6"] - 15) * 3) + "px"; })
                     .text(function(d) { return d.Character; });
+                
                 d3.select("body").append("br");
+                d3.select("body").append("h2").text("Average Placement");
+                d3.select("body").append("br");
+                
                 p.enter().append("span")
                     .style("font-size", function(d) { return (Math.abs(d["Average Placement"] - 15) * 3) + "px"; })
                     .text(function(d) { return d.Character; });
