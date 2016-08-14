@@ -1,7 +1,56 @@
 <html>
     <head>
         <title>Amiibo Data</title>
+        <script src="js/d3.js"></script>
+        <style>
+            body{
+                text-align:center;
+            }
+        </style>
     </head>
     <body>
+        
+        
+        <script>
+            var amiiboData;
+            d3.json("data/amiibo.json",function(d){
+                console.log(d);
+                amiiboData = d;
+                console.log(amiiboData);
+                var p = d3.select("body")
+                .selectAll("p")
+                .data(amiiboData);
+                
+                p.enter().append("span")
+                    .style("font-size", function(d) { return (Math.abs(d["Tournament #1"] - 15) * 3) + "px"; })
+                    .text(function(d) { return d.Character; });
+                d3.select("body").append("br");
+                p.enter().append("span")
+                    .style("font-size", function(d) { return (Math.abs(d["Tournament #2"] - 15) * 3) + "px"; })
+                    .text(function(d) { return d.Character; });
+                d3.select("body").append("br");
+                p.enter().append("span")
+                    .style("font-size", function(d) { return (Math.abs(d["Tournament #3"] - 15) * 3) + "px"; })
+                    .text(function(d) { return d.Character; });
+                d3.select("body").append("br");
+                p.enter().append("span")
+                    .style("font-size", function(d) { return (Math.abs(d["Tournament #4"] - 15) * 3) + "px"; })
+                    .text(function(d) { return d.Character; });
+                d3.select("body").append("br");
+                p.enter().append("span")
+                    .style("font-size", function(d) { return (Math.abs(d["Tournament #5"] - 15) * 3) + "px"; })
+                    .text(function(d) { return d.Character; });
+                d3.select("body").append("br");
+                p.enter().append("span")
+                    .style("font-size", function(d) { return (Math.abs(d["Tournament #6"] - 15) * 3) + "px"; })
+                    .text(function(d) { return d.Character; });
+                d3.select("body").append("br");
+                p.enter().append("span")
+                    .style("font-size", function(d) { return (Math.abs(d["Average Placement"] - 15) * 3) + "px"; })
+                    .text(function(d) { return d.Character; });
+            });
+            
+            
+        </script>
     </body>
 </html>
