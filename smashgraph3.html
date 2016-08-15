@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Amiibo Data</title>
+        <script src="js/d3.js"></script>
+        <style>
+            path{
+                fill:none;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var margin = {top: 30, right: 20, bottom: 30, left: 50},
+                width = window.innerWidth*.85,
+                height = window.innerHeight*.85;
+            // Set the ranges
+            var x = d3.scaleLinear().range([0,width]);
+            var y = d3.scaleLinear().range([height, 0]);
+            // Define the axes
+            var xAxis = d3.axisTop().scale(x);
+
+            var yAxis = d3.axisLeft().scale(y);
+                
+            
+            function makeLine(data) {
+                var tempObjArr = [];
+                for(i = 0; i < data.length; i++) {
+                    curr = {};
+                    curr.tournament = i + 1;
+                    curr.place = data[i];
+                    tempObjArr[i] = curr;
+                }
+                
+                var currLine = d3.line()
+                    .x(function(d){return x(d.tournament)})
+                    .y(function(d){return y(d.place)});
+                
+                svg.append("path")
+                    .datum(tempObjArr)
+                    .style("stroke-width",2)
+                    .style("stroke","hsl(" + Math.random() * 360 + ",100%,50%)")
+                    .attr("d",currLine);
+                
+            }
+            var ikeline = d3.line()
+                .x(function(d){ return x(d.f); })
+                .y(function(d){ return y(d.b); });
+            
+            // Adds the svg canvas
+            var svg = d3.select("body")
+                .append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .style("border","black")
+                    .style("border-style","solid")
+                .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            d3.json("data/amiibo2.json",function(d){
+                
+                // Scale the range of the data
+                x.domain([1,7]);
+                y.domain([14,1]);
+                // Add X Axis
+                svg.append("g").call(xAxis);
+                // Add y axis
+                svg.append("g").call(yAxis);
+                
+                Object.keys(d).forEach(function(key){
+                    makeLine(d[key]);
+                });
+            });
+        </script>
+    </body>
+</html>
