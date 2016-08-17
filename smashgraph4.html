@@ -21,32 +21,38 @@
             var xAxis = d3.axisTop().scale(x);
 
             var yAxis = d3.axisLeft().scale(y);
-                
             
-            function makeLine(data) {
+            var lines =[];
+            
+            function makeLine(data,name) {
+                // We make a temporary array to hold all of the data objects we will make
                 var tempObjArr = [];
+                // Iterate through data given to give x and y coordinates
                 for(i = 0; i < data.length; i++) {
                     curr = {};
                     curr.tournament = i + 1;
                     curr.place = data[i];
                     tempObjArr[i] = curr;
                 }
-                
+                // The current line will have all of its data put in
                 var currLine = d3.line()
                     .x(function(d){return x(d.tournament)})
                     .y(function(d){return y(d.place)});
                 
-                svg.append("path")
+                // Appenf the line to the svg canvas.
+                var path = svg.append("path")
                     .datum(tempObjArr)
+                    .attr("id",name)
                     .style("stroke-width",2)
                     .style("stroke","hsl(" + Math.random() * 360 + ",100%,50%)")
                     .attr("d",currLine);
-                
-                
+                var thisLine = path;
+                path.on("mouseover",function(){
+                    
+                });
+                lines.push(path);
             }
-            var ikeline = d3.line()
-                .x(function(d){ return x(d.f); })
-                .y(function(d){ return y(d.b); });
+            
             
             // Adds the svg canvas
             var svg = d3.select("body")
@@ -68,8 +74,9 @@
                 svg.append("g").call(yAxis);
                 
                 Object.keys(d).forEach(function(key){
-                    makeLine(d[key]);
+                    makeLine(d[key],key);
                 });
+                console.log(lines);
             });
         </script>
     </body>
