@@ -4,17 +4,21 @@
         <title>Amiibo Data</title>
         <script src="js/d3.js"></script>
         <style>
+            body{
+                padding 0px;
+            }
             path{
                 fill:none;
             }
+            
         </style>
         <meta charset="utf-8"/>
     </head>
     <body>
         <script>
-            var margin = {top: 30, right: 20, bottom: 30, left: 50},
-                width = window.innerWidth*.9,
-                height = window.innerHeight*.85;
+            var margin = {top: window.innerWidth*.05, right: window.innerWidth*.1, bottom: 30, left: 30},
+                width = window.innerWidth*.8,
+                height = window.innerHeight*.8;
             // Set the ranges
             var x = d3.scaleLinear().range([0,width]);
             var y = d3.scaleLinear().range([height, 0]);
@@ -40,11 +44,12 @@
                     .x(function(d){return x(d.tournament)})
                     .y(function(d){return y(d.place)});
                 
+                var lineColor = "hsl(" + Math.random() * 360 + ",100%,50%)";
                 // Append the line to the svg canvas.
                 var path = svg.append("path")
                     .datum(tempObjArr)
                     .attr("id",name)
-                    .style("stroke-width",5)
+                    .style("stroke-width",10)
                     .on("mouseover",function(){
                         makeSoft(name);
                     })
@@ -54,8 +59,17 @@
                     .on("click",function(d){
                         clickInfo(name,d);
                     })
-                    .style("stroke","hsl(" + Math.random() * 360 + ",100%,50%)")
+                    .style("stroke",lineColor)
                     .attr("d",currLine);
+                svg.append("text")
+                    .attr("transform", "translate("+(width+3)+","+y(tempObjArr[tempObjArr.length - 1].place)+")")
+                    .attr("dy", ".35em")
+                    .attr("text-anchor", "start")
+                    .style("fill", lineColor)
+                    .style("font-weight","bold")
+                    .attr("stroke","rgba(0,0,0,0.10)")
+                    .attr("stroke-width","1px")
+                    .text(name);
                 var thisLine = path;
                 lines.push(path);
             }
@@ -66,7 +80,6 @@
                 //console.log(name);
                 keys.forEach(function(key){
                     if(name == key || key == selectedCharacter) {
-                        
                         d3.select("path[id='"+key+"']").style("opacity","1");
                     } else {
                         d3.select("path[id='"+key+"']").style("opacity","0.5");
