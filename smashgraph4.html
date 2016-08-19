@@ -5,19 +5,24 @@
         <script src="js/d3.js"></script>
         <style>
             body{
-                padding 0px;
+                padding: 0px;
             }
             path{
                 fill:none;
+            }
+            svg{
+                margin-left:auto;
+                margin-right: auto;
             }
             
         </style>
         <meta charset="utf-8"/>
     </head>
     <body>
+        <h2>Amiibo Tournament Data</h2>
         <script>
             // Define some variables for area
-            var margin = {top: 50, right: 125, bottom: 30, left: 50 },
+            var margin = {top: 50, right: 125, bottom: 25, left: 50 },
                 width = window.innerWidth*.8,
                 height = window.innerHeight*.8;
             // Set the ranges
@@ -28,8 +33,15 @@
 
             var yAxis = d3.axisLeft().scale(y);
             
+            // An array to hold all the lines on the graph
             var lines =[];
             
+            // An array to hold the keys or "names" from he data json
+            var keys = [];
+            // A string to indicate which character/line is currenly selected
+            var selectedCharacter = "";
+            
+            // A function defined to create a line on the graph and all relevant data
             function makeLine(data,name) {
                 // We make a temporary array to hold all of the data objects we will make
                 var tempObjArr = [];
@@ -44,7 +56,7 @@
                 var currLine = d3.line()
                     .x(function(d){return x(d.tournament)})
                     .y(function(d){return y(d.place)});
-                
+                // String of the color of the line and accompanying label
                 var lineColor = "hsl(" + Math.random() * 360 + ",100%,50%)";
                 // Append the line to the svg canvas.
                 var path = svg.append("path")
@@ -62,6 +74,7 @@
                     })
                     .style("stroke",lineColor)
                     .attr("d",currLine);
+                // Append an ending label to the line
                 svg.append("text")
                     .attr("transform", "translate("+(width+3)+","+y(tempObjArr[tempObjArr.length - 1].place)+")")
                     .attr("dy", ".35em")
@@ -71,23 +84,23 @@
                     .attr("stroke","rgba(0,0,0,0.10)")
                     .attr("stroke-width","1px")
                     .text(name);
-                var thisLine = path;
+                // Store this line into an array of all lines
                 lines.push(path);
             }
             
-            var keys = [];
-            var selectedCharacter = "";
+            // A function to be triggered when hovering over a line to make all 
+            // non-hovered or selected lines "soft" or less solid in color.
             function makeSoft(name) {
-                //console.log(name);
-                keys.forEach(function(key){
+                // Iterate through all keys/names and then make them solid or soft depending on their status
+                keys.forEach(function(key) {
                     if(name == key || key == selectedCharacter) {
                         d3.select("path[id='"+key+"']").style("opacity","1");
                     } else {
                         d3.select("path[id='"+key+"']").style("opacity","0.5");
                     }
                 });
-                
             }
+            // A function to make all lines solid. Triggered when no lines are being selected or hovered on.
             function makeSolid(name) {
                 if(selectedCharacter == ""){
                     keys.forEach(function(key){
@@ -95,28 +108,30 @@
                     });
                 }          
             }
-            
+            // A function to handle the display of information 
             function clickInfo(name,lineData) {
-                // When user clicks on a line, it should clear that selection
+                // When user clicks on a line, it should clear that selection and its info
                 if(selectedCharacter == name) {
                     d3.select("#info").remove();
                     selectedCharacter = "";
                 // Handle the case of a new selection
                 } else {
-                    // We note that the given character is the line selected
+                    // We note that the given character is the line selected and then make all other lines soft
                     selectedCharacter = name;
                     makeSoft(name);
+                    // If there is already info displayed, then we clear it
                     if(d3.select("#info")){
                         d3.select("#info").remove();
                     }
+                    // We then setup a string of the character's information
                     var infoString = name + " : ";
                     var sum = 0;
-                    //console.log(lineData);
                     for(i = 0; i < lineData.length; i++) {
                         infoString += "Tournament #" + (i+1).toString() +" - "+ lineData[i].place + " , ";
                         sum += lineData[i].place;
                     }
                     infoString += " Average - " + (sum/i).toString();
+                    // We then attach the info to the body in a div's text
                     d3.select("body").append("div").text(infoString).attr("id","info");
                 }
                 
@@ -130,8 +145,8 @@
                     .style("border-style","solid")
                 .append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            // Here we actually pull the json data
             d3.json("data/amiibo2.json",function(d){
-                
                 // Scale the range of the data
                 x.domain([1,6]);
                 y.domain([14,1]);
@@ -139,7 +154,7 @@
                 svg.append("g").call(xAxis);
                 // Add y axis
                 svg.append("g").call(yAxis);
-                
+                // We iterate through the data 
                 Object.keys(d).forEach(function(key){
                     keys.push(key);
                     makeLine(d[key],key);
