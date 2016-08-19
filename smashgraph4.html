@@ -16,7 +16,8 @@
     </head>
     <body>
         <script>
-            var margin = {top: window.innerHeight*.05, right: 150, bottom: 30, left: window.innerHeight*.05 },
+            // Define some variables for area
+            var margin = {top: 50, right: 125, bottom: 30, left: 50 },
                 width = window.innerWidth*.8,
                 height = window.innerHeight*.8;
             // Set the ranges
@@ -96,10 +97,13 @@
             }
             
             function clickInfo(name,lineData) {
+                // When user clicks on a line, it should clear that selection
                 if(selectedCharacter == name) {
                     d3.select("#info").remove();
                     selectedCharacter = "";
+                // Handle the case of a new selection
                 } else {
+                    // We note that the given character is the line selected
                     selectedCharacter = name;
                     makeSoft(name);
                     if(d3.select("#info")){
@@ -140,7 +144,17 @@
                     keys.push(key);
                     makeLine(d[key],key);
                 });
-                //console.log(lines);
+                // Apply the label of the y axis
+                svg.append("text")
+                    .attr("text-anchor", "middle")  
+                    .attr("transform", "translate("+ (-1 * (margin.left/2)) +","+(height/2)+")rotate(-90)")
+                    .text("Placements");
+                // Appy the label of the x axis
+                svg.append("text")
+                    .attr("text-anchor","middle")
+                    .attr("transform", "translate("+ ((width/2)) +","+ (-1 * (margin.top/2))+")")
+                    .text("Tournaments");
+                
             });
         </script>
     </body>
