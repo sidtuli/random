@@ -16,7 +16,7 @@
     </head>
     <body>
         <script>
-            var margin = {top: window.innerWidth*.05, right: window.innerWidth*.1, bottom: 30, left: 30},
+            var margin = {top: window.innerHeight*.05, right: 150, bottom: 30, left: window.innerHeight*.05 },
                 width = window.innerWidth*.8,
                 height = window.innerHeight*.8;
             // Set the ranges
@@ -92,26 +92,30 @@
                     keys.forEach(function(key){
                         d3.select("path[id='"+key+"']").style("opacity","1");
                     });
-                }
-                 
-                
-                             
+                }          
             }
             
             function clickInfo(name,lineData) {
-                selectedCharacter = name;
-                if(d3.select("#info")){
+                if(selectedCharacter == name) {
                     d3.select("#info").remove();
+                    selectedCharacter = "";
+                } else {
+                    selectedCharacter = name;
+                    makeSoft(name);
+                    if(d3.select("#info")){
+                        d3.select("#info").remove();
+                    }
+                    var infoString = name + " : ";
+                    var sum = 0;
+                    //console.log(lineData);
+                    for(i = 0; i < lineData.length; i++) {
+                        infoString += "Tournament #" + (i+1).toString() +" - "+ lineData[i].place + " , ";
+                        sum += lineData[i].place;
+                    }
+                    infoString += " Average - " + (sum/i).toString();
+                    d3.select("body").append("div").text(infoString).attr("id","info");
                 }
-                var infoString = name + " : ";
-                var sum = 0;
-                //console.log(lineData);
-                for(i = 0; i < lineData.length; i++) {
-                    infoString += "Tournament #" + (i+1).toString() +" - "+ lineData[i].place + " , ";
-                    sum += lineData[i].place;
-                }
-                infoString += " Average - " + (sum/i).toString();
-                d3.select("body").append("div").text(infoString).attr("id","info");
+                
             }
             // Adds the svg canvas
             var svg = d3.select("body")
