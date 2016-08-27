@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Amiibo Data</title>
+        <script src="js/d3.js"></script>
+        <style>
+            body{
+                padding: 0px;
+            }
+            path{
+                fill:none;
+            }
+            svg{
+                
+                margin-left:auto;
+                margin-right: auto;
+            }
+            
+        </style>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <b>Amiibo Tournament Data</b>
+        <script>
+            // Define some variables for area
+            var margin = {top: 50, right: 125, bottom: 25, left: 50 },
+                width = window.innerWidth*.8,
+                height = window.innerHeight*.8;
+            // Set the ranges
+            var x = d3.scaleLinear().range([0,width]);
+            var y = d3.scaleLinear().range([height, 0]);
+            // Define the axes
+            var xAxis = d3.axisTop().scale(x);
+
+            var yAxis = d3.axisLeft().scale(y);
+            
+            // An array to hold all the lines on the graph
+            var lines =[];
+            
+            // An array to hold the keys or "names" from he data json
+            var keys = [];
+            // A string to indicate which character/line is currenly selected
+            var selectedCharacter = "";
+            
+            function makeDot(charData) {
+                tempObjArr = [];
+                var colorString = "hsl(" + Math.random() * 360 + ",100%,50%)";
+                for(i = 0; i < charData.length; i++) {
+                    curr = {};
+                    curr.tournament = i + 1;
+                    curr.place = charData[i];
+                    tempObjArr[i] = curr;
+                    svg.append("circle")
+                        .attr("r",3.5)
+                        .attr("cx", x(i+1))
+                        .attr("cy",y(charData[i]))
+                        .style("fill",colorString);
+                }
+                var currLine = d3.line()
+                    .x(function(d){return x(d.tournament)})
+                    .y(function(d){return y(d.place)});
+                var path = svg.append("path")
+                    .datum(tempObjArr)
+                    
+                    .style("stroke-width",2)
+                    .style("stroke",colorString)
+                    .attr("d",currLine);
+            }
+            // Adds the svg canvas
+            var svg = d3.select("body")
+                .append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .style("border","black")
+                    .style("border-style","solid")
+                .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            // Here we actually pull the json data
+            d3.json("data/amiibo2.json",function(d){
+                // Scale the range of the data
+                x.domain([1,6]);
+                y.domain([14,1]);
+                // Add X Axis
+                svg.append("g").call(xAxis);
+                // Add y axis
+                svg.append("g").call(yAxis);
+                // We iterate through the data 
+                
+                Object.keys(d).forEach(function(key){
+                    //console.log(key);
+                    makeDot(d[key]);
+                });
+                // Apply the label of the y axis
+                svg.append("text")
+                    .attr("text-anchor", "middle")  
+                    .attr("transform", "translate("+ (-1 * (margin.left/2)) +","+(height/2)+")rotate(-90)")
+                    .text("Placements");
+                // Appy the label of the x axis
+                svg.append("text")
+                    .attr("text-anchor","middle")
+                    .attr("transform", "translate("+ ((width/2)) +","+ (-1 * (margin.top/2))+")")
+                    .text("Tournaments");
+                
+            });
+        </script>
+    </body>
+</html>
