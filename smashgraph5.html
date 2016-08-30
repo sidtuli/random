@@ -62,6 +62,9 @@
                         .on("mouseout",function(){
                             makeSolid();
                         })
+                        .on("click",function(){
+                            clickSelect(name);
+                        })
                         .attr("class",name)
                         .attr("r",7.5)
                         .attr("cx", x(i+1))
@@ -76,6 +79,15 @@
                     .attr("class",name)
                     .style("stroke-width",5)
                     .style("stroke",colorString)
+                    .on("mouseover",function(d){
+                        makeSoft(name);
+                    })
+                    .on("mouseout",function(d){
+                        makeSolid();
+                    })
+                    .on("click",function(){
+                        clickSelect(name);
+                    })
                     .attr("d",currLine);
                 // Append an ending label to the line
                 svg.append("text")
@@ -103,7 +115,7 @@
             
             function makeSoft(name) {
                 for(i = 0; i < keys.length; i++) {
-                    if(keys[i] == name) {
+                    if(keys[i] == name || keys[i] == selectedCharacter) {
                         d3.selectAll("path[class='"+name+"']").style("opacity",1);
                         d3.selectAll("circle[class='"+name+"']").style("opacity",1);
                     } else {
@@ -113,9 +125,21 @@
                 }
             }
             function makeSolid() {
-                for(i = 0; i < keys.length; i++) {
-                    d3.selectAll("path[class='"+keys[i]+"']").style("opacity",1);
-                    d3.selectAll("circle[class='"+keys[i]+"']").style("opacity",1); 
+                if(selectedCharacter == "") {
+                    for(i = 0; i < keys.length; i++) {
+                        d3.selectAll("path[class='"+keys[i]+"']").style("opacity",1);
+                        d3.selectAll("circle[class='"+keys[i]+"']").style("opacity",1); 
+                    }
+                }
+            }
+            
+            function clickSelect(name) {
+                // Clear out the selection if clicked on the same line
+                if(name == selectedCharacter) {
+                  selectedCharacter = "";  
+                } else {
+                    selectedCharacter = name;
+                    makeSoft(name);
                 }
             }
             
