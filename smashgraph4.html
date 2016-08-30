@@ -34,9 +34,6 @@
 
             var yAxis = d3.axisLeft().scale(y);
             
-            // An array to hold all the lines on the graph
-            var lines =[];
-            
             // An array to hold the keys or "names" from he data json
             var keys = [];
             // A string to indicate which character/line is currenly selected
@@ -85,8 +82,7 @@
                     .attr("stroke","rgba(0,0,0,0.10)")
                     .attr("stroke-width","1px")
                     .text(name);
-                // Store this line into an array of all lines
-                lines.push(path);
+                
             }
             
             // A function to be triggered when hovering over a line to make all 

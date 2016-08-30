@@ -22,6 +22,14 @@
     <body>
         <b>Amiibo Tournament Data</b>
         <script>
+            Array.prototype.randsplice = function(){
+                var ri = Math.floor(Math.random() * this.length);
+                var rs = this.splice(ri, 1);
+                return rs;
+            }
+            
+            var colorArray = ["#393b79","#5254a3","#637939","#8ca252","#8c6d31","#bd9e39","#843c39","#ad494a","#7b4173","#a55194","#ce6dbd","#3182bd","#6baed6","#e6550d","#fd8d3c","#31a354","#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#bcbd22","#17becf"]
+            
             // Define some variables for area
             var margin = {top: 50, right: 125, bottom: 25, left: 50 },
                 width = window.innerWidth*.8,
@@ -34,24 +42,28 @@
 
             var yAxis = d3.axisLeft().scale(y);
             
-            // An array to hold all the lines on the graph
-            var lines =[];
-            
             // An array to hold the keys or "names" from he data json
             var keys = [];
             // A string to indicate which character/line is currenly selected
             var selectedCharacter = "";
             
-            function makeDot(charData) {
+            function makeDot(charData,name) {
                 tempObjArr = [];
-                var colorString = "hsl(" + Math.random() * 360 + ",100%,50%)";
+                var colorString = getColor();
                 for(i = 0; i < charData.length; i++) {
                     curr = {};
                     curr.tournament = i + 1;
                     curr.place = charData[i];
                     tempObjArr[i] = curr;
                     svg.append("circle")
-                        .attr("r",3.5)
+                        .on("mouseover",function(){
+                            makeSoft(name);
+                        })
+                        .on("mouseout",function(){
+                            makeSolid();
+                        })
+                        .attr("class",name)
+                        .attr("r",7.5)
                         .attr("cx", x(i+1))
                         .attr("cy",y(charData[i]))
                         .style("fill",colorString);
@@ -61,10 +73,23 @@
                     .y(function(d){return y(d.place)});
                 var path = svg.append("path")
                     .datum(tempObjArr)
-                    
-                    .style("stroke-width",2)
+                    .attr("class",name)
+                    .style("stroke-width",5)
                     .style("stroke",colorString)
                     .attr("d",currLine);
+                // Append an ending label to the line
+                svg.append("text")
+                    .attr("transform", "translate("+(width+10)+","+y(tempObjArr[tempObjArr.length - 1].place)+")")
+                    .attr("dy", ".35em")
+                    .attr("text-anchor", "start")
+                    .style("fill", colorString)
+                    .style("font-weight","bold")
+                    .attr("stroke","rgba(0,0,0,0.10)")
+                    .attr("stroke-width","1px")
+                    .text(name);
+                // Push keys to an array to hold all keys
+                keys.push(name); 
+                
             }
             // Adds the svg canvas
             var svg = d3.select("body")
@@ -75,6 +100,28 @@
                     .style("border-style","solid")
                 .append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            
+            function makeSoft(name) {
+                for(i = 0; i < keys.length; i++) {
+                    if(keys[i] == name) {
+                        d3.selectAll("path[class='"+name+"']").style("opacity",1);
+                        d3.selectAll("circle[class='"+name+"']").style("opacity",1);
+                    } else {
+                        d3.selectAll("path[class='"+keys[i]+"']").style("opacity",.5);
+                        d3.selectAll("circle[class='"+keys[i]+"']").style("opacity",.5);
+                    }
+                }
+            }
+            function makeSolid() {
+                for(i = 0; i < keys.length; i++) {
+                    d3.selectAll("path[class='"+keys[i]+"']").style("opacity",1);
+                    d3.selectAll("circle[class='"+keys[i]+"']").style("opacity",1); 
+                }
+            }
+            
+            function getColor(){
+               return colorArray.randsplice()[0]; 
+            }
             // Here we actually pull the json data
             d3.json("data/amiibo2.json",function(d){
                 // Scale the range of the data
@@ -88,7 +135,7 @@
                 
                 Object.keys(d).forEach(function(key){
                     //console.log(key);
-                    makeDot(d[key]);
+                    makeDot(d[key],key);
                 });
                 // Apply the label of the y axis
                 svg.append("text")
