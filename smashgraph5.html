@@ -63,7 +63,7 @@
                             makeSolid();
                         })
                         .on("click",function(){
-                            clickSelect(name);
+                            clickSelect(name,tempObjArr);
                         })
                         .attr("class",name)
                         .attr("r",7.5)
@@ -86,7 +86,7 @@
                         makeSolid();
                     })
                     .on("click",function(){
-                        clickSelect(name);
+                        clickSelect(name,tempObjArr);
                     })
                     .attr("d",currLine);
                 // Append an ending label to the line
@@ -133,13 +133,28 @@
                 }
             }
             
-            function clickSelect(name) {
+            function clickSelect(name,lineData) {
                 // Clear out the selection if clicked on the same line
                 if(name == selectedCharacter) {
-                  selectedCharacter = "";  
+                    selectedCharacter = "";
+                    d3.select("#info").remove();
                 } else {
                     selectedCharacter = name;
                     makeSoft(name);
+                    // If there is already info displayed, then we clear it
+                    if(d3.select("#info")){
+                        d3.select("#info").remove();
+                    }
+                    // We then setup a string of the character's information
+                    var infoString = name + " : ";
+                    var sum = 0;
+                    for(i = 0; i < lineData.length; i++) {
+                        infoString += "Tournament #" + (i+1).toString() +" - "+ lineData[i].place + " , ";
+                        sum += lineData[i].place;
+                    }
+                    infoString += " Average - " + (sum/i).toString();
+                    // We then attach the info to the body in a div's text
+                    d3.select("body").append("div").text(infoString).attr("id","info");
                 }
             }
             
