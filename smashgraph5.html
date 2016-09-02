@@ -95,6 +95,23 @@
                         .attr("cy",y(charData[i]))
                         .style("fill",colorString);
                 }
+                var tournaments = [], places = [];
+                for(i = 0; i < tempObjArr.length; i++) {
+                    tournaments.push(tempObjArr[i].tournament);
+                    places.push(tempObjArr[i].place);
+                }
+                var leastSquaresRes = leastSquares(tournaments,places);
+                // Making the trend line
+                var x1 = tournaments[0], 
+                    y1 = leastSquaresRes[0] + leastSquaresRes[1], 
+                    x2 = tournaments[tournaments.length - 1],
+                    y2 = (leastSquaresRes[0] * places.length) + leastSquaresRes[1];
+                var trendData = [{"x":x1,"y":y1},{"x":x2,"y":y2}];
+                console.log(trendData)
+                console.log(leastSquaresRes);
+                console.log(places);
+                console.log(tournaments);
+                
                 var currLine = d3.line()
                     .x(function(d){return x(d.tournament)})
                     .y(function(d){return y(d.place)});
@@ -176,7 +193,14 @@
                         infoString += "Tournament #" + (i+1).toString() +" - "+ lineData[i].place + " , ";
                         sum += lineData[i].place;
                     }
-                    infoString += " Average - " + (sum/i).toString();
+                    var avg = (sum/i);
+                    var devsum = 0;
+                    for(j = 0; j < lineData.length; j++) {
+                        devsum += (lineData[j].place - avg) * (lineData[j].place - avg); 
+                    }
+                    devsum = Math.pow((devsum / j),1/2);
+                    console.log(devsum)
+                    infoString += " Average - " + avg.toFixed(2).toString() + ", Standard Deviation - " + devsum.toFixed(2).toString();
                     // We then attach the info to the body in a div's text
                     d3.select("body").append("div").text(infoString).attr("id","info");
                 }
