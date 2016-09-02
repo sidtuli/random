@@ -15,7 +15,18 @@
                 margin-left:auto;
                 margin-right: auto;
             }
-            
+            div.tooltip {	
+                position: absolute;			
+                text-align: center;			
+                width: 120px;					
+                height: 28px;					
+                padding: 2px;				
+                font: 12px sans-serif;		
+                background: lightsteelblue;	
+                border: 0px;		
+                border-radius: 8px;			
+                pointer-events: none;			
+            }   
         </style>
         <meta charset="utf-8"/>
     </head>
@@ -47,6 +58,9 @@
             // A string to indicate which character/line is currenly selected
             var selectedCharacter = "";
             
+            var tip = d3.select("body").append("div")
+                .attr("class","tooltip")
+                .style("opacity",0);
             function makeDot(charData,name) {
                 tempObjArr = [];
                 var colorString = getColor();
@@ -56,10 +70,20 @@
                     curr.place = charData[i];
                     tempObjArr[i] = curr;
                     svg.append("circle")
-                        .on("mouseover",function(){
+                        .datum(curr)
+                        .on("mouseover",function(d){
                             makeSoft(name);
+                            tip.transition()		
+                                .duration(200)		
+                                .style("opacity", .9);		
+                            tip.html("Tournament # "+ d.tournament + "<br/>" + "Place - " + d.place)	
+                                .style("left", (d3.event.pageX) + "px")		
+                                .style("top", (d3.event.pageY - 28) + "px");	
                         })
                         .on("mouseout",function(){
+                            tip.transition()		
+                                .duration(500)		
+                                .style("opacity", 0);	
                             makeSolid();
                         })
                         .on("click",function(){
@@ -188,6 +212,27 @@
                     .text("Tournaments");
                 
             });
+            function leastSquares(xSeries, ySeries) {
+                var reduceSumFunc = function(prev, cur) { return prev + cur; };
+
+                var xBar = xSeries.reduce(reduceSumFunc) * 1.0 / xSeries.length;
+                var yBar = ySeries.reduce(reduceSumFunc) * 1.0 / ySeries.length;
+
+                var ssXX = xSeries.map(function(d) { return Math.pow(d - xBar, 2); })
+                    .reduce(reduceSumFunc);
+
+                var ssYY = ySeries.map(function(d) { return Math.pow(d - yBar, 2); })
+                    .reduce(reduceSumFunc);
+
+                var ssXY = xSeries.map(function(d, i) { return (d - xBar) * (ySeries[i] - yBar); })
+                    .reduce(reduceSumFunc);
+
+                var slope = ssXY / ssXX;
+                var intercept = yBar - (xBar * slope);
+                var rSquare = Math.pow(ssXY, 2) / (ssXX * ssYY);
+
+                return [slope, intercept, rSquare];
+	       }
         </script>
     </body>
 </html>
