@@ -50,7 +50,8 @@
             var x = d3.scaleLinear().range([0,width]);
             var y = d3.scaleLinear().range([height, 0]);
             // Define the axes
-            var xAxis = d3.axisTop().scale(x);
+            var xAxis = d3.axisTop()
+                .scale(x);
 
             var yAxis = d3.axisLeft().scale(y);
             
@@ -228,8 +229,14 @@
             }
             // Here we actually pull the json data
             d3.json("data/amiibo2.json",function(d){
+                
                 // I get the number of characters and tournaments to
                 var numChars = Object.keys(d).length, numTournaments = d[Object.keys(d).pop()].length;
+                var ticks = [];
+                for(i = 1; i <= numTournaments; i++) {
+                    ticks.push(i);
+                }
+                xAxis.tickValues(ticks);
                 // Scale the range of the data
                 x.domain([1,numTournaments]);
                 y.domain([numChars,1]);
