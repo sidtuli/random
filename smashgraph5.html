@@ -111,7 +111,24 @@
                 console.log(leastSquaresRes);
                 console.log(places);
                 console.log(tournaments);
-                
+                var trendline = d3.line()
+                    .x(function(d){return x(d.x)})
+                    .y(function(d){return y(d.y)});
+                svg.append("line")
+                    .attr("x1",x(x1))
+                    .attr("x2",x(x2))
+                    .attr("y1",y(y1))
+                    .attr("y2",y(y2))
+                    .attr("class",name)
+                    .style("stroke-dasharray","10,5")
+                    .style("stroke",colorString)
+                    .style("stroke-width",5)
+                    .style("opacity",0);
+                /*svg.append("circle")
+                    .attr("cx",x(x1))
+                    .attr("cy",y(y1))
+                    .attr("r",7)
+                    .style("fill","black");*/
                 var currLine = d3.line()
                     .x(function(d){return x(d.tournament)})
                     .y(function(d){return y(d.place)});
@@ -159,9 +176,11 @@
                     if(keys[i] == name || keys[i] == selectedCharacter) {
                         d3.selectAll("path[class='"+name+"']").style("opacity",1);
                         d3.selectAll("circle[class='"+name+"']").style("opacity",1);
+                        d3.selectAll("line[class='"+name+"']").style("opacity",1);
                     } else {
                         d3.selectAll("path[class='"+keys[i]+"']").style("opacity",.5);
                         d3.selectAll("circle[class='"+keys[i]+"']").style("opacity",.5);
+                        d3.selectAll("line[class='"+keys[i]+"']").style("opacity",0);
                     }
                 }
             }
@@ -169,7 +188,8 @@
                 if(selectedCharacter == "") {
                     for(i = 0; i < keys.length; i++) {
                         d3.selectAll("path[class='"+keys[i]+"']").style("opacity",1);
-                        d3.selectAll("circle[class='"+keys[i]+"']").style("opacity",1); 
+                        d3.selectAll("circle[class='"+keys[i]+"']").style("opacity",1);
+                        d3.selectAll("line[class='"+keys[i]+"']").style("opacity",0);
                     }
                 }
             }
