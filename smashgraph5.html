@@ -33,12 +33,13 @@
     <body>
         <b>Amiibo Tournament Data</b>
         <script>
+            // An array prototype function to return a an array containing only a random element
             Array.prototype.randsplice = function(){
                 var ri = Math.floor(Math.random() * this.length);
                 var rs = this.splice(ri, 1);
                 return rs;
             }
-            
+            // Array of color strings to be used on dots/lines
             var colorArray = ["#393b79","#5254a3","#637939","#8ca252","#8c6d31","#bd9e39","#843c39","#ad494a","#7b4173","#a55194","#ce6dbd","#3182bd","#6baed6","#e6550d","#fd8d3c","#31a354","#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#bcbd22","#17becf"]
             
             // Define some variables for area
@@ -57,10 +58,11 @@
             var keys = [];
             // A string to indicate which character/line is currenly selected
             var selectedCharacter = "";
-            
+            // Appending the div that will be accessed upon hovering over a dot
             var tip = d3.select("body").append("div")
                 .attr("class","tooltip")
                 .style("opacity",0);
+            // This is the function that does most of the work of making all needed lines and dots 
             function makeDot(charData,name) {
                 var tempObjArr = [];
                 var colorString = getColor();
@@ -107,13 +109,11 @@
                     x2 = tournaments[tournaments.length - 1],
                     y2 = (leastSquaresRes[0] * places.length) + leastSquaresRes[1];
                 var trendData = [{"x":x1,"y":y1},{"x":x2,"y":y2}];
-                console.log(trendData)
-                console.log(leastSquaresRes);
-                console.log(places);
-                console.log(tournaments);
+                // Setup the trend line and how it will get its data
                 var trendline = d3.line()
                     .x(function(d){return x(d.x)})
                     .y(function(d){return y(d.y)});
+                // Then we append the trend line as invisible
                 svg.append("line")
                     .attr("x1",x(x1))
                     .attr("x2",x(x2))
@@ -124,11 +124,7 @@
                     .style("stroke",colorString)
                     .style("stroke-width",5)
                     .style("opacity",0);
-                /*svg.append("circle")
-                    .attr("cx",x(x1))
-                    .attr("cy",y(y1))
-                    .attr("r",7)
-                    .style("fill","black");*/
+                // Setup the character line and how it will get its data
                 var currLine = d3.line()
                     .x(function(d){return x(d.tournament)})
                     .y(function(d){return y(d.place)});
@@ -170,7 +166,7 @@
                     .style("border-style","solid")
                 .append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-            
+            // A function to selectively lower the opacity of non-relevant data
             function makeSoft(name) {
                 for(i = 0; i < keys.length; i++) {
                     if(keys[i] == name || keys[i] == selectedCharacter) {
@@ -184,6 +180,7 @@
                     }
                 }
             }
+            // Turns every single dot and character line solid. All trend lines become invisible again.
             function makeSolid() {
                 if(selectedCharacter == "") {
                     for(i = 0; i < keys.length; i++) {
@@ -219,29 +216,29 @@
                         devsum += (lineData[j].place - avg) * (lineData[j].place - avg); 
                     }
                     devsum = Math.pow((devsum / j),1/2);
-                    console.log(devsum)
+                    
                     infoString += " Average - " + avg.toFixed(2).toString() + ", Standard Deviation - " + devsum.toFixed(2).toString();
                     // We then attach the info to the body in a div's text
                     d3.select("body").append("div").text(infoString).attr("id","info");
                 }
             }
-            
+            // Returns one color string out of an array of colors
             function getColor(){
                return colorArray.randsplice()[0]; 
             }
             // Here we actually pull the json data
             d3.json("data/amiibo2.json",function(d){
+                // I get the number of characters and tournaments to
+                var numChars = Object.keys(d).length, numTournaments = d[Object.keys(d).pop()].length;
                 // Scale the range of the data
-                x.domain([1,6]);
-                y.domain([14,1]);
+                x.domain([1,numTournaments]);
+                y.domain([numChars,1]);
                 // Add X Axis
                 svg.append("g").call(xAxis);
                 // Add y axis
                 svg.append("g").call(yAxis);
-                // We iterate through the data 
-                
+                // We iterate through the data and make a dot (and all relevant lines) for each 
                 Object.keys(d).forEach(function(key){
-                    //console.log(key);
                     makeDot(d[key],key);
                 });
                 // Apply the label of the y axis
@@ -256,6 +253,7 @@
                     .text("Tournaments");
                 
             });
+            // A function to help calculate the trend line of data
             function leastSquares(xSeries, ySeries) {
                 var reduceSumFunc = function(prev, cur) { return prev + cur; };
 
