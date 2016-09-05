@@ -9,6 +9,10 @@
             div.button {
                 text-align: center;
             }
+            #titles {
+                font-size: 3em;
+                text-align: center;
+            }
         </style>
     </head>
     <body>
@@ -230,13 +234,36 @@
                 var second = Math.floor(Math.random() * nouns.length);
                 document.getElementById("title").innerHTML = "The " + adjectives[first] + " " + nouns[second];
             }
-
+            function fiveTwoNouns() {
+                var resultString = "";
+                for(i = 0; i < 5; i++) {
+                    var first = Math.floor(Math.random() * nouns.length);
+                    var second = Math.floor(Math.random() * nouns.length);
+                    resultString += "The " + nouns[first] + " and " + nouns[second] + "<br/>";
+                    
+                }
+                document.getElementById("titles").innerHTML = resultString;
+            }
+            function fiveAdjAndNoun() {
+                var resultString = "";
+                for(i = 0; i < 5; i++) {
+                    var first = Math.floor(Math.random() * adjectives.length);
+                    var second = Math.floor(Math.random() * nouns.length);
+                    resultString += "The " + nouns[first] + " " + nouns[second] + "<br/>";
+                    
+                }
+                document.getElementById("titles").innerHTML = resultString;
+            }
         </script>
         <h1 id="title"></h1>
         <div class="button">
             <button onclick="twoNouns()">Noun + Noun</button>
             <button onclick="adjAndNoun()">Adjective + Noun</button>
         </div>
-        
+        <div class="button">
+            <button onclick="fiveTwoNouns()">Five * (Noun + Noun)</button>
+            <button onclick="fiveAdjAndNoun()">Five * (Adjective + Noun)</button>
+        </div>
+        <p id="titles"></p>
     </body>
 </html>
