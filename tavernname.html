@@ -13,6 +13,16 @@
                 font-size: 3em;
                 text-align: center;
             }
+            table{
+                font-size: 4vw;
+                width:100%;
+                margin-right: auto;
+                margin-left: auto;
+                text-align: center;
+            }
+            td{
+                width: 50%;
+            }
         </style>
     </head>
     <body>
@@ -254,6 +264,22 @@
                 }
                 document.getElementById("titles").innerHTML = resultString;
             }
+            function fiveEach() {
+                var resultString = "<table>";
+                for(i = 0; i < 5; i++) {
+                    resultString += "<tr>";
+                    var adj = Math.floor(Math.random() * adjectives.length);
+                    var noun_1 = Math.floor(Math.random() * nouns.length);
+                    var noun_2 = Math.floor(Math.random() * nouns.length);
+                    var noun_3 = Math.floor(Math.random() * nouns.length);
+                    resultString += "<td>" + "The " + nouns[noun_1] + " and " + nouns[noun_2] + "</td>";
+                    
+                    resultString += "<td>" + "The " + adjectives[adj] + " " + nouns[noun_3] + "</td>";
+                    resultString += "</tr>";
+                }
+                resultString +="</table>"
+                document.getElementById("titles").innerHTML = resultString;
+            }
         </script>
         <h1 id="title"></h1>
         <div class="button">
@@ -262,6 +288,7 @@
         </div>
         <div class="button">
             <button onclick="fiveTwoNouns()">Five * (Noun + Noun)</button>
+            <button onclick="fiveEach()">Five of Each</button>
             <button onclick="fiveAdjAndNoun()">Five * (Adjective + Noun)</button>
         </div>
         <p id="titles"></p>
