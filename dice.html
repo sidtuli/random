@@ -1,7 +1,14 @@
 <html>
     <head>
-        <title>Dice</title>
+        <title>DND Dice Roller</title>
     </head>
     <body>
+        <script>
+            rolls = [];
+            var d4 = Math.floor(Math.random() * 4) + 1;
+            for(i = 0 ;i < 100; i++) {
+                rolls.push(Math.floor(Math.random() * 4) + 1);
+            }
+        </script>
     </body>
 </html>
