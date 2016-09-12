@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>DND Dice Roller</title>
+        <style>
+            button {
+                width: 10%;
+                font-size: 2vw;
+            }
+            .die {
+                width: 10%;
+                display: inline-block;
+                text-align: center;
+            }
+            input {
+                width: 8%;
+                font-size: 2vw;
+            }
+            #addSec {
+                font-size: 2vw;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var secNo = 0;
+            function addSection() {
+                secNo += 1;
+                var d4 = document.getElementById("d4").value;
+                var d6 = document.getElementById("d6").value;
+                var d8 = document.getElementById("d8").value;
+                var d10 = document.getElementById("d10").value;
+                var d12 = document.getElementById("d12").value;
+                var d20 = document.getElementById("d20").value;
+                var d100 = document.getElementById("d100").value;
+                console.log(d4);
+                console.log(d6);
+                console.log(d8);
+                console.log(d10);
+                console.log(d12);
+                console.log(d20);
+                console.log(d100);
+            }
+            function d4() {
+                return Math.floor(Math.random() * 4) + 1;
+            }
+            function d6() {
+                return Math.floor(Math.random() * 6) + 1;
+            }
+            function d8() {
+                return Math.floor(Math.random() * 8) + 1;
+            }
+            function d10() {
+                return Math.floor(Math.random() * 10) + 1;
+            }
+            function d12() {
+                return Math.floor(Math.random() * 12) + 1;
+            }
+            function d20() {
+                return Math.floor(Math.random() * 20) + 1;
+            }
+            function d100() {
+                return Math.floor(Math.random() * 100) + 1;
+            }
+            
+        </script>
+        
+        <div id="addSec">
+            <h2>Add A Section</h2>
+            <input id="d4" type="number"/> <span style="color:black">d4</span>
+            <input id="d6" type="number"/> <span style="color:blue">d6</span>
+            <input id="d8" type="number"/> <span style="color:green">d8</span>
+            <input id="d10" type="number"/> <span style="color:red">d10</span>
+            <input id="d12" type="number"/> <span style="color:purple">d12</span>
+            <input id="d20" type="number"/> <span style="color:grey">d20</span>
+            <input id="d100" type="number"/> <span style="color:#FFD700">d100</span>
+            <button onclick="addSection()">Add!</button>
+        </div>
+        <div id="sections"></div>
+    </body>
+</html>
