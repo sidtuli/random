@@ -1,14 +1,67 @@
 <html>
     <head>
         <title>DND Dice Roller</title>
+        <style>
+            button {
+                width: 10%;
+            }
+            .die {
+                width: 10%;
+                display: inline-block;
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
         <script>
-            rolls = [];
-            var d4 = Math.floor(Math.random() * 4) + 1;
-            for(i = 0 ;i < 100; i++) {
-                rolls.push(Math.floor(Math.random() * 4) + 1);
+            
+            
+            function d4(diceId) {
+                document.getElementById(diceId).innerHTML = Math.floor(Math.random() * 4) + 1;
+                console.log(Math.floor(Math.random() * 4) + 1)
             }
+            function d6(diceId) {
+                document.getElementById(diceId).innerHTML = Math.floor(Math.random() * 6) + 1;
+            }
+            function d8(diceId) {
+                document.getElementById(diceId).innerHTML = Math.floor(Math.random() * 8) + 1;
+            }
+            function d10(diceId) {
+                document.getElementById(diceId).innerHTML = Math.floor(Math.random() * 10) + 1;
+            }
+            function d12(diceId) {
+                document.getElementById(diceId).innerHTML = Math.floor(Math.random() * 12) + 1;
+            }
+            function d20(diceId) {
+                document.getElementById(diceId).innerHTML = Math.floor(Math.random() * 20) + 1;
+            }
+            function d100(diceId) {
+                document.getElementById(diceId).innerHTML = Math.floor(Math.random() * 100) + 1;
+            }
+            
         </script>
+        <div class="die" id="d4"></div>
+        
+        <div class="die" id="d6"></div>
+        
+        <div class="die" id="d8"></div>
+        
+        <div class="die" id="d10"></div>
+        
+        <div class="die" id="d12"></div>
+        
+        <div class="die" id="d20"></div>
+        
+        <div class="die" id="d100"></div>
+        
+        <div>
+            <button onclick="d4('d4')">d4</button>
+            <button onclick="d6('d6')">d6</button>
+            <button onclick="d8('d8')">d8</button>
+            <button onclick="d10('d10')">d10</button>
+            <button onclick="d12('d12')">d12</button>
+            <button onclick="d20('d20')">d20</button>
+            <button onclick="d100('d100')">d100</button>
+        </div>
     </body>
 </html>
