@@ -6,11 +6,7 @@
                 width: 10%;
                 font-size: 2vw;
             }
-            .die {
-                width: 10%;
-                display: inline-block;
-                text-align: center;
-            }
+            
             input {
                 width: 8%;
                 font-size: 2vw;
@@ -18,27 +14,69 @@
             #addSec {
                 font-size: 2vw;
             }
+            #rolls {
+                font-size: 3em;
+                word-spacing: 10px;
+                word-wrap: break-word;
+            }
         </style>
     </head>
     <body>
         <script>
             var secNo = 0;
-            function addSection() {
-                secNo += 1;
-                var d4 = document.getElementById("d4").value;
-                var d6 = document.getElementById("d6").value;
-                var d8 = document.getElementById("d8").value;
-                var d10 = document.getElementById("d10").value;
-                var d12 = document.getElementById("d12").value;
-                var d20 = document.getElementById("d20").value;
-                var d100 = document.getElementById("d100").value;
-                console.log(d4);
-                console.log(d6);
-                console.log(d8);
-                console.log(d10);
-                console.log(d12);
-                console.log(d20);
-                console.log(d100);
+            function rollDice() {
+                var numd4 = document.getElementById("d4").value;
+                var numd6 = document.getElementById("d6").value;
+                var numd8 = document.getElementById("d8").value;
+                var numd10 = document.getElementById("d10").value;
+                var numd12 = document.getElementById("d12").value;
+                var numd20 = document.getElementById("d20").value;
+                var numd100 = document.getElementById("d100").value;
+                var rollString = "<span style='color:orange'>";
+                var sum = 0;
+                for(i = 0; i < numd4; i++) {
+                    var curr = d4();
+                    sum += curr;
+                    rollString += curr.toString()+", ";
+                }
+                rollString += "</span><span style='color:blue'>"
+                for(j = 0; j < numd6; j++) {
+                    var curr = d6();
+                    sum += curr;
+                    rollString += curr.toString()+", ";
+                }
+                rollString += "</span><span style='color:green'>"
+                for(k = 0; k < numd8; k++) {
+                    var curr = d8();
+                    sum += curr;
+                    rollString += curr.toString()+", ";
+                }
+                rollString += "</span><span style='color:red'>"
+                for(l = 0; l < numd10; l++) {
+                    var curr = d10();
+                    sum += curr;
+                    rollString += curr.toString()+", ";
+                }
+                rollString += "</span><span style='color:purple'>"
+                for(m = 0; m < numd12; m++) {
+                    var curr = d12();
+                    sum += curr;
+                    rollString += curr.toString()+", ";
+                }
+                rollString += "</span><span style='color:grey'>"
+                for(n = 0; n < numd20; n++) {
+                    var curr = d20();
+                    sum += curr;
+                    rollString += curr.toString()+", ";
+                }
+                rollString += "</span><span style='color:#FFD700'>"
+                for(o = 0; o < numd100; o++) {
+                    var curr = d100();
+                    sum += curr;
+                    rollString += curr.toString()+", ";
+                }
+                rollString += "</span>Sum = " + sum.toString();
+                document.getElementById("rolls").innerHTML = rollString;
             }
             function d4() {
                 return Math.floor(Math.random() * 4) + 1;
@@ -65,16 +103,16 @@
         </script>
         
         <div id="addSec">
-            <h2>Add A Section</h2>
-            <input id="d4" type="number"/> <span style="color:black">d4</span>
-            <input id="d6" type="number"/> <span style="color:blue">d6</span>
-            <input id="d8" type="number"/> <span style="color:green">d8</span>
-            <input id="d10" type="number"/> <span style="color:red">d10</span>
-            <input id="d12" type="number"/> <span style="color:purple">d12</span>
-            <input id="d20" type="number"/> <span style="color:grey">d20</span>
-            <input id="d100" type="number"/> <span style="color:#FFD700">d100</span>
-            <button onclick="addSection()">Add!</button>
+            <h2>Roll Dice</h2>
+            <input id="d4" type="number"/> <span style='color:orange'>d4</span>
+            <input id="d6" type="number"/> <span style='color:blue'>d6</span>
+            <input id="d8" type="number"/> <span style='color:green'>d8</span>
+            <input id="d10" type="number"/> <span style='color:red'>d10</span>
+            <input id="d12" type="number"/> <span style='color:purple'>d12</span>
+            <input id="d20" type="number"/> <span style='color:grey'>d20</span>
+            <input id="d100" type="number"/> <span style='color:#FFD700'>d100</span>
+            <button onclick="rollDice()">Roll!</button>
         </div>
-        <div id="sections"></div>
+        <div id="rolls"></div>
     </body>
 </html>
