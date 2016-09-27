@@ -3,7 +3,7 @@
         <title>DND Dice Roller</title>
         <style>
             button {
-                width: 10%;
+                width: 20%;
                 font-size: 2vw;
             }
             .die {
@@ -18,44 +18,24 @@
             #addSec {
                 font-size: 2vw;
             }
+            #center{
+                margin-right: auto;
+                margin-left: auto;
+                text-align: center;
+                display: block;
+            }
         </style>
     </head>
     <body>
         <script>
-            console.log();
-            function getSection() {
-                if(window.localStorage.getItem("section") == null) {
-                    window.localStorage.setItem("section",0);
+            var sectionNum = getSectionNum();
+            function getSectionNum() {
+                if(window.localStorage.getItem("sections") == null) {
+                    window.localStorage.setItem("sections","0")
+                    return 0;
+                } else {
+                    return parseInt(window.localStorage.getItem("sections"));
                 }
-            }
-            function addSection() {
-                var headerString = "", idString = "";
-                var numd4 = document.getElementById("d4").value < 0 ? 0 : document.getElementById("d4").value;
-                var numd6 = document.getElementById("d6").value < 0 ? 0 : document.getElementById("d6").value;
-                var numd8 = document.getElementById("d8").value < 0 ? 0 : document.getElementById("d8").value;
-                var numd10 = document.getElementById("d10").value < 0 ? 0 : document.getElementById("d10").value;
-                var numd12 = document.getElementById("d12").value < 0 ? 0 : document.getElementById("d12").value;
-                var numd20 = document.getElementById("d20").value < 0 ? 0 : document.getElementById("d20").value;
-                var numd100 = document.getElementById("d100").value < 0 ? 0 : document.getElementById("d100").value;
-                console.log(d4);
-                console.log(d6);
-                console.log(d8);
-                console.log(d10);
-                console.log(d12);
-                console.log(d20);
-                console.log(d100);
-                idString = numd4.toString() +","+ numd6.toString() + "," + numd8.toString() + "," + numd10.toString() + "," + numd12.toString() + "," + numd20.toString() + "," + numd100.toString();
-                headerString += numd4 <= 0 ? "" : numd4.toString() + " d4 ";
-                headerString += numd6 <= 0 ? "" : numd6.toString() + " d6 ";
-                headerString += numd8 <= 0 ? "" : numd8.toString() + " d8 ";
-                headerString += numd10 <= 0 ? "" : numd10.toString() + " d10 ";
-                headerString += numd12 <= 0 ? "" : numd12.toString() + " d12 ";
-                headerString += numd20 <= 0 ? "" : numd20.toString() + " d20 ";
-                headerString += numd100 <= 0 ? "" : numd100.toString() + " d100 ";
-                var newDiv = document.createElement("div"); 
-                newDiv.innerHTML = headerString;
-                document.getElementById("sections").appendChild(newDiv);
-                
             }
             function d4() {
                 return Math.floor(Math.random() * 4) + 1;
@@ -78,20 +58,16 @@
             function d100() {
                 return Math.floor(Math.random() * 100) + 1;
             }
-            
         </script>
-        
-        <div id="addSec">
-            <h2>Add A Section</h2>
-            <input id="d4" type="number" value="0"/> <span style="color:black">d4</span>
-            <input id="d6" type="number" value="0"/> <span style="color:blue">d6</span>
-            <input id="d8" type="number" value="0"/> <span style="color:green">d8</span>
-            <input id="d10" type="number" value="0"/> <span style="color:red">d10</span>
-            <input id="d12" type="number" value="0"/> <span style="color:purple">d12</span>
-            <input id="d20" type="number" value="0"/> <span style="color:grey">d20</span>
-            <input id="d100" type="number" value="0"/> <span style="color:#FFD700">d100</span>
-            <button onclick="addSection()">Add!</button>
+        <div id="dice_sec">
+            <input id="d4" type="number"/> <span style='color:orange'>d4</span>
+            <input id="d6" type="number"/> <span style='color:blue'>d6</span>
+            <input id="d8" type="number"/> <span style='color:green'>d8</span>
+            <input id="d10" type="number"/> <span style='color:red'>d10</span>
+            <input id="d12" type="number"/> <span style='color:purple'>d12</span>
+            <input id="d20" type="number"/> <span style='color:grey'>d20</span>
+            <input id="d100" type="number"/> <span style='color:#FFD700'>d100</span>
+            <button>Add Section</button>
         </div>
-        <div id="sections"></div>
     </body>
 </html>
