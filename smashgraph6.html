@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Amiibo Data - Spring 2016</title>
+        <title>Amiibo Data - Fall 2016</title>
         <script src="js/d3.js"></script>
         <style>
             body{
@@ -228,7 +228,7 @@
                return colorArray.randsplice()[0]; 
             }
             // Here we actually pull the json data
-            d3.json("data/amiibo2.json",function(d){
+            d3.json("data/amiibo3.json",function(d){
                 
                 // I get the number of characters and tournaments to
                 var numChars = Object.keys(d).length, numTournaments = d[Object.keys(d).pop()].length;
