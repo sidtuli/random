@@ -21,15 +21,15 @@
                 return sum;
                 
             }
+            
             function add(id) {
-                checkStats();
+                
                 id = id.replace("up","stat");
-                //console.log(id);
+                
                 stat = parseInt(document.getElementById(id).innerHTML);
                 if((stat + 1) > 15) {
-                    document.getElementById("info").innerHTML = "Can't have a stat above 15"
+                    document.getElementById("info").innerHTML = "Can't have a stat above 15."
                 } else {
-                    document.getElementById("info").innerHTML = ""
                     document.getElementById(id).innerHTML = stat + 1;
                     if(checkStats() > 27) {
                         document.getElementById("info").innerHTML = "You have too many points allocated.";
@@ -45,9 +45,8 @@
                 //console.log(id);
                 stat = parseInt(document.getElementById(id).innerHTML);
                 if((stat - 1) < 8) {
-                    document.getElementById("info").innerHTML = "Can't have a stat below 8"
+                    document.getElementById("info").innerHTML = "Can't have a stat below 8."
                 } else {
-                    document.getElementById("info").innerHTML = ""
                     document.getElementById(id).innerHTML = stat - 1;
                     if(checkStats() > 27) {
                         document.getElementById("info").innerHTML = "You have too many points allocated.";
