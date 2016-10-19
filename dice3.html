@@ -68,7 +68,8 @@
                 new_section.innerHTML = htmlString;
                 new_section.appendChild(new_btn)
                 document.body.appendChild(new_section)
-                document.getElementById(btn_id).setAttribute("onclick","roll(sectionNum - 1,dice_result)")
+                var currSec = sectionNum - 1;
+                document.getElementById(btn_id).setAttribute("onclick","roll("+currSec.toString()+",dice_result)")
             }
             function roll(secnum,dice) {
                 dice = dice.split(",")
@@ -132,6 +133,7 @@
                     d100count -= 1
                 }
                 htmlString += "</span> Sum = " + sum.toString()
+                
                 document.getElementById("roll_"+secnum.toString()).innerHTML = htmlString
             }
             function d4() {
