@@ -1,35 +1,15 @@
-<html>
-    <head>
-        <title>DND Dice Roller</title>
-        <style>
-            button {
-                width: 20%;
-                font-size: 2vw;
+            window.onload = loadSecs();
+            
+            var sectionNum;
+            
+            function loadSecs() {
+                sectionNum = getSectionNum();
+                for(i = 0; i < sectionNum; i++) {
+                    console.log(window.localStorage.getItem(i.toString()));
+                }
             }
-            .die {
-                width: 10%;
-                display: inline-block;
-                text-align: center;
-            }
-            input {
-                width: 8%;
-                font-size: 2vw;
-            }
-            #addSec {
-                font-size: 2vw;
-            }
-            #center{
-                margin-right: auto;
-                margin-left: auto;
-                text-align: center;
-                display: block;
-            }
-        </style>
-    </head>
-    <body>
-        <script>
-            var sectionNum = 1;
-            /* Not used in this stage of the project
+            
+            
             function getSectionNum() {
                 if(window.localStorage.getItem("sections") == null) {
                     window.localStorage.setItem("sections","0")
@@ -42,7 +22,7 @@
                 window.localStorage.setItem(sectionNum,htmlstring)
                 sectionNum += 1;
                 window.localStorage.setItem("sections",sectionNum);
-            }*/
+            }
             function addSec() {
                 sectionNum += 1;
                 dice_arr = document.getElementsByClassName("dice");
@@ -134,7 +114,7 @@
                     htmlString += curr.toString() + ","
                     d100count -= 1
                 }
-                htmlString += "</span> Sum = " + sum.toString()
+                htmlString += "</span>Sum = " + sum.toString()
                 
                 document.getElementById("roll_"+secnum.toString()).innerHTML = htmlString
             }
@@ -159,16 +139,3 @@
             function d100() {
                 return Math.floor(Math.random() * 100) + 1;
             }
-        </script>
-        <div id="dice_sec">
-            <input id="d4" class="dice" type="number"/> <span style='color:orange'>d4</span>
-            <input id="d6" class="dice" type="number"/> <span style='color:blue'>d6</span>
-            <input id="d8" class="dice" type="number"/> <span style='color:green'>d8</span>
-            <input id="d10" class="dice" type="number"/> <span style='color:red'>d10</span>
-            <input id="d12" class="dice" type="number"/> <span style='color:purple'>d12</span>
-            <input id="d20" class="dice" type="number"/> <span style='color:grey'>d20</span>
-            <input id="d100" class="dice" type="number"/> <span style='color:#FFD700'>d100</span>
-            <button onclick="addSec()">Add Section</button>
-        </div>
-    </body>
-</html>

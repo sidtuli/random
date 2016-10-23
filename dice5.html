@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>DND Dice Roller</title>
+        <style>
+            button {
+                width: 20%;
+                font-size: 2vw;
+            }
+            .die {
+                width: 10%;
+                display: inline-block;
+                text-align: center;
+            }
+            input {
+                width: 8%;
+                font-size: 2vw;
+            }
+            #addSec {
+                font-size: 2vw;
+            }
+            #center{
+                margin-right: auto;
+                margin-left: auto;
+                text-align: center;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="js/dice5.js"></script>
+        <div id="dice_sec" class="container">
+            <div class="col-sm-2 form-group row">
+                <!-- #9400D3 - Violet-->
+                <label for="example-number-input" style='color:#9400D3' class="col-xs-2 col-form-label">d4</label>
+                <div class="col-xs-10">
+                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                </div>
+            </div>
+            <div class="col-sm-2 form-group row">
+                <label for="example-number-input" style='color:blue' class="col-xs-2 col-form-label">d6</label>
+                <div class="col-xs-10">
+                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                </div>
+            </div>
+            <div class="col-sm-2 form-group row">
+                <label for="example-number-input" style='color:green' class="col-xs-2 col-form-label">d8</label>
+                <div class="col-xs-10">
+                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                </div>
+            </div>
+            <div class="col-sm-2 form-group row">
+                <!--#FADA5E - "Royal yellow"-->
+                <label for="example-number-input" style='color:#FADA5E' class="col-xs-2 col-form-label">d10</label>
+                <div class="col-xs-10">
+                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                </div>
+            </div>
+            <div class="col-sm-2 form-group row">
+                
+                <label for="example-number-input" style='color:orange' class="col-xs-2 col-form-label">d12</label>
+                <div class="col-xs-10">
+                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                </div>
+            </div>
+            <div class="col-sm-2 form-group row">
+                <label for="example-number-input" style='color:red' class="col-xs-2 col-form-label">d20</label>
+                <div class="col-xs-10">
+                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                </div>
+            </div>
+            <div class="col-sm-2 form-group row">
+                <label for="example-number-input" style='color:silver' class="col-xs-2 col-form-label">d100</label>
+                <div class="col-xs-10">
+                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="form-group row col-sm-10">
+                <label for="example-text-input" class="col-xs-2 col-form-label">Text</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+                </div>
+            </div>
+            <button class="col-sm-2" onclick="addSec()">Add Section</button>
+        </div>
+    </body>
+</html>
