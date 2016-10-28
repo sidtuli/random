@@ -22,10 +22,12 @@
         new_btn.setAttribute("id","btn_"+sectionNum)
         btn_id = "btn_"+sectionNum
         new_btn.textContent = "roll"
-
-        new_section.innerHTML = htmlString;
+        new_title = document.createElement("h4")
+        new_title.innerHTML = document.getElementById("roll_title").value;
+        new_section.appendChild(new_title);
+        new_section.innerHTML = new_section.innerHTML + htmlString;
         new_section.appendChild(new_btn)
-        document.body.appendChild(new_section)
+        document.getElementById("sections").appendChild(new_section)
         var currSec = sectionNum;
         document.getElementById(btn_id).setAttribute("onclick","roll("+currSec.toString()+",dice_result)")
     }

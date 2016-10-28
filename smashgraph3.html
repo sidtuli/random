@@ -58,16 +58,16 @@
                 .append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             d3.json("data/amiibo2.json",function(d){
-                
+                var keys = Object.keys(d);
                 // Scale the range of the data
-                x.domain([1,7]);
-                y.domain([14,1]);
+                x.domain([1,d["Little Mac"].length]);
+                y.domain([keys.length,1]);
                 // Add X Axis
                 svg.append("g").call(xAxis);
                 // Add y axis
                 svg.append("g").call(yAxis);
                 
-                Object.keys(d).forEach(function(key){
+                keys.forEach(function(key){
                     makeLine(d[key]);
                 });
             });
