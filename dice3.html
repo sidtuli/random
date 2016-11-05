@@ -71,20 +71,20 @@
                 new_section.appendChild(new_btn)
                 document.body.appendChild(new_section)
                 var currSec = sectionNum;
-                document.getElementById(btn_id).setAttribute("onclick","roll("+currSec.toString()+",dice_result)")
+                document.getElementById(btn_id).setAttribute("onclick","roll("+currSec.toString()+","+dice_result.toString()+")")
             }
-            function roll(secnum,dice) {
-                dice = dice.split(",")
+            function roll(secnum,d4count,d6count,d8count,d10count,d12count,d20count,d100count) {
+                //dice = dice.split(",")
                 //dice = JSON.parse(dice)
                 console.log(secnum)
                 htmlString = "<span style='color:orange'>"
-                d4count = dice[0]
+                /*d4count = dice[0]
                 d6count = dice[1]
                 d8count = dice[2]
                 d10count = dice[3]
                 d12count = dice[4]
                 d20count = dice[5]
-                d100count = dice[6]
+                d100count = dice[6]*/
                 sum = 0
                 while(d4count > 0) {
                     curr = d4()
