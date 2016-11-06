@@ -88,7 +88,7 @@
             htmlString += curr.toString() +","
             d20count -= 1
         }
-        htmlString += "</span><span style='color:silver'>"
+        htmlString += "</span><span style='color:gray'>"
         while(d100count > 0) {
             curr = d100()
             sum += curr
@@ -119,4 +119,11 @@
     }
     function d100() {
         return Math.floor(Math.random() * 100) + 1;
+    }
+
+    function clearDice() {
+        dice_arr = document.getElementsByClassName("dice");
+        for(i = 0; i < dice_arr.length; i++) {
+            dice_arr[i].value = 0;
+        }
     }
