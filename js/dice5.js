@@ -47,14 +47,16 @@ function addSec() {
     new_section.appendChild(new_btn)
     document.getElementById("sections").appendChild(new_section)
     var currSec = sectionNum;
+    
+    var bonus = ","+document.getElementById("bonus").value.toString();
     //console.log(dice_result.toString())
-    document.getElementById(btn_id).setAttribute("onclick","roll("+currSec.toString()+","+dice_result.toString()+")")
+    document.getElementById(btn_id).setAttribute("onclick","roll("+currSec.toString()+","+dice_result.toString()+bonus.toString()+")")
 }
-function roll(secnum,d4count,d6count,d8count,d10count,d12count,d20count,d100count) {
+function roll(secnum,d4count,d6count,d8count,d10count,d12count,d20count,d100count,bonus) {
     
     htmlString = "<span style='color:#9400D3'>"
     
-
+    flat_add = bonus > 0 ? parseInt(bonus) : 0;
     sum = 0
     while(d4count > 0) {
         curr = d4()
@@ -104,7 +106,7 @@ function roll(secnum,d4count,d6count,d8count,d10count,d12count,d20count,d100coun
         htmlString += curr.toString() + ", "
         d100count -= 1
     }
-    htmlString += "</span>Sum = " + sum.toString()
+    htmlString += "</span>Sum(+"+flat_add.toString()+") = " + (sum+flat_add).toString()
 
     document.getElementById("roll_"+secnum.toString()).innerHTML = htmlString
 }
