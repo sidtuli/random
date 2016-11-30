@@ -59,49 +59,49 @@ function roll(secnum,d4count,d6count,d8count,d10count,d12count,d20count,d100coun
     while(d4count > 0) {
         curr = d4()
         sum += curr
-        htmlString += curr.toString() + ","
+        htmlString += curr.toString() + ", "
         d4count -= 1
     }
     htmlString += "</span><span style='color:blue'>"
     while(d6count > 0) {
         curr = d6()
         sum += curr
-        htmlString += curr.toString() + ","
+        htmlString += curr.toString() + ", "
         d6count -= 1
     }
     htmlString += "</span><span style='color:green'>"
     while(d8count > 0) {
         curr = d8()
         sum += curr
-        htmlString += curr.toString() + ","
+        htmlString += curr.toString() + ", "
         d8count -= 1
     }
     htmlString += "</span><span style='color:#FADA5E'>"
     while(d10count > 0) {
         curr = d10()
         sum += curr
-        htmlString += curr.toString() + ","
+        htmlString += curr.toString() + ", "
         d10count -= 1
     }
     htmlString += "</span><span style='color:orange'>"
     while(d12count > 0) {
         curr = d12()
         sum += curr
-        htmlString += curr.toString() + ","
+        htmlString += curr.toString() + ", "
         d12count -= 1
     }
     htmlString += "</span><span style='color:red'>"
     while(d20count > 0) {
         curr = d20()
         sum += curr
-        htmlString += curr.toString() +","
+        htmlString += curr.toString() +", "
         d20count -= 1
     }
     htmlString += "</span><span style='color:gray'>"
     while(d100count > 0) {
         curr = d100()
         sum += curr
-        htmlString += curr.toString() + ","
+        htmlString += curr.toString() + ", "
         d100count -= 1
     }
     htmlString += "</span>Sum = " + sum.toString()
