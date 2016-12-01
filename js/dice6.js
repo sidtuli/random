@@ -1,5 +1,36 @@
 var sectionNum = 0;
 
+function supportsLocalStorage(){
+    try{
+        return 'localStorage' in window && window['localStorage'] !== null;
+    } catch (e) {
+        return false;
+    }
+}
+
+function saveSections(){
+    die = document.getElementById("sections").innerHTML.toString();
+    localStorage.setItem("die",die)
+    localStorage.setItem("sectionNum",sectionNum)
+}
+
+window.onload = function() {
+    if (supportsLocalStorage()) {
+        if(localStorage.getItem("die") != null) {
+            die = localStorage.getItem("die");
+            
+            sectionNum = parseInt(localStorage.getItem("sectionNum",sectionNum));
+            for(i = 1; i < sectionNum; i++) {
+                //regex = new RegExp(/<span id="(roll_[\d]*)"><span style="color:#9400D3">[\d ,]*<\/span><span style="color:blue">[\d ,]*<\/span><span style="color:green">[\d ,]*<\/span><span style="color:#FADA5E">[\d ,]*<\/span><span style="color:orange">[\d ,]*<\/span><span style="color:red">[\d .]*<\/span><span style="color:gray">[\d .]*<\/span>[Sum (-\d) =]*<\/span>/,'g')
+                
+                
+                //die = die.replace(regex,'<span id="roll_'+i.toString()+'"></span>')
+            }
+            document.getElementById("sections").innerHTML = die;
+        }
+    }
+}
+
 Element.prototype.remove = function() {
     this.parentElement.removeChild(this);
 }
@@ -7,9 +38,11 @@ Element.prototype.remove = function() {
 function delSec(sec_id){
     
     sec_id.remove();
+    saveSections();
 }
 
 function addSec() {
+    
     sectionNum += 1;
     dice_arr = document.getElementsByClassName("dice");
     for(i = 0; i < dice_arr.length; i++) {
@@ -22,7 +55,6 @@ function addSec() {
                    dice_arr[4].value+","+
                    dice_arr[5].value+","+
                    dice_arr[6].value;
-
 
     new_section = document.createElement("div")
     new_section.setAttribute("id","section_"+sectionNum)
@@ -50,7 +82,9 @@ function addSec() {
     
     var bonus = ","+document.getElementById("bonus").value.toString();
     //console.log(dice_result.toString())
-    document.getElementById(btn_id).setAttribute("onclick","roll("+currSec.toString()+","+dice_result.toString()+bonus.toString()+")")
+    onclick_attr = "roll("+currSec.toString()+","+dice_result.toString()+bonus.toString()+")";
+    document.getElementById(btn_id).setAttribute("onclick",onclick_attr)
+    saveSections();
 }
 function roll(secnum,d4count,d6count,d8count,d10count,d12count,d20count,d100count,bonus) {
     
