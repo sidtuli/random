@@ -1,5 +1,7 @@
+// Set an inital section number of 0
 var sectionNum = 0;
 
+// A function to check if the client browser can store things locally
 function supportsLocalStorage(){
     try{
         return 'localStorage' in window && window['localStorage'] !== null;
@@ -8,10 +10,16 @@ function supportsLocalStorage(){
     }
 }
 
+// Function to save all current dice rolling sections
 function saveSections(){
+    // Grab the html string of all dice roll sections
     die = document.getElementById("sections").innerHTML.toString();
-    localStorage.setItem("die",die)
-    localStorage.setItem("sectionNum",sectionNum)
+    // Then if we can store it, we store the th html string and section num
+    if (supportsLocalStorage()) {
+        // Store html string and section number
+        localStorage.setItem("die",die)
+        localStorage.setItem("sectionNum",sectionNum) 
+    }
 }
 
 // When the window loads just immediately reset the roll sections and insert them into document
@@ -45,19 +53,24 @@ window.onload = function() {
     }
 }
 
+// This prototype function will make an element remove itself
 Element.prototype.remove = function() {
     this.parentElement.removeChild(this);
 }
 
+// This function deletes a roll section once given its id
 function delSec(sec_id){
-    
+    // Calss prototype remove function on the section
     sec_id.remove();
+    // Then we save the roll sections after the section is removed
     saveSections();
 }
 
+// This function adds a roll section to the page
 function addSec() {
-    
+    // Increments the section num
     sectionNum += 1;
+    // Grabs all the input values for the dice and then assigns values to number of rolls per dice 
     dice_arr = document.getElementsByClassName("dice");
     for(i = 0; i < dice_arr.length; i++) {
         dice_arr[i].value = dice_arr[i].value > 0 ? dice_arr[i].value : 0;
@@ -69,27 +82,30 @@ function addSec() {
                    dice_arr[4].value+","+
                    dice_arr[5].value+","+
                    dice_arr[6].value;
-
+    // Creates a new div for the roll section
     new_section = document.createElement("div")
     new_section.setAttribute("id","section_"+sectionNum)
     htmlString = "<span id=\"roll_"+sectionNum+"\"></span>"
+    // Makes a new button to roll all the dice
     new_btn = document.createElement("button")
     new_btn.setAttribute("id","btn_"+sectionNum)
     btn_id = "btn_"+sectionNum
     new_btn.textContent = "roll"
-    /* Create a title for the roll section */
+    // Adds the user's title to the roll section
     new_title = document.createElement("h4")
     new_title.innerHTML = document.getElementById("roll_title").value;
+    // Adds the button to delete a roll section
     close = document.createElement("button");
     close.setAttribute("class","del");
     close.style.color = "red";
     close.innerHTML = " ✕ ";
-    
     close.setAttribute("onclick","delSec(section_"+parseInt(sectionNum).toString()+")")
     new_title.appendChild(close);
+    // Appends title to section 
     new_section.appendChild(new_title);
-
+    // Adds span to house roll results
     new_section.innerHTML = new_section.innerHTML + htmlString;
+    // Appends roll button
     new_section.appendChild(new_btn)
     document.getElementById("sections").appendChild(new_section)
     var currSec = sectionNum;
@@ -100,12 +116,14 @@ function addSec() {
     document.getElementById(btn_id).setAttribute("onclick",onclick_attr)
     saveSections();
 }
+// Function that acutally appends results of a roll
 function roll(secnum,d4count,d6count,d8count,d10count,d12count,d20count,d100count,bonus) {
     
     htmlString = "<span style='color:#9400D3'>"
     
     bonus_string = bonus >= 0 ? "+ "+bonus.toString() : bonus.toString();
     sum = 0
+    // Go through a while loop to add results for each type of dice
     while(d4count > 0) {
         curr = d4()
         sum += curr
@@ -154,32 +172,40 @@ function roll(secnum,d4count,d6count,d8count,d10count,d12count,d20count,d100coun
         htmlString += curr.toString() + ", "
         d100count -= 1
     }
+    // Add the flat bonus and sum at the end
     htmlString += "</span>Sum("+bonus_string+") = " + (sum+bonus).toString()
-
+    // We then put the html string of results into the corresponding span
     document.getElementById("roll_"+secnum.toString()).innerHTML = htmlString
 }
+// Function returns result of a d4 roll
 function d4() {
     return Math.floor(Math.random() * 4) + 1;
 }
+// Function returns result of a d6 roll
 function d6() {
     return Math.floor(Math.random() * 6) + 1;
 }
+// Function returns result of a d8 roll
 function d8() {
     return Math.floor(Math.random() * 8) + 1;
 }
+// Function returns result of a d10 roll
 function d10() {
     return Math.floor(Math.random() * 10) + 1;
 }
+// Function returns result of a d12 roll
 function d12() {
     return Math.floor(Math.random() * 12) + 1;
 }
+// Function returns result of a 20 roll
 function d20() {
     return Math.floor(Math.random() * 20) + 1;
 }
+// Function returns result of a d100 roll
 function d100() {
     return Math.floor(Math.random() * 100) + 1;
 }
-
+// Clears out all dice inputs
 function clearDice() {
     dice_arr = document.getElementsByClassName("dice");
     for(i = 0; i < dice_arr.length; i++) {
