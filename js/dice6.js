@@ -14,19 +14,33 @@ function saveSections(){
     localStorage.setItem("sectionNum",sectionNum)
 }
 
+// When the window loads just immediately reset the roll sections and insert them into document
 window.onload = function() {
     if (supportsLocalStorage()) {
+        // See if there is already a saved html string of dice sections
         if(localStorage.getItem("die") != null) {
+            // Grabs the html string of all dice sections
             die = localStorage.getItem("die");
+            // Collect all matches for sections from the storage that contain rolls to be cleared out
+            matches = [];
+            regex = new RegExp(/<span id="(roll_[\d]*)"><span style="color:#9400D3">[\d ,]*<\/span><span style="color:blue">[\d ,]*<\/span><span style="color:green">[\d ,]*<\/span><span style="color:#FADA5E">[\d ,]*<\/span><span style="color:orange">[\d ,]*<\/span><span style="color:red">[\d ,]*<\/span><span style="color:gray">[\d ,]*<\/span>[Sum \(+-\d\) =]*<\/span>/,'g');
+                
+            // Actuallly execute the regex and find the first match
+            var match_result = regex.exec(die);
+            // This while loop goes through the entire string and finds every match and puts it into matches array
+            while(match_result != null) {
+                matches.push(match_result[0])
+                matches.push(match_result[1])
+                match_result = regex.exec(die);
+            }
             
-            sectionNum = parseInt(localStorage.getItem("sectionNum",sectionNum));
-            for(i = 1; i < sectionNum; i++) {
-                //regex = new RegExp(/<span id="(roll_[\d]*)"><span style="color:#9400D3">[\d ,]*<\/span><span style="color:blue">[\d ,]*<\/span><span style="color:green">[\d ,]*<\/span><span style="color:#FADA5E">[\d ,]*<\/span><span style="color:orange">[\d ,]*<\/span><span style="color:red">[\d .]*<\/span><span style="color:gray">[\d .]*<\/span>[Sum (-\d) =]*<\/span>/,'g')
-                
-                
-                //die = die.replace(regex,'<span id="roll_'+i.toString()+'"></span>')
+            // Go through all the matches and then replace them with new 
+            for(i = 0; i < matches.length; i+= 2) {
+                replace_str = "<span id='"+matches[i+1]+"'></span>";
+                die = die.replace(matches[i],replace_str);
             }
             document.getElementById("sections").innerHTML = die;
+            localStorage.setItem("die",die);
         }
     }
 }
