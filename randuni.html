@@ -7,9 +7,11 @@
                 // Create paragraph to hold char
                 rand_char = document.createElement("p");
                 // Generate random code
-                dec_code = Math.floor(Math.random() * 10001);
+                dec_code = (Math.floor(Math.random() * 10001)).toString();
+                
+                rand_char.setAttribute("title","Decimal Character Code: " + dec_code)
                 // Assign inner text to display the unicode
-                rand_char.innerHTML = "&#" + dec_code.toString();
+                rand_char.innerHTML = "&#" + dec_code;
                 // Append the paragraph of the 
                 document.body.appendChild(rand_char);
             }
