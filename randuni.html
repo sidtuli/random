@@ -5,7 +5,7 @@
         <script>
             window.onload = function() {
                 // Create paragraph to hold char
-                rand_char = document.createElement("p");
+                rand_char = document.createElement("h1");
                 // Generate random code
                 dec_code = (Math.floor(Math.random() * 10001)).toString();
                 
@@ -13,21 +13,23 @@
                 // Assign inner text to display the unicode
                 rand_char.innerHTML = "&#" + dec_code;
                 // Append the paragraph of the 
-                document.body.appendChild(rand_char);
+                document.getElementById("char").appendChild(rand_char);
             }
         </script>
         <style>
-            p
+            h1
             {
-                font-size:25vw;
-                /* Centering rule I steal from: https://css-tricks.com/centering-percentage-widthheight-elements/ */
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
+                font-size:20vw;
+            }
+            #char{
+                text-align: center;
+                top:0px;
             }
         </style>
     </head>
     <body>
+        <div id="char">
+            
+        </div>
     </body>
 </html>
