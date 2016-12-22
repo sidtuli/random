@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>First Radio Show</title>
+        <script src="js/jquery-2.2.3.min.js"></script>
+        <script src="js/popcorn.js"></script>
+        <script>
+            jQuery(document).ready(function () {
+                var pop = Popcorn("#show");
+                pop.footnote({
+                    start: 0,
+                    end: 62,
+                    text: "Average National Bandwidth: 14.8 Mb/s",
+                    target: "text"
+                });
+                pop.play();
+            });
+        </script>
+    </head>
+    <body>
+        <audio id="show" src="radio/audio/show1.mp3" controls></audio>
+        <div id="text"></div>
+    </body>
+</html>
