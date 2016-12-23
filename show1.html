@@ -2,7 +2,9 @@
     <head>
         <style>
             audio {
-                width:100%;
+                width:80%;
+                max-width: 720px;
+                
             }
             #text{
                 max-width: 720px;
@@ -13,11 +15,18 @@
                 margin-right: auto;
                 margin-left:auto;
                 display:block;
+                text-align:center;
             }
             img{
                 align-content: center;
                 margin-right: auto;
                 margin-left:auto;
+                width:80%;
+                max-width:720px;
+            }
+            
+            body{
+                font-family: sans-serif;
             }
         </style>
         <title>First Radio Show</title>
@@ -60,7 +69,7 @@
                 pop.footnote({
                     start: 2473,
                     end: 2631,
-                    text:"<img src='radio/imgs/show1/song6.jpg'></img><br/><span>'It's A Wonderful Life' by Sparklehorse</span>",
+                    text:"<img src='radio/imgs/show1/song6.jpg'></img><br/><span>'Piano Fire' by Sparklehorse</span>",
                     target: "text"
                 });
                 pop.footnote({
@@ -80,9 +89,11 @@
         </script>
     </head>
     <body>
-        <h1>Radio Show #1 - 10/01/2016</h1>
-        <h2>Guest : Jonah Chazan</h2>
-        <audio id="show" src="radio/audio/show1.mp3" controls></audio>
+        <div>
+            <h1>Radio Show #1 - 10/01/2016</h1>
+            <h2>Guest : Jonah Chazan</h2>
+            <audio id="show" src="radio/audio/show1.mp3" controls></audio>
+        </div>
         <div id="text"></div>
         
     </body>
