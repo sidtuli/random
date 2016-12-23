@@ -55,3 +55,7 @@ h1{
 body{
     font-family: sans-serif;
 }
+a{
+    text-decoration: none;
+    color:black;
+}

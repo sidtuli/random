@@ -2,86 +2,37 @@
     <head>
         <link rel="stylesheet" type="text/css" href="style/radio.css"/>
         <meta charset="utf-8"/>
-        <title>First Radio Show</title>
+        <title id="tab">Show #1</title>
         <script src="js/jquery-2.2.3.min.js"></script>
         <script src="js/popcorn.js"></script>
-        <script>
-            jQuery(document).ready(function () {
-                var pop = Popcorn("#show");
-                pop.footnote({
-                    start: 123,
-                    end: 561,
-                    text:"<img src='radio/imgs/show1/song1.jpg'></img><br/><span>'Stalking to A Stranger' by The Avalanches</span>",
-                    target: "text"
-                });
-                pop.footnote({
-                    start: 787,
-                    end: 923,
-                    text:"<img src='radio/imgs/show1/song2.jpg'></img><br/><span>'The Whole Night' by Ani DiFranco</span>",
-                    target: "text"
-                });
-                pop.footnote({
-                    start: 1103,
-                    end: 1395,
-                    text:"<img src='radio/imgs/show1/song3.jpg'></img><br/><span>'Mr.Rager' by Kid Cudi</span>",
-                    target: "text"
-                });
-                pop.footnote({
-                    start: 1604,
-                    end: 1884,
-                    text:"<img src='radio/imgs/show1/song4.jpg'></img><br/><span>'Even(Headman)' by Dispatch</span>",
-                    target: "text"
-                });
-                pop.footnote({
-                    start: 2062,
-                    end: 2300,
-                    text:"<img src='radio/imgs/show1/song5.png'></img><br/><span>'Midnite Cruiser' by Steely Dan</span>",
-                    target: "text"
-                });
-                pop.footnote({
-                    start: 2300,
-                    end: 2472,
-                    text:"<img src='radio/imgs/filler.png'></img><br/><span>'Midnite Cruiser' by Steely Dan</span>",
-                    target: "text"
-                });
-                pop.footnote({
-                    start: 2472,
-                    end: 2631,
-                    text:"<img src='radio/imgs/show1/song6.jpg'></img><br/><span>'Piano Fire' by Sparklehorse</span>",
-                    target: "text"
-                });
-                pop.footnote({
-                    start: 2829,
-                    end: 3049,
-                    text:"<img src='radio/imgs/show1/song7.jpg'></img><br/><span>'Luchini AKA This Is It' by Camp Lo</span>",
-                    target: "text"
-                });
-                pop.footnote({
-                    start: 3170,
-                    end: 3465,
-                    text:"<img src='radio/imgs/show1/song8.jpg'></img><br/><span>'Art Deco' by Lana Del Ray</span>",
-                    target: "text"
-                });
-                pop.play();
-            });
-        </script>
+        <script src="js/show1.js"></script>
+        <style>
+            #prev{
+                opacity:10%;
+                color:grey;
+                cursor: default;
+            }
+        </style>
     </head>
     <body>
-        
-        
-            <div id="header">
-
-                <button id="prev">◀</button>
-                <div id="title">
-                    <b>Radio Show #1 - 10/01/2016</b>
-                </div>
-                <button id="next">▶</button>
-
-                <h2>Guest : Jonah Chazan</h2>
-                <audio id="show" src="radio/audio/show1.mp3" controls></audio>
+        <div id="header">
+            <button id="prev">
+                ◀
+            </button>
+            <div id="title">
+                <b>Radio Show #1 - 10/01/2016</b>
             </div>
-            <div id="text">
-            </div>
-        
+            <a href="show2.html">
+                <button id="next">
+                    ▶
+                </button>
+            </a>
+            <h2>
+                Guest : Jonah Chazan
+            </h2>
+            <audio id="show" src="radio/audio/show1.mp3" controls></audio>
+        </div>
+        <div id="text">
+        </div>
     </body>
 </html>
