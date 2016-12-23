@@ -1,34 +1,7 @@
 <html>
     <head>
-        <style>
-            audio {
-                width:80%;
-                max-width: 720px;
-                
-            }
-            #text{
-                max-width: 720px;
-                text-align: center;
-            }
-            div{
-                align-content: center;
-                margin-right: auto;
-                margin-left:auto;
-                display:block;
-                text-align:center;
-            }
-            img{
-                align-content: center;
-                margin-right: auto;
-                margin-left:auto;
-                width:80%;
-                max-width:720px;
-            }
-            
-            body{
-                font-family: sans-serif;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="style/radio.css"/>
+        <meta charset="utf-8"/>
         <title>First Radio Show</title>
         <script src="js/jquery-2.2.3.min.js"></script>
         <script src="js/popcorn.js"></script>
@@ -65,9 +38,14 @@
                     text:"<img src='radio/imgs/show1/song5.png'></img><br/><span>'Midnite Cruiser' by Steely Dan</span>",
                     target: "text"
                 });
-                
                 pop.footnote({
-                    start: 2473,
+                    start: 2300,
+                    end: 2472,
+                    text:"<img src='radio/imgs/filler.png'></img><br/><span>'Midnite Cruiser' by Steely Dan</span>",
+                    target: "text"
+                });
+                pop.footnote({
+                    start: 2472,
                     end: 2631,
                     text:"<img src='radio/imgs/show1/song6.jpg'></img><br/><span>'Piano Fire' by Sparklehorse</span>",
                     target: "text"
@@ -89,12 +67,21 @@
         </script>
     </head>
     <body>
-        <div>
-            <h1>Radio Show #1 - 10/01/2016</h1>
-            <h2>Guest : Jonah Chazan</h2>
-            <audio id="show" src="radio/audio/show1.mp3" controls></audio>
-        </div>
-        <div id="text"></div>
+        
+        
+            <div id="header">
+
+                <button id="prev">◀</button>
+                <div id="title">
+                    <b>Radio Show #1 - 10/01/2016</b>
+                </div>
+                <button id="next">▶</button>
+
+                <h2>Guest : Jonah Chazan</h2>
+                <audio id="show" src="radio/audio/show1.mp3" controls></audio>
+            </div>
+            <div id="text">
+            </div>
         
     </body>
 </html>
