@@ -160,7 +160,8 @@ jQuery(document).ready(function () {
     // Create a popcorn object tied to the audio file
     var pop = Popcorn("#show");
                 
-    Array.forEach(footnotes,function(info){
+    for(i = 0; i < footnotes.length; i++) {
+        info = footnotes[i];
         // Format the actual footnote contents: and image possibly with music info
         htmlString = "";
         htmlString += "<img src='"+info.image+"'>";
@@ -188,7 +189,7 @@ jQuery(document).ready(function () {
                 }
             });
         }
-    });
+    };
     // Then we "play" the popcorn element after iterating through the array
     pop.play();
 });
