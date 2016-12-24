@@ -160,8 +160,8 @@ jQuery(document).ready(function () {
     // Create a popcorn object tied to the audio file
     var pop = Popcorn("#show");
                 
-    for(i = 0; i < footnotes.length; i++) {
-        info = footnotes[i];
+    $.each(footnotes,function(i, info) {
+        
         // Format the actual footnote contents: and image possibly with music info
         htmlString = "";
         htmlString += "<img src='"+info.image+"'>";
@@ -178,18 +178,26 @@ jQuery(document).ready(function () {
         });
         // Change title if a certain song is playing
         if (info.song != "NA" && info.artist != "NA") {
+            titleString= "";
+            titleString += "\""+info.song+"\"" + " by "+info.artist + " - Show #1";
+            
             pop.code({
                 start:info.start,
                 end:info.end,
-                onStart: function() {
-                    document.getElementById("tab").innerHTML = "\""+info.song+"\"" + " by "+info.artist + " - Show #1";
-                },
+                // This bind was inserted to bind the given titleString value to this functin call
+                // For some reason it would only keep the last made title string so I had to bind the value to this loop iteration
+                // Reference: http://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
+                // This problem seems absent for the above htmlString. 
+                // Not sure why, could be dfference between executing footnotes ("text") and code("functions").
+                onStart: function(tabString) {
+                    document.getElementById("tab").innerHTML = tabString;
+                }.bind(this,titleString),
                 onEnd: function() {
                     document.getElementById("tab").innerHTML = "Show #1";
                 }
             });
         }
-    };
+    });
     // Then we "play" the popcorn element after iterating through the array
     pop.play();
 });
