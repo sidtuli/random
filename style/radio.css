@@ -34,6 +34,7 @@ button{
     cursor: pointer;
     font-size:2em;
     width: 5%;
+    font-weight: bold;
 }
 #prev{
     text-align: left;
