@@ -1,4 +1,4 @@
-
+// Array holding all the information for text/picutre and title changes corresponding to the show
 var footnotes = [
     {
         image:"radio/imgs/filler.png",
@@ -49,7 +49,7 @@ var footnotes = [
         image:"radio/imgs/show1/song3.jpg",
         album:"Man on the Moon II: The Legend of Mr. Rager",
         artist:"Kid Cudi",
-        song:"Mr.Rager",
+        song:"Mr. Rager",
         host:"Siddy",
         start:1103,
         end:1395
@@ -157,22 +157,25 @@ var footnotes = [
 
 
 jQuery(document).ready(function () {
+    // Create a popcorn object tied to the audio file
     var pop = Popcorn("#show");
                 
     Array.forEach(footnotes,function(info){
-        // Format the acual footnote contents: and image possibly with music info
+        // Format the actual footnote contents: and image possibly with music info
         htmlString = "";
         htmlString += "<img src='"+info.image+"'>";
         htmlString += (info.song == "NA") ? "" : "\""+info.song+"\"";
         htmlString += (info.artist == "NA") ? "" : " by "+info.artist;
         htmlString += (info.album == "NA") ? "" : " from <i>"+info.album+"</i>";
         htmlString += (info.host == "NA") ? "" : "<br/> Song chosen by " + info.host;
+        // Create an "actual footnote" with popcorn.js
         pop.footnote({
             start: info.start,
             end: info.end,
             text:htmlString,
             target:"text"
         });
+        // Change title if a certain song is playing
         if (info.song != "NA" && info.artist != "NA") {
             pop.code({
                 start:info.start,
@@ -186,6 +189,6 @@ jQuery(document).ready(function () {
             });
         }
     });
-
+    // Then we "play" the popcorn element after iterating through the array
     pop.play();
 });
