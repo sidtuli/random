@@ -1,18 +1,33 @@
 <html>
     <head>
-        <title>First Radio Show</title>
+        <link rel="stylesheet" type="text/css" href="style/radio.css"/>
+        <meta charset="utf-8"/>
+        <title id="tab">Show #3</title>
         <script src="js/jquery-2.2.3.min.js"></script>
         <script src="js/popcorn.js"></script>
-        <script>
-            jQuery(document).ready(function () {
-                var pop = Popcorn("#show");
-                
-                pop.play();
-            });
-        </script>
+        <script src="js/show5.js"></script>
     </head>
     <body>
-        <audio id="show" src="radio/audio/show5.mp3" controls></audio>
-        <div id="text"></div>
+        <div id="header">
+            <a href="show3.html">
+                <button id="prev">
+                    ◄
+                </button>
+            </a>
+            <div id="title">
+                <b>Radio Show #5 - 11/05/2016</b>
+            </div>
+            <a href="show6.html">
+                <button id="next">
+                    ►
+                </button>
+            </a>
+            <h2>
+                Guest : Robbie Adkins
+            </h2>
+            <audio id="show" src="radio/audio/show5.mp3" controls></audio>
+        </div>
+        <div id="text">
+        </div>
     </body>
 </html>

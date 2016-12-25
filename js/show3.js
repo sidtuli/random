@@ -206,7 +206,7 @@ var footnotes = [
         host:"NA",
         start:3560,
         end:3672
-    },
+    }
 ]
 
 
