@@ -38,10 +38,11 @@ button{
 }
 #prev{
     text-align: left;
-
+    margin-left: 0px;
 }
 #next{
     text-align:right;
+    margin-right:0px;
 
 }
 h1{

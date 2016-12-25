@@ -1,22 +1,49 @@
 // Array holding all the information for text/picutre and title changes corresponding to the show
 var footnotes = [
     {
-        image:"radio/imgs/filler.png",
-        album:"NA",
-        artist:"NA",
-        song:"NA",
-        host:"NA",
+        image:"radio/imgs/show2/song1.jpg",
+        album:"End Hits",
+        artist:"Fugazi",
+        song:"Caustic Acrostic",
+        host:"Siddy",
         start:0,
-        end:123
+        end:118
     },
     {
-        image:"radio/imgs/show1/song1.jpg",
-        album:"Crucible: The Songs of Hunters & Collectors",
-        artist:"The Avalanches",
-        song:"Stalking to A Stranger",
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:118,
+        end:345
+    },
+    {
+        image:"radio/imgs/show2/song2.jpg",
+        album:"Alvvayss",
+        artist:"Alvvays",
+        song:"Next of Kin",
+        host:"Jay",
+        start:345,
+        end:570
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:570,
+        end:752
+    },
+    {
+        image:"radio/imgs/show2/song3.jpg",
+        album:"Young Americans",
+        artist:"David Bowie",
+        song:"Young Americans",
         host:"Siddy",
-        start:123,
-        end:561
+        start:752,
+        end:754
     },
     {
         image:"radio/imgs/filler.png",
@@ -24,35 +51,17 @@ var footnotes = [
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:561,
-        end:787
+        start:754,
+        end:758
     },
     {
-        image:"radio/imgs/show1/song2.jpg",
-        album:"Like I Said",
-        artist:"Ani DiFranco",
-        song:"The Whole Night",
-        host:"Jonah",
-        start:787,
-        end:923
-    },
-    {
-        image:"radio/imgs/filler.png",
-        album:"NA",
-        artist:"NA",
-        song:"NA",
-        host:"NA",
-        start:923,
-        end:1103
-    },
-    {
-        image:"radio/imgs/show1/song3.jpg",
-        album:"Man on the Moon II: The Legend of Mr. Rager",
-        artist:"Kid Cudi",
-        song:"Mr. Rager",
+        image:"radio/imgs/show2/song3.jpg",
+        album:"Young Americans",
+        artist:"David Bowie",
+        song:"Young Americans",
         host:"Siddy",
-        start:1103,
-        end:1395
+        start:758,
+        end:1067
     },
     {
         image:"radio/imgs/filler.png",
@@ -60,17 +69,17 @@ var footnotes = [
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:1395,
-        end:1604
+        start:1067,
+        end:1197
     },
     {
-        image:"radio/imgs/show1/song4.jpg",
-        album:"Who Are We Living For?",
-        artist:"Dispatch",
-        song:"Even (Headman)",
-        host:"Jonah",
-        start:1604,
-        end:1884
+        image:"radio/imgs/show2/song4.jpg",
+        album:"Common Dreads",
+        artist:"Enter Shikari",
+        song:"The Jester",
+        host:"Jay",
+        start:1197,
+        end:1436
     },
     {
         image:"radio/imgs/filler.png",
@@ -78,17 +87,17 @@ var footnotes = [
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:1884,
-        end:2062
+        start:1436,
+        end:1588
     },
     {
-        image:"radio/imgs/show1/song5.png",
-        album:"Can't Buy A Thrill",
-        artist:"Steely Dan",
-        song:"Midnite Cruiser",
+        image:"radio/imgs/show2/song5.jpg",
+        album:"Evil Friends",
+        artist:"Portugal. The Man",
+        song:"Modern Jesus",
         host:"Siddy",
-        start:2062,
-        end:2300
+        start:1588,
+        end:1778
     },
     {
         image:"radio/imgs/filler.png",
@@ -96,17 +105,17 @@ var footnotes = [
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:2300,
-        end:2472
+        start:1778,
+        end:2040
     },
     {
-        image:"radio/imgs/show1/song6.jpg",
-        album:"It's A Wonderful Life",
-        artist:"Sparklehorse",
-        song:"Piano Fire",
-        host:"Jonah",
-        start:2472,
-        end:2631
+        image:"radio/imgs/show2/song6.jpg",
+        album:"NA",
+        artist:"Black Rhinoceros",
+        song:"Alcohol and Taco Bell",
+        host:"Jay",
+        start:2040,
+        end:2240
     },
     {
         image:"radio/imgs/filler.png",
@@ -114,17 +123,17 @@ var footnotes = [
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:2631,
-        end:2829
+        start:2240,
+        end:2436
     },
     {
-        image:"radio/imgs/show1/song7.jpg",
-        album:"Uptown Saturday Night",
-        artist:"Camp Lo",
-        song:"Luchini AKA This Is It",
+        image:"radio/imgs/show2/song7.jpg",
+        album:"Sticky Fingers",
+        artist:"Rolling Stones",
+        song:"Wild Horses",
         host:"Siddy",
-        start:2829,
-        end:3049
+        start:2436,
+        end:2777
     },
     {
         image:"radio/imgs/filler.png",
@@ -132,17 +141,17 @@ var footnotes = [
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:3049,
-        end:3170
+        start:2777,
+        end:2943
     },
     {
-        image:"radio/imgs/show1/song8.jpg",
-        album:"Honeymoon",
-        artist:"Lana Del Ray",
-        song:"Art Deco",
-        host:"Jonah",
-        start:3170,
-        end:3465
+        image:"radio/imgs/show2/song8.jpg",
+        album:"Six Feet Beneath The Moon",
+        artist:"King Krool",
+        song:"Borderlines",
+        host:"Jay",
+        start:2943,
+        end:3129
     },
     {
         image:"radio/imgs/filler.png",
@@ -150,9 +159,38 @@ var footnotes = [
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:3465,
-        end:3600
+        start:3129,
+        end:3282
+    },
+    {
+        image:"radio/imgs/show2/song9.jpg",
+        album:"The Information",
+        artist:"Beck",
+        song:"New Round",
+        host:"Siddy",
+        start:3282,
+        end:3486
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:3486,
+        end:3626
+    },
+    {
+        image:"radio/imgs/show2/song10.jpg",
+        album:"My Love Is Cool",
+        artist:"Wolf Alice",
+        song:"You're A Germ",
+        host:"Jay",
+        start:3626,
+        end:3745
     }
+    
+    
 ]
 
 
@@ -179,7 +217,7 @@ jQuery(document).ready(function () {
         // Change title if a certain song is playing
         if (info.song != "NA" && info.artist != "NA") {
             titleString= "";
-            titleString += "\""+info.song+"\"" + " by "+info.artist + " - Show #1";
+            titleString += "\""+info.song+"\"" + " by "+info.artist + " - Show #2";
             
             pop.code({
                 start:info.start,
@@ -193,7 +231,7 @@ jQuery(document).ready(function () {
                     document.getElementById("tab").innerHTML = tabString;
                 }.bind(this,titleString),
                 onEnd: function() {
-                    document.getElementById("tab").innerHTML = "Show #1";
+                    document.getElementById("tab").innerHTML = "Show #2";
                 }
             });
         }
