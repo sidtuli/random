@@ -11,10 +11,10 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song1.png",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
-        host:"Siddy",
+        album:"NA",
+        artist:"CBS",
+        song:"Gunsmoke Intro & Close",
+        host:"Robbie",
         start:86,
         end:174
     },
@@ -29,10 +29,10 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song2.png",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
-        host:"Siddy",
+        album:"NA",
+        artist:"CBS",
+        song:"Brady Bunch Intro",
+        host:"Robbie",
         start:262,
         end:321
     },
@@ -56,9 +56,9 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song3.png",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
+        album:"Splashdown",
+        artist:"Breakwater",
+        song:"Release The Beast",
         host:"Siddy",
         start:420,
         end:713
@@ -74,10 +74,10 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song4.png",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
-        host:"Siddy",
+        album:"NA",
+        artist:"Mike Post and Pete Carpenter",
+        song:"The Rockford Files",
+        host:"Robbie",
         start:797,
         end:989
     },
@@ -92,9 +92,9 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song5.jpg",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
+        album:"Why Can't We Live Together",
+        artist:"Timmy Thomas",
+        song:"Why Can't We Live Together",
         host:"Siddy",
         start:1103,
         end:1392
@@ -110,10 +110,10 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song6.png",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
-        host:"Siddy",
+        album:"NA",
+        artist:"Jim Haas",
+        song:"Happy Days",
+        host:"Robbie",
         start:1529,
         end:1664
     },
@@ -128,10 +128,10 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song7.png",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
-        host:"Siddy",
+        album:"NA",
+        artist:"The Mash",
+        song:"Suicide Is Painless",
+        host:"Robbie",
         start:1667,
         end:1718
     },
@@ -146,9 +146,9 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song8.jpg",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
+        album:"Luiz Bonfa Plays Great Songs",
+        artist:"Luiz Bonfa",
+        song:"Seville",
         host:"Siddy",
         start:1873,
         end:2006
@@ -164,19 +164,19 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song9.png",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
-        host:"Siddy",
+        album:"NA",
+        artist:"Bob James",
+        song:"Angela",
+        host:"Robbie",
         start:2122,
         end:2219
     },
     {
         image:"radio/imgs/show5/song10.png",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
-        host:"Siddy",
+        album:"NA",
+        artist:"Shandi Sinnamon",
+        song:"Charles in Charge",
+        host:"Robbie",
         start:2219,
         end:2284
     },
@@ -191,9 +191,9 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song11.jpg",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
+        album:"NA",
+        artist:"Pierre Henry and Michel Colombier",
+        song:"Psyche Rock",
         host:"Siddy",
         start:2413,
         end:2573
@@ -209,19 +209,19 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song12.png",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
-        host:"Siddy",
+        album:"Moonlighting",
+        artist:"Al Jarreau",
+        song:"Moonlighting",
+        host:"Robbie",
         start:2677,
         end:2738
     },
     {
         image:"radio/imgs/show5/song13.png",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
-        host:"Siddy",
+        album:"Music From Cheers",
+        artist:"Gary Portnoy",
+        song:"Where Everybody Knows Your Name",
+        host:"Robbie",
         start:2738,
         end:2888
     },
@@ -236,9 +236,9 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song14.jpg",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
+        album:"The Rolling Stones Songbook",
+        artist:"Andrew Oldham Orchestra",
+        song:"The Last Time",
         host:"Siddy",
         start:3018,
         end:3239
@@ -254,28 +254,28 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/song15.jpg",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
-        host:"Siddy",
+        album:"NA",
+        artist:"Nick South & Tom Strahle",
+        song:"Herman's Head Intro",
+        host:"Robbie",
         start:3374,
         end:3436
     },
     {
         image:"radio/imgs/show5/song16.jpg",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
-        host:"Siddy",
+        album:"NA",
+        artist:"John Debney",
+        song:"The Pretender Intro",
+        host:"Robbie",
         start:3436,
         end:3483
     },
     {
         image:"radio/imgs/show5/song17.png",
-        album:"The Musical Million",
-        artist:"HF Juleene",
-        song:"Clickety-Click",
-        host:"Siddy",
+        album:"NA",
+        artist:"Cheap Trick",
+        song:"In The Street",
+        host:"Robbie",
         start:3483,
         end:3526
     }
