@@ -7,18 +7,278 @@ var footnotes = [
         song:"NA",
         host:"NA",
         start:0,
-        end:78
+        end:86
     },
     {
-        image:"radio/imgs/show3/song1.jpg",
+        image:"radio/imgs/show5/song1.png",
         album:"The Musical Million",
         artist:"HF Juleene",
         song:"Clickety-Click",
         host:"Siddy",
-        start:78,
-        end:141
+        start:86,
+        end:174
     },
-    
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:174,
+        end:262
+    },
+    {
+        image:"radio/imgs/show5/song2.png",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:262,
+        end:321
+    },
+    {
+        image:"radio/imgs/show5/ear.jpg",
+        album:"'Technical Problems'",
+        artist:"Siddy",
+        song:"Extreme Feedback",
+        host:"Siddy",
+        start:322,
+        end:326
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:326,
+        end:420
+    },
+    {
+        image:"radio/imgs/show5/song3.png",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:420,
+        end:713
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:713,
+        end:797
+    },
+    {
+        image:"radio/imgs/show5/song4.png",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:797,
+        end:989
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:989,
+        end:1103
+    },
+    {
+        image:"radio/imgs/show5/song5.jpg",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:1103,
+        end:1392
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:1392,
+        end:1529
+    },
+    {
+        image:"radio/imgs/show5/song6.png",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:1529,
+        end:1664
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:1664,
+        end: 1667
+    },
+    {
+        image:"radio/imgs/show5/song7.png",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:1667,
+        end:1718
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:1718,
+        end:1873
+    },
+    {
+        image:"radio/imgs/show5/song8.jpg",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:1873,
+        end:2006
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:2006,
+        end:2122
+    },
+    {
+        image:"radio/imgs/show5/song9.png",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:2122,
+        end:2219
+    },
+    {
+        image:"radio/imgs/show5/song10.png",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:2219,
+        end:2284
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:2284,
+        end:2413
+    },
+    {
+        image:"radio/imgs/show5/song11.jpg",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:2413,
+        end:2573
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:2573,
+        end:2677
+    },
+    {
+        image:"radio/imgs/show5/song12.png",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:2677,
+        end:2738
+    },
+    {
+        image:"radio/imgs/show5/song13.png",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:2738,
+        end:2888
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:2888,
+        end:3018
+    },
+    {
+        image:"radio/imgs/show5/song14.jpg",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:3018,
+        end:3239
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:3239,
+        end:3374
+    },
+    {
+        image:"radio/imgs/show5/song15.jpg",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:3374,
+        end:3436
+    },
+    {
+        image:"radio/imgs/show5/song16.jpg",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:3436,
+        end:3483
+    },
+    {
+        image:"radio/imgs/show5/song17.png",
+        album:"The Musical Million",
+        artist:"HF Juleene",
+        song:"Clickety-Click",
+        host:"Siddy",
+        start:3483,
+        end:3526
+    }
 ]
 
 
