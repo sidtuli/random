@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Image Ratio Calculator</title>
+        <meta charset="UTF-8"/>
+        <script>
+            function getRatio() {
+                // Reference for code on uploading preview:
+                // http://stackoverflow.com/questions/22087076/how-to-make-a-simple-image-upload-using-javascript-html
+                
+                // Save file input, and image elements
+                var preview = document.getElementById("preview");
+                var file = document.getElementById('upload').files[0];
+                
+                // Create a new file reader and image object to handle file processing
+                var reader = new FileReader();
+                img = new Image();
+                
+                // When the image loads calculate the aspect ratio
+                img.onload = function() {
+                    var frac = this.height/this.width;
+                    var r = getlowestfraction(frac);
+                    var ratio = String(r[0]) + " : " + String(r[1]);
+                    document.getElementById("text").innerHTML = ratio;
+                    
+                }
+                // When the file is uploaded, set the source for the image element and image object
+                reader.onloadend = function () {
+                    preview.src = reader.result;
+                    img.src = reader.result;
+                }
+                
+                // If there is a file uploaded then the file reader reads the file in
+                if (file) {
+                    reader.readAsDataURL(file); //reads the data as a URL
+                // If there is no file then keep image element blank
+                } else {
+                    preview.src = "";
+                }
+                
+            }
+            // Function/code taken from:
+            // http://stackoverflow.com/questions/14002113/how-to-simplify-a-decimal-into-the-smallest-possible-fraction
+            // Made using Continued Fractions: 
+            // https://en.wikipedia.org/wiki/Continued_fraction
+            function getlowestfraction(x0) {
+                var eps = 1.0E-3;
+                var h, h1, h2, k, k1, k2, a, x;
+
+                x = x0;
+                a = Math.floor(x);
+                h1 = 1;
+                k1 = 0;
+                h = a;
+                k = 1;
+
+                while (x-a > eps*k*k) {
+                    x = 1/(x-a);
+                    a = Math.floor(x);
+                    h2 = h1; h1 = h;
+                    k2 = k1; k1 = k;
+                    h = h2 + a*h1;
+                    k = k2 + a*k1;
+                }
+
+                return [h,k];
+            }
+                
+                    
+        </script>
+    </head>
+    <body>
+        <input id="upload" type="file" onchange="getRatio()"/>
+        <br/>
+        <img id="preview" src=""/>
+        <div id="text" alt="height:width ratio"></div>
+    </body>
+</html>
