@@ -1,12 +1,21 @@
 // Array holding all the information for text/picutre and title changes corresponding to the show
 var footnotes = [
     {
+        image:"radio/imgs/show5/ear.jpg",
+        album:"\"Technical Problems\"",
+        artist:"Siddy",
+        song:"Extreme Feedback",
+        host:"Siddy",
+        start:0,
+        end:3
+    },
+    {
         image:"radio/imgs/filler.png",
         album:"NA",
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:0,
+        start:3,
         end:83
     },
     {
