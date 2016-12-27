@@ -7,16 +7,34 @@ var footnotes = [
         song:"NA",
         host:"NA",
         start:0,
-        end:114
+        end:83
     },
     {
-        image:"radio/imgs/show7/song1.png",
-        album:"Q: Are We Not Men? A: We Are Devo!",
-        artist:"Devo",
-        song:"Praying Hands",
+        image:"radio/imgs/show8/song1.jpg",
+        album:"Collage",
+        artist:"The Chainsmokers ft. Halsey",
+        song:"Closer",
+        host:"Sidhanth",
+        start:83,
+        end:327
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:327,
+        end:426
+    },
+    {
+        image:"radio/imgs/show8/song2.jpg",
+        album:"Blackstar",
+        artist:"David Bowie",
+        song:"Blackstar",
         host:"Siddy",
-        start:114,
-        end:281
+        start:426,
+        end:1023
     },
     {
         image:"radio/imgs/filler.png",
@@ -24,17 +42,17 @@ var footnotes = [
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:281,
-        end:437
+        start:1023,
+        end:1133
     },
     {
-        image:"radio/imgs/show7/song2.jpg",
-        album:"A Place In The Sun",
-        artist:"Lit",
-        song:"My Own Worst Enemy",
-        host:"Alex",
-        start:437,
-        end:605
+        image:"radio/imgs/show8/song3.jpg",
+        album:"Fly Like An Eagle",
+        artist:"Steve Miller Band",
+        song:"Rock'n Me",
+        host:"Sidhanth",
+        start:1133,
+        end:1318
     },
     {
         image:"radio/imgs/filler.png",
@@ -42,89 +60,35 @@ var footnotes = [
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:605,
-        end:743
+        start:1318,
+        end:1418
     },
     {
-        image:"radio/imgs/show7/song3.jpg",
-        album:"Walking On A Dream",
-        artist:"Empire of the Sun",
-        song:"Delta Bay",
+        image:"radio/imgs/show8/song4.jpg",
+        album:"Weezer (2016)",
+        artist:"Weezer",
+        song:"California Kids",
         host:"Siddy",
-        start:743,
-        end:933
+        start:1418,
+        end:1444
     },
     {
-        image:"radio/imgs/filler.png",
-        album:"NA",
-        artist:"NA",
-        song:"NA",
-        host:"NA",
-        start:933,
-        end:1100
-    },
-    {
-        image:"radio/imgs/show7/song4.jpg",
-        album:"Recipe For Hate",
-        artist:"Bad Religion",
-        song:"American Jesus",
-        host:"Alex",
-        start:1100,
-        end:1293
-    },
-    {
-        image:"radio/imgs/filler.png",
-        album:"NA",
-        artist:"NA",
-        song:"NA",
-        host:"NA",
-        start:1293,
-        end:1407
-    },
-    {
-        image:"radio/imgs/show7/song5.jpg",
-        album:"Doolittle",
-        artist:"Pixies",
-        song:"Silver",
+        image:"radio/imgs/show8/song4_1.jpg",
+        album:"Weezer (2016)",
+        artist:"Weezer",
+        song:"California Kids",
         host:"Siddy",
-        start:1407,
-        end:1552
+        start:1444,
+        end:1502
     },
     {
-        image:"radio/imgs/filler.png",
-        album:"NA",
-        artist:"NA",
-        song:"NA",
-        host:"NA",
-        start:1552,
-        end:1671
-    },
-    {
-        image:"radio/imgs/show7/song6.jpg",
-        album:"	The Greatest Songs Ever Written (By Us!)",
-        artist:"NOFX",
-        song:"The Idiots Are Taking Over",
-        host:"Alex",
-        start:1671,
-        end:1872
-    },
-    {
-        image:"radio/imgs/filler.png",
-        album:"NA",
-        artist:"NA",
-        song:"NA",
-        host:"NA",
-        start:1872,
-        end:2043
-    },
-    {
-        image:"radio/imgs/show7/song7.jpg",
-        album:"The Great Escape",
-        artist:"Blur",
-        song:"Charmless Man",
+        image:"radio/imgs/show8/song4.jpg",
+        album:"Weezer (2016)",
+        artist:"Weezer",
+        song:"California Kids",
         host:"Siddy",
-        start:2043,
-        end:2254
+        start:1502,
+        end:1624
     },
     {
         image:"radio/imgs/filler.png",
@@ -132,26 +96,17 @@ var footnotes = [
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:2254,
-        end:2444
+        start:1624,
+        end:1761
     },
     {
-        image:"radio/imgs/show7/song8.png",
-        album:"Appeal to Reason",
-        artist:"Rise Against",
-        song:"Collapse (Post Amerika)",
-        host:"Alex",
-        start:2444,
-        end:2638
-    },
-    {
-        image:"radio/imgs/show3/spotify.png",
-        album:"\"Technical Problems\"",
-        artist:"Alex",
-        song:"Spotify",
-        host:"Alex",
-        start:2638,
-        end:2641
+        image:"radio/imgs/show8/song5.jpg",
+        album:"NA",
+        artist:"The Beatles",
+        song:"Hey Jude",
+        host:"Sidhanth",
+        start:1761,
+        end:2137
     },
     {
         image:"radio/imgs/filler.png",
@@ -159,17 +114,17 @@ var footnotes = [
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:2641,
-        end:2773
+        start:2137,
+        end:2338
     },
     {
-        image:"radio/imgs/show7/song9.jpg",
-        album:"Foo Fighters",
-        artist:"Foo Fighters",
-        song:"Big Me",
+        image:"radio/imgs/show8/song6.jpg",
+        album:"A Moon Shaped Pool",
+        artist:"Radiohead",
+        song:"Burn The Witch",
         host:"Siddy",
-        start:2773,
-        end:2904
+        start:2338,
+        end:2562
     },
     {
         image:"radio/imgs/filler.png",
@@ -177,36 +132,54 @@ var footnotes = [
         artist:"NA",
         song:"NA",
         host:"NA",
-        start:2904,
-        end:3118
+        start:2562,
+        end:2663
     },
     {
-        image:"radio/imgs/show7/song10.jpg",
-        album:"Does This Look Infected?",
-        artist:"Sum 41",
-        song:"Still Waiting",
-        host:"Alex",
-        start:3118,
-        end:3277
-    },
-    {
-        image:"radio/imgs/filler.png",
-        album:"NA",
-        artist:"NA",
-        song:"NA",
-        host:"NA",
-        start:3277,
-        end:3373
-    },
-    {
-        image:"radio/imgs/show7/song11.jpg",
-        album:"Red Hot Chili Peppers",
-        artist:"Red Hot Chili Peppers",
-        song:"True Men Don't Kill Coyotes",
+        image:"radio/imgs/show8/song7.jpg",
+        album:"Repeater",
+        artist:"Fugazi",
+        song:"Reprovisional",
         host:"Siddy",
-        start:3373,
-        end:3594
-    }
+        start:2663,
+        end:2799
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:2799,
+        end:2845
+    },
+    {
+        image:"radio/imgs/show8/song8.jpg",
+        album:"Plastic Surgery Disasters",
+        artist:"Dead Kennedys",
+        song:"Moon Over Marin",
+        host:"Siddy",
+        start:2845,
+        end:3067
+    },
+    {
+        image:"radio/imgs/filler.png",
+        album:"NA",
+        artist:"NA",
+        song:"NA",
+        host:"NA",
+        start:3067,
+        end:3135
+    },
+    {
+        image:"radio/imgs/show8/song9.jpg",
+        album:"This Is Happening",
+        artist:"LCD Soundsystem",
+        song:"All I Want",
+        host:"Siddy",
+        start:3135,
+        end:3532
+    },
 ]
 
 
@@ -233,7 +206,7 @@ jQuery(document).ready(function () {
         // Change title if a certain song is playing
         if (info.song != "NA" && info.artist != "NA") {
             titleString= "";
-            titleString += "\""+info.song+"\"" + " by "+info.artist + " - Show #7";
+            titleString += "\""+info.song+"\"" + " by "+info.artist + " - Show #8";
             
             pop.code({
                 start:info.start,
@@ -247,7 +220,7 @@ jQuery(document).ready(function () {
                     document.getElementById("tab").innerHTML = tabString;
                 }.bind(this,titleString),
                 onEnd: function() {
-                    document.getElementById("tab").innerHTML = "Show #7";
+                    document.getElementById("tab").innerHTML = "Show #8";
                 }
             });
         }

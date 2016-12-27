@@ -38,7 +38,7 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show5/ear.jpg",
-        album:"'Technical Problems'",
+        album:"\"Technical Problems\"",
         artist:"Siddy",
         song:"Extreme Feedback",
         host:"Siddy",

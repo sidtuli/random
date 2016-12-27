@@ -38,7 +38,7 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show3/spotify.png",
-        album:"'Technical Problems'",
+        album:"\"Technical Problems\"",
         artist:"Steven",
         song:"Spotify",
         host:"Steven",
@@ -155,7 +155,7 @@ var footnotes = [
     },
     {
         image:"radio/imgs/show3/spotify.png",
-        album:"'Technical Problems'",
+        album:"\"Technical Problems\"",
         artist:"Steven",
         song:"Spotify",
         host:"Steven",

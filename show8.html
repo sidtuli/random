@@ -1,18 +1,38 @@
 <html>
     <head>
-        <title>First Radio Show</title>
+        <link rel="stylesheet" type="text/css" href="style/radio.css"/>
+        <meta charset="utf-8"/>
+        <title id="tab">Show #8</title>
         <script src="js/jquery-2.2.3.min.js"></script>
         <script src="js/popcorn.js"></script>
-        <script>
-            jQuery(document).ready(function () {
-                var pop = Popcorn("#show");
-                
-                pop.play();
-            });
-        </script>
+        <script src="js/show8.js"></script>
+        <style>
+            #next{
+                opacity:10%;
+                color:grey;
+                cursor: default;
+            }
+        </style>
     </head>
     <body>
-        <audio id="show" src="radio/audio/show8.mp3" controls></audio>
-        <div id="text"></div>
+        <div id="header">
+            <a href="show7.html">
+                <button id="prev">
+                    ◄
+                </button>
+            </a>
+            <div id="title">
+                <b>Radio Show #8 - 12/10/2016</b>
+            </div>
+            <button id="next">
+                ►
+            </button>
+            <h2>
+                Guest : Sidhanth Tuli (My "Doppelänger")
+            </h2>
+            <audio id="show" src="radio/audio/show8.mp3" controls></audio>
+        </div>
+        <div id="text">
+        </div>
     </body>
 </html>
