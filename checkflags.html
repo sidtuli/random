@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Check Flag Image Directory</title>
+        <meta charset="UTF-8"/>
+        <script>
+            getCountryCodes()
+            function getCountryCodes(){
+                // Based the request from this post:
+                // http://stackoverflow.com/questions/14388452/how-do-i-load-a-json-object-from-a-file-with-ajax
+                var httpRequest = new XMLHttpRequest();
+                httpRequest.onreadystatechange = function() {
+                    if (httpRequest.readyState === 4) {
+                        if (httpRequest.status === 200) {
+                            var data = JSON.parse(httpRequest.responseText);
+                            iterateFlags(data);
+                        }
+                    }
+                };
+                httpRequest.open('GET',"imgs/flags/info.json");
+                httpRequest.send()
+            }
+            function iterateFlags(countryCodes) {
+                console.log(countryCodes.length)
+                for(i = 0; i < countryCodes.length; i++) {
+                    curr = countryCodes[i].code.toLowerCase();
+                    imageExists("imgs/flags/"+curr+".png",countryCodes[i].name)
+                    
+                }
+            }
+            // Test function taken from:
+           // http://stackoverflow.com/questions/9815762/detect-when-an-image-fails-to-load-in-javascript
+            function imageExists(url, country) {
+                var img = new Image();
+                img.onload = function() { document.getElementById("success").innerHTML += " "+country+","; };
+                img.onerror = function() { document.getElementById("error").innerHTML += " "+country+","; };
+                img.src = url;
+            }
+        </script>
+    </head>
+    <body>
+        <a href="data/countrycodes.json">Link to full json of country names</a>
+        <div id="success"><h3>Success:</h3></div>
+        <div id="error"><h3>Failure:</h3></div>
+        
+        
+    </body>
+</html>

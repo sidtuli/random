@@ -2,6 +2,17 @@
     <head>
         <title>Image Ratio Calculator</title>
         <meta charset="UTF-8"/>
+        <style>
+            div{
+                margin-right: auto;
+                margin-left: auto;
+                text-align: center;
+                width:80%;
+            }
+            img{
+                width:80%;
+            }
+        </style>
         <script>
             function getRatio() {
                 // Reference for code on uploading preview:
@@ -20,7 +31,7 @@
                     var frac = this.height/this.width;
                     var r = getlowestfraction(frac);
                     var ratio = String(r[0]) + " : " + String(r[1]);
-                    document.getElementById("text").innerHTML = ratio;
+                    document.getElementById("text").innerHTML = ratio + "<br/> Original Resolution: " + this.height + " x " + this.width + "";
                     
                 }
                 // When the file is uploaded, set the source for the image element and image object
@@ -69,9 +80,11 @@
         </script>
     </head>
     <body>
-        <input id="upload" type="file" onchange="getRatio()"/>
-        <br/>
-        <img id="preview" src=""/>
+        <div id="file">
+            <input id="upload" type="file" onchange="getRatio()"/>
+            <br/>
+            <img id="preview" src=""/>
+        </div>
         <div id="text" alt="height:width ratio"></div>
     </body>
 </html>
