@@ -92,6 +92,11 @@ function getInfoJSON(){
 }
 // Generates the next country
 function nextCountry() {
+    if(jsondata.length < 1) {
+        document.getElementById("current_country").src="";
+        document.getElementById("countries").innerHTML = "Done!";
+        return;
+    }
     var next = jsondata.randsplice();
     currcode = next[0].code;
     document.getElementById("countries").innerHTML = next[0].name;
