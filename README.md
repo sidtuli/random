@@ -1,2 +1,2 @@
-# random
-Just a place to store small examples or small side projects I want to keep for reference.
+# random - web
+Just a place to store small web page examples or small side web projects I want to keep for reference.
