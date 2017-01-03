@@ -92,41 +92,57 @@ function getInfoJSON(){
 }
 // Generates the next country
 function nextCountry() {
+    // Checks to see if there are any countries still in the json data variable
     if(jsondata.length < 1) {
+        // If so then we clear the screen and informthe user of being done
         document.getElementById("current_country").src="";
         document.getElementById("countries").innerHTML = "Done!";
         return;
     }
+    // Grab the next random entry fromthe json data
     var next = jsondata.randsplice();
+    // Grab the code from current country info object
     currcode = next[0].code;
-    document.getElementById("countries").innerHTML = next[0].name;
+    // Set upiteration variables
     o_count = 0;
     o_countries =[];
+    // Save down current code as correct and for it to be called outside of the function
     correctCode = currcode;
+    // Loop to get 3 other random country options
     while(o_count < 3) {
+        //Get a random value from the country codes array
         curr_rand = codes.randval();
+        // A check to see if current random country code isn't the correct code or already in the options array
         if(curr_rand != currcode && !(curr_rand in o_countries)) {
+            // Then pass the new option into the array
             o_countries.push(curr_rand);
             o_count += 1;
         }
     }
-    document.getElementById("countries").innerHTML += ", "+
-         countries[o_countries[0]]+", "+countries[o_countries[1]]+", "+countries[o_countries[2]];
+    // Change image source to the new current flag
     document.getElementById("current_country").src = "imgs/flags/"+currcode.toLowerCase()+".png";
+    // Insert the current code into the options array
     o_countries.push(currcode);
-    //console.log(o_countries)
+    // Clear out the inner html of the countries div
     document.getElementById("countries").innerHTML = "";
+    // Get the length of the options array
     options_counter = o_countries.length;
+    // Loop to go through and randomly insert buttons from countries options
     while(options_counter > 0) {
+        // Popp off random country option
         curr_option = o_countries.randsplice();
+        // Create button element and then give it proper text
         var curr_button = document.createElement("button");
         curr_button.innerHTML = (countries[curr_option[0]]);
+        // Set an onclick event to check if user chose correctly
         curr_button.setAttribute("onclick","handleCountryClick(\""+String(curr_option[0])+"\")");
+        // Then append the button and decrement counter loop variable
         document.getElementById("countries").appendChild(curr_button);
         options_counter -= 1;
     }
 }
 
+//Function the check if a code matches the correct code of the flag's country
 function handleCountryClick(code) {
     if(code == correctCode) {
         console.log("correct");
@@ -135,5 +151,5 @@ function handleCountryClick(code) {
         console.log("incorrect")
     }
 }
-getInfoJSON()
 
+getInfoJSON()
