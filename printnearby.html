@@ -64,16 +64,23 @@
                 httpRequest.open('GET',"data/flagsinfo2.json");
                 httpRequest.send()
             }
+            // Function to print out all country info
             function printCountries(countryData) {
+                // initialize variable to compare and save max
                 max = 0;
+                // Loop to check each country's "nearby" array and length to get maximum
                 for(i = 0; i < countryData.length; i++) {
                     if(countryData[i].nearby.length > max) {
                         max = countryData[i].nearby.length;
                     }
                 }
+                // Now a loop to perform a loop for each country from max to zero
                 while (max >= 0) {
+                    // Add a h2 tag to create a section for countries with the current number of nearby countries of max
                     document.body.innerHTML += "<h2>Countries with "+ String(max) + " Nearby Countries </h2>";
+                    // Loop through all of the json country data
                     for(i = 0; i < countryData.length; i++) {
+                        // If the current country has max number of nearby countries then we print all ofthat info out to page
                         if(countryData[i].nearby.length == max) {
                             document.body.innerHTML += "<b>Country: " + countryData[i].name + ", Nearby:</b> ";
                             for(j = 0; j < countryData[i].nearby.length; j++) {
@@ -82,6 +89,7 @@
                             document.body.innerHTML += "<br>"
                         }
                     }
+                    // Decrement max by 1 to find countries with fewer nearby countries
                     max -= 1;
                 }
             }

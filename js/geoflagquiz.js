@@ -41,22 +41,6 @@ var countries = {
 	"US":"United States","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VE":"Venezuela",
 	"VN":"Viet Nam","EH":"Western Sahara","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"
 }
-// Array of country codes to randomly generate other responses to each question
-var codes = [
-    "AF","AL","DZ","AD","AO","AG","AR","AM","AU","AT","AZ","BS","BH","BD","BB","BY",
-	"BE","BZ","BJ","BT","BO","BA","BW","BR","BN","BG","BF","BI","KH","CM","CA","CV",
-	"CF","TD","CL","CN","CO","KM","CG","CD","CR","CI","HR","CU","CY","CZ","DK","DJ",
-	"DM","DO","EC","EG","SV","GQ","ER","EE","ET","FJ","FI","FR","GA","GM","GE","DE",
-	"GH","GR","GD","GT","GN","GW","GY","HT","VA","HN","HU","IS","IN","ID","IR","IQ",
-	"IE","IL","IT","JM","JP","JO","KZ","KE","KI","KR","KW","KG","LA","LV","LB","LS",
-	"LR","LY","LI","LT","LU","MK","MG","MW","MY","MV","ML","MT","MH","MR","MU","MX",
-	"FM","MD","MC","MN","ME","MA","MZ","MM","NA","NR","NP","NL","NZ","NI","NE","NG",
-	"KP","NO","OM","PK","PW","PA","PG","PY","PE","PH","PL","PT","QA","RO","RU","RW",
-	"KN","LC","VC","WS","SM","ST","SA","SN","RS","SC","SL","SG","SK","SI","SB","SO",
-	"ZA","KR","ES","LK","SD","SR","SZ","SE","CH","SY","TW","TJ","TZ","TH","TL","TG",
-	"TO","TT","TN","TR","TM","TV","UG","UA","AE","GB","US","UY","UZ","VU","VE","VN",
-	"EH","YE","ZM","ZW"
-]
 // Variable to later save down json data for all countries
 var jsondata;
 // Variable to save current correct code
@@ -83,11 +67,11 @@ function getInfoJSON(){
             if (httpRequest.status === 200) {
                 var data = JSON.parse(httpRequest.responseText);
                 jsondata = data;
-                nextCountry()
+                nextCountry();
             }
         }
     };
-    httpRequest.open('GET',"data/flagsinfo.json");
+    httpRequest.open('GET',"data/flagsinfo2.json");
     httpRequest.send()
 }
 // Generates the next country
@@ -99,38 +83,31 @@ function nextCountry() {
         document.getElementById("countries").innerHTML = "Done!";
         return;
     }
-    // Grab the next random entry fromthe json data
-    var next = jsondata.randsplice();
-    // Grab the code from current country info object
-    currcode = next[0].code;
-    // Set upiteration variables
-    o_count = 0;
-    o_countries =[];
-    // Save down current code as correct and for it to be called outside of the function
-    correctCode = currcode;
-    // Loop to get 3 other random country options
-    while(o_count < 3) {
-        //Get a random value from the country codes array
-        curr_rand = codes.randval();
-        // A check to see if current random country code isn't the correct code or already in the options array
-        if(curr_rand != currcode && !(curr_rand in o_countries)) {
-            // Then pass the new option into the array
-            o_countries.push(curr_rand);
-            o_count += 1;
-        }
+    // Grab the next random entry from the json data
+    next = jsondata.randsplice()[0];
+    // Assign the current entry's code as the correct one
+    correctCode = next.code;
+    // Puts current code into an initialized options array
+    options = [next.code];
+    // Grab the current country's nearby array
+    nearby = next.nearby;
+    // Inttialize counter variable to get other country options
+    n_counter = 3;
+    // Loop to randomly splice from nearby array
+    while(n_counter > 0) {
+        options.push(nearby.randsplice()[0])
+        n_counter -=  1;
     }
     // Change image source to the new current flag
-    document.getElementById("current_country").src = "imgs/flags/"+currcode.toLowerCase()+".png";
-    // Insert the current code into the options array
-    o_countries.push(currcode);
+    document.getElementById("current_country").src = "imgs/flags/"+correctCode.toLowerCase()+".png";
     // Clear out the inner html of the countries div
     document.getElementById("countries").innerHTML = "";
     // Get the length of the options array
-    options_counter = o_countries.length;
+    options_counter = options.length;
     // Loop to go through and randomly insert buttons from countries options
     while(options_counter > 0) {
         // Popp off random country option
-        curr_option = o_countries.randsplice();
+        curr_option = options.randsplice();
         // Create button element and then give it proper text
         var curr_button = document.createElement("button");
         curr_button.innerHTML = (countries[curr_option[0]]);
@@ -141,7 +118,6 @@ function nextCountry() {
         options_counter -= 1;
     }
 }
-
 //Function the check if a code matches the correct code of the flag's country
 function handleCountryClick(code) {
     if(code == correctCode) {
@@ -151,5 +127,4 @@ function handleCountryClick(code) {
         console.log("incorrect")
     }
 }
-
 getInfoJSON()
