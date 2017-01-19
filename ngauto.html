@@ -1,0 +1,14 @@
+<html ng-app="ngAutoApp">
+    <head>
+        <title>Ng Autocomplete Test</title>
+        <link rel="stylesheet" href="style/autocomplete.css">
+        <script src="js/angular.js"></script>
+        <script src="js/autocomplete.js"></script>
+        <script src="js/ngauto.js"></script>
+        <meta charset="UTF-8">
+        
+    </head>
+    <body ng-controller="ngAutoTestCtlr">
+        <autocomplete ng-model="result" attr-placeholder="type to search my friends..." click-activation="true" data="friends" on-type="printTyped" on-select="addFriend"></autocomplete>
+    </body>
+</html>
