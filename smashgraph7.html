@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Amiibo Data - Spring 2017</title>
+        <script src="js/d3.js"></script>
+        <style>
+            body{
+                padding: 0px;
+            }
+            path{
+                fill:none;
+            }
+            svg{
+                
+                margin-left:auto;
+                margin-right: auto;
+            }
+            div.tooltip {	
+                position: absolute;			
+                text-align: center;			
+                width: 120px;					
+                height: 28px;					
+                padding: 2px;				
+                font: 12px sans-serif;		
+                background: lightsteelblue;	
+                border: 0px;		
+                border-radius: 8px;			
+                pointer-events: none;			
+            }   
+            div#info{
+                float:none;
+            }
+        </style>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <b>Amiibo Tournament Data</b>
+        <script>
+            // An array prototype function to return a an array containing only a random element
+            Array.prototype.randsplice = function(){
+                var ri = Math.floor(Math.random() * this.length);
+                var rs = this.splice(ri, 1);
+                return rs;
+            }
+            // Array of color strings to be used on dots/lines
+            var colorArray = ["#393b79","#5254a3","#637939","#8ca252","#8c6d31","#bd9e39","#843c39","#ad494a","#7b4173","#a55194","#ce6dbd","#3182bd","#6baed6","#e6550d","#fd8d3c","#31a354","#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#bcbd22","#17becf"]
+            
+            // Define some variables for area
+            var margin = {top: 50, right: 125, bottom: 25, left: 50 },
+                width = window.innerWidth*.8,
+                height = window.innerHeight*.8;
+            // Set the ranges
+            var x = d3.scaleLinear().range([0,width]);
+            var y = d3.scaleLinear().range([height, 0]);
+            // Define the axes
+            var xAxis = d3.axisTop()
+                .scale(x);
+
+            var yAxis = d3.axisLeft().scale(y);
+            
+            // An array to hold the keys or "names" from he data json
+            var keys = [];
+            // A string to indicate which character/line is currenly selected
+            var selectedCharacter = "";
+            // Appending the div that will be accessed upon hovering over a dot
+            var tip = d3.select("body").append("div")
+                .attr("class","tooltip")
+                .style("opacity",0);
+            // This is the function that does most of the work of making all needed lines and dots 
+            function makeDot(charData,name) {
+                var tempObjArr = [];
+                var colorString = getColor();
+                for(i = 0; i < charData.length; i++) {
+                    curr = {};
+                    curr.tournament = i + 1;
+                    curr.place = charData[i];
+                    tempObjArr[i] = curr;
+                    svg.append("circle")
+                        .datum(curr)
+                        .on("mouseover",function(d){
+                            makeSoft(name);
+                            tip.transition()		
+                                .duration(200)		
+                                .style("opacity", .9);		
+                            tip.html("Tournament # "+ d.tournament + "<br/>" + "Place - " + d.place)	
+                                .style("left", (d3.event.pageX) + "px")		
+                                .style("top", (d3.event.pageY - 28) + "px");	
+                        })
+                        .on("mouseout",function(){
+                            tip.transition()		
+                                .duration(500)		
+                                .style("opacity", 0);	
+                            makeSolid();
+                        })
+                        .on("click",function(){
+                            clickSelect(name,tempObjArr);
+                        })
+                        .attr("class",name)
+                        .attr("r",7.5)
+                        .attr("cx", x(i+1))
+                        .attr("cy",y(charData[i]))
+                        .style("fill",colorString);
+                }
+                var tournaments = [], places = [];
+                for(i = 0; i < tempObjArr.length; i++) {
+                    tournaments.push(tempObjArr[i].tournament);
+                    places.push(tempObjArr[i].place);
+                }
+                var leastSquaresRes = leastSquares(tournaments,places);
+                // Making the trend line
+                var x1 = tournaments[0], 
+                    y1 = leastSquaresRes[0] + leastSquaresRes[1], 
+                    x2 = tournaments[tournaments.length - 1],
+                    y2 = (leastSquaresRes[0] * places.length) + leastSquaresRes[1];
+                var trendData = [{"x":x1,"y":y1},{"x":x2,"y":y2}];
+                // Setup the trend line and how it will get its data
+                var trendline = d3.line()
+                    .x(function(d){return x(d.x)})
+                    .y(function(d){return y(d.y)});
+                // Then we append the trend line as invisible
+                svg.append("line")
+                    .attr("x1",x(x1))
+                    .attr("x2",x(x2))
+                    .attr("y1",y(y1))
+                    .attr("y2",y(y2))
+                    .attr("class",name)
+                    .style("stroke-dasharray","10,5")
+                    .style("stroke",colorString)
+                    .style("stroke-width",5)
+                    .style("opacity",0);
+                // Setup the character line and how it will get its data
+                var currLine = d3.line()
+                    .x(function(d){return x(d.tournament)})
+                    .y(function(d){return y(d.place)});
+                var path = svg.append("path")
+                    .datum(tempObjArr)
+                    .attr("class",name)
+                    .style("stroke-width",5)
+                    .style("stroke",colorString)
+                    .on("mouseover",function(d){
+                        makeSoft(name);
+                    })
+                    .on("mouseout",function(d){
+                        makeSolid();
+                    })
+                    .on("click",function(){
+                        clickSelect(name,tempObjArr);
+                    })
+                    .attr("d",currLine);
+                // Append an ending label to the line
+                svg.append("text")
+                    .attr("transform", "translate("+(width+10)+","+y(tempObjArr[tempObjArr.length - 1].place)+")")
+                    .attr("dy", ".35em")
+                    .attr("text-anchor", "start")
+                    .style("fill", colorString)
+                    .style("font-weight","bold")
+                    .attr("stroke","rgba(0,0,0,0.10)")
+                    .attr("stroke-width","1px")
+                    .text(name);
+                // Push keys to an array to hold all keys
+                keys.push(name); 
+                
+            }
+            // Adds the svg canvas
+            var svg = d3.select("body")
+                .append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .style("border","black")
+                    .style("border-style","solid")
+                .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            // A function to selectively lower the opacity of non-relevant data
+            function makeSoft(name) {
+                for(i = 0; i < keys.length; i++) {
+                    if(keys[i] == name || keys[i] == selectedCharacter) {
+                        d3.selectAll("path[class='"+name+"']").style("opacity",1);
+                        d3.selectAll("circle[class='"+name+"']").style("opacity",1);
+                        d3.selectAll("line[class='"+name+"']").style("opacity",1);
+                    } else {
+                        d3.selectAll("path[class='"+keys[i]+"']").style("opacity",.5);
+                        d3.selectAll("circle[class='"+keys[i]+"']").style("opacity",.5);
+                        d3.selectAll("line[class='"+keys[i]+"']").style("opacity",0);
+                    }
+                }
+            }
+            // Turns every single dot and character line solid. All trend lines become invisible again.
+            function makeSolid() {
+                if(selectedCharacter == "") {
+                    for(i = 0; i < keys.length; i++) {
+                        d3.selectAll("path[class='"+keys[i]+"']").style("opacity",1);
+                        d3.selectAll("circle[class='"+keys[i]+"']").style("opacity",1);
+                        d3.selectAll("line[class='"+keys[i]+"']").style("opacity",0);
+                    }
+                }
+            }
+            
+            function clickSelect(name,lineData) {
+                // Clear out the selection if clicked on the same line
+                if(name == selectedCharacter) {
+                    selectedCharacter = "";
+                    d3.select("#info").remove();
+                } else {
+                    selectedCharacter = name;
+                    makeSoft(name);
+                    // If there is already info displayed, then we clear it
+                    if(d3.select("#info")){
+                        d3.select("#info").remove();
+                    }
+                    // We then setup a string of the character's information
+                    var infoString = name + " : ";
+                    var sum = 0;
+                    for(i = 0; i < lineData.length; i++) {
+                        infoString += "Tournament #" + (i+1).toString() +" - "+ lineData[i].place + " , ";
+                        sum += lineData[i].place;
+                    }
+                    var avg = (sum/i);
+                    var devsum = 0;
+                    for(j = 0; j < lineData.length; j++) {
+                        devsum += (lineData[j].place - avg) * (lineData[j].place - avg); 
+                    }
+                    devsum = Math.pow((devsum / j),1/2);
+                    
+                    infoString += " Average - " + avg.toFixed(2).toString() + ", Standard Deviation - " + devsum.toFixed(2).toString();
+                    // We then attach the info to the body in a div's text
+                    d3.select("body").append("div").text(infoString).attr("id","info");
+                }
+            }
+            // Returns one color string out of an array of colors
+            function getColor(){
+               return colorArray.randsplice()[0]; 
+            }
+            // Here we actually pull the json data
+            d3.json("data/amiibo4.json",function(d){
+                
+                // I get the number of characters and tournaments to
+                var numChars = Object.keys(d).length, numTournaments = d[Object.keys(d).pop()].length;
+                var ticks = [];
+                for(i = 1; i <= numTournaments; i++) {
+                    ticks.push(i);
+                }
+                xAxis.tickValues(ticks);
+                // Scale the range of the data
+                x.domain([1,numTournaments]);
+                y.domain([numChars,1]);
+                // Add X Axis
+                svg.append("g").call(xAxis);
+                // Add y axis
+                svg.append("g").call(yAxis);
+                // We iterate through the data and make a dot (and all relevant lines) for each 
+                Object.keys(d).forEach(function(key){
+                    makeDot(d[key],key);
+                });
+                // Apply the label of the y axis
+                svg.append("text")
+                    .attr("text-anchor", "middle")  
+                    .attr("transform", "translate("+ (-1 * (margin.left/2)) +","+(height/2)+")rotate(-90)")
+                    .text("Placements");
+                // Appy the label of the x axis
+                svg.append("text")
+                    .attr("text-anchor","middle")
+                    .attr("transform", "translate("+ ((width/2)) +","+ (-1 * (margin.top/2))+")")
+                    .text("Tournaments");
+                
+            });
+            // A function to help calculate the trend line of data
+            function leastSquares(xSeries, ySeries) {
+                var reduceSumFunc = function(prev, cur) { return prev + cur; };
+
+                var xBar = xSeries.reduce(reduceSumFunc) * 1.0 / xSeries.length;
+                var yBar = ySeries.reduce(reduceSumFunc) * 1.0 / ySeries.length;
+
+                var ssXX = xSeries.map(function(d) { return Math.pow(d - xBar, 2); })
+                    .reduce(reduceSumFunc);
+
+                var ssYY = ySeries.map(function(d) { return Math.pow(d - yBar, 2); })
+                    .reduce(reduceSumFunc);
+
+                var ssXY = xSeries.map(function(d, i) { return (d - xBar) * (ySeries[i] - yBar); })
+                    .reduce(reduceSumFunc);
+
+                var slope = ssXY / ssXX;
+                var intercept = yBar - (xBar * slope);
+                var rSquare = Math.pow(ssXY, 2) / (ssXX * ssYY);
+
+                return [slope, intercept, rSquare];
+	       }
+        </script>
+    </body>
+</html>
