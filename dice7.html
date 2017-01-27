@@ -2,108 +2,150 @@
     <head>
         <title>DND Dice Roller</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style/dice.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="js/jquery-2.2.3.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="style/dice7.css">
         <script src="js/dice7.js"></script>
     </head>
     <body>
         <!-- Section of dice num inputs -->
         <div id="dice_sec" class="container">
             <div class="col-sm-2 form-group row">
-                <!-- #9400D3 - Violet-->
-                <label for="example-number-input" style='color:#9400D3' class="col-xs-2 col-form-label">d4</label>
-                <div class="col-xs-10">
-                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <!-- #9400D3 - Violet-->
+                    <label for="d4" style='color:#9400D3' class="col-form-label">d4</label>
+                    <input class="form-control dice" type="number" value="0" id="d4">
                 </div>
             </div>
             <div class="col-sm-2 form-group row">
-                <label for="example-number-input" style='color:blue' class="col-xs-2 col-form-label">d6</label>
-                <div class="col-xs-10">
-                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <label for="d6" style='color:blue' class="col-form-label">d6</label>
+                    <input class="form-control dice" type="number" value="0" id="d6">
                 </div>
             </div>
             <div class="col-sm-2 form-group row">
-                <label for="example-number-input" style='color:green' class="col-xs-2 col-form-label">d8</label>
-                <div class="col-xs-10">
-                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <label for="d8" style='color:green' class="col-form-label">d8</label>
+                    <input class="form-control dice" type="number" value="0" id="d8">
                 </div>
             </div>
             <div class="col-sm-2 form-group row">
-                <!--#FADA5E - "Royal yellow"-->
-                <label for="example-number-input" style='color:#FADA5E' class="col-xs-2 col-form-label">d10</label>
-                <div class="col-xs-10">
-                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <!--#FADA5E - "Royal yellow"-->
+                    <label for="d10" style='color:#FADA5E' class="col-form-label">d10</label>
+                    <input class="form-control dice" type="number" value="0" id="d10">
                 </div>
             </div>
             <div class="col-sm-2 form-group row">
-                
-                <label for="example-number-input" style='color:orange' class="col-xs-2 col-form-label">d12</label>
-                <div class="col-xs-10">
-                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <label for="d12" style='color:orange' class="col-xs-2 col-form-label">d12</label>
+                    <input class="form-control dice" type="number" value="0" id="d12">
                 </div>
             </div>
             <div class="col-sm-2 form-group row">
-                <label for="example-number-input" style='color:red' class="col-xs-2 col-form-label">d20</label>
-                <div class="col-xs-10">
-                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <label for="d20" style='color:red' class="col-form-label">d20</label>
+                    <input class="form-control dice" type="number" value="0" id="d20">
                 </div>
             </div>
             <div class="col-sm-2 form-group row">
-                <label for="example-number-input" style='color:gray' class="col-xs-2 col-form-label">d100</label>
-                <div class="col-xs-10">
-                    <input class="form-control dice" type="number" value="0" id="example-number-input">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <label for="d100" style='color:gray' class="col-form-label">d100</label>
+                    <input class="form-control dice" type="number" value="0" id="d100">
                 </div>
             </div>
         </div>
         <!-- 'Administrative' Section - Section and Schema Handling -->
         <div class="container">
             <div class="col-sm-3 form-group row">
-                <label for="roll_title" class="col-xs-2 col-form-label">Title</label>
-                <div class="col-xs-10">
+                <label for="roll_title" class="col-sm-3 col-form-label">Title</label>
+                <div class="col-sm-9">
                     <input class="form-control" type="text" value="Persuasion Check" id="roll_title">
                 </div>
             </div>
             <div class="col-sm-3 form-group row">
-                <label for="bonus" class="col-xs-4 col-form-label">Bonus</label>
-                <div class="col-xs-8">
+                <label for="bonus" class="col-sm-3 col-form-label">Bonus</label>
+                <div class="col-sm-9">
                     <input class="form-control" type="number" value="0" id="bonus">
                 </div>
             </div>
+            <div class="col-sm-4 form-group row">
+                <label for="keepNum" class="col-sm-2 col-form-label">Keep</label>
+                <div class="col-sm-4">
+                    <input class="form-control" type="number" value="0" id="keepNum">
+                </div>
+                <div class="col-sm-6">
+                    <select class="form-control" id="keepType">
+                        <option selected="selected">All</option>
+                        <option>Highest</option>
+                        <option>Lowest</option>
+                    </select>
+                </div>
+            </div>
+            
             <div class="col-sm-3 form-group row">
-                <label for="schema" class="col-xs-4 col-form-label">Schema</label>
-                <div class="col-xs-8">
-                    <select id="schema" class="form-control">
+                <button class="col-xs-10 col-xs-offset-1 btn btn-success" onclick="addSection()">Add Section</button>
+            </div>
+            
+        </div>
+        <div class="container">
+            
+            <div class="col-sm-3 form-group row">
+                <label for="schema" class="col-xs-3 col-form-label">Schema</label>
+                <div class="col-xs-9">
+                    <select id="schemaOptions" class="form-control">
                         <option selected="selected"> </option>
-                        <option>New Schema</option>
-                        <option>Save Schema As</option>
                     </select>
                 </div>
             </div>
             <div class="col-sm-2 form-group row">
-                <button class="col-xs-10 col-xs-offset-2 btn btn-success" onclick="addSec()">Add Section</button>
+                <button id="newSchema" data-toggle="modal" data-target="#myModal" class="col-xs-10 col-xs-offset-1 btn btn-primary">New Schema</button>
             </div>
             <div class="col-sm-2 form-group row">
-                <button class="col-xs-10 col-xs-offset-2 btn btn-danger" onclick="clearDice()">Clear Dice</button>
+                <button id="saveSchema" class="col-xs-10 col-xs-offset-1 btn btn-info">Save Schema</button>
+            </div>
+            <div class="col-sm-2 form-group row">
+                <button id="clearSections" class="col-xs-10 col-xs-offset-1 btn btn-danger">Delete Schema</button>
+            </div>
+            <div class="col-sm-2 form-group row">
+                <button id="clearSections" class="col-xs-10 col-xs-offset-1 btn btn-warning">Clear All Sections</button>
+            </div>
+            <div class="col-sm-2 form-group row">
+                <button id="clearDice" class="col-xs-10 col-xs-offset-1 btn btn-default">Clear Dice</button>
             </div>
         </div>
+        <div class="container">
+            <div id="schemaTitleDiv" class="col-sm-12">
+                <span id="schemaTitle">Current Schema: None</span>
+            </div>
+        </div>
+        
+        
+        
         <!-- Section to hold new dice section -->
         <div class="container">
             <div id="sections" class="col-sm-10">
             </div>
         </div>
         <!-- Modal to Make New Schema -->
-        <div class="modal fade" id="newSchema" role="dialog">
+        <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+                        <span style="text-align:right">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </span>
+                        <h4 class="modal-title">New Schema</h4>
                     </div>
                     <div class="modal-body">
-                        <input id="schemaName">
+                        <label for="newSchemaName">Enter Name:</label>
+                        <input type="text" id="newSchemaName" class="form-control">
+                        <label class="checkbox-inline"><input type="checkbox" value="">Autosave?</label>
+                        
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="createSchema()">Create Schema</button>
                     </div>
                 </div>
             </div>

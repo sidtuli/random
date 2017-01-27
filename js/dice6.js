@@ -26,6 +26,7 @@ function saveSections(){
 window.onload = function() {
     if (supportsLocalStorage()) {
         // See if there is already a saved html string of dice sections
+        sectionNum = parseInt(localStorage.getItem("sectionNum"));
         if(localStorage.getItem("die") != null) {
             // Grabs the html string of all dice sections
             die = localStorage.getItem("die");
