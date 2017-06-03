@@ -1,0 +1,646 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>My GDC 2017 Notes</title>
+        <style type="text/css">
+            h1, h2, h3 {
+              line-height: 1.2;
+            }
+            body {
+              margin: 2%;
+              max-width: 650px;
+              line-height: 1.6;
+              font-size: 18px;
+              color: #444;
+              padding: 0 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>My GDC 2017 Notes</h1>
+        <div>
+            <ol>
+                <h3>Lectures</h3>
+                <li><a href="#hld">The Sound and Music of Hyper Light Drifter</a></li>
+                <li><a href="#pcg">Practical Procedural Generation for Everyone</a></li>
+                <li><a href="#story">Storytelling Tools to Boost Your Indie Game's Narrative and Gameplay</a></li>
+                <li><a href="#groove">Still Grooving: Game Dev Life Set to Music</a></li>
+                <li><a href="#render">The Rendering of 'Below': Low Complexity, High Density Detail</a></li>
+                <li><a href="#toolbox">Tech Toolbox</a></li>
+                <li><a href="#game_mech">Building Game Mechanics to Elevate Narrative in "Oxenfree"</a></li>
+                <li><a href="#open">Making "Night In the Woods" Better With Open Source</a></li>
+                <li><a href="#trance">Designing a Trance: Meditation and Game Design</a></li>
+                <li><a href="#predict">Using Predictive Text to Generate Lore in "Caves of Qud"</a></li>
+                <li><a href="#low-poly">Low Poly Modeling: Style Through Economy</a></li>
+            </ol>
+        </div>
+        <div id="hld">
+            <h2>The Sound and Music of Hyper Light Drifter</h2>
+            <h3>Akkash Thakkar (Heart Machine), Rich Vreeland (Disasterpiece)</h3>
+            <h4>Monday (Feb 27) 11:20 AM - 12:20 PM</h4>
+            <ul>
+            <li>
+                Discussed algorithmic way to create ambience with several elements - "tetronimos of notes"
+            </li>
+            <li>
+                Made odd ways to record sound:
+                <ul>
+                    <li>
+                        Stethoscope over microphone
+                    </li>
+                    <li>
+                        Wire Recorder
+                    </li>
+                    <li>
+                        Pitch shifting pig squeals
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Heavy emphasis on iterative process and constantly adding layers to musicand sfx
+            </li>
+            <li>
+                Need to have sfx and music mesh but still be unique/distinct (different layers for them)
+            </li>
+            <li>
+                Communication is key for sound - it's a very iterative and intensely team oriented work
+            </li>
+        </ul>
+        </div>
+        <div id="pcg">
+            <h2>Practical Procedural Generation for Everyone</h2>
+            <h3>Kate Compton</h3>
+            <h4>Monday (Feb 27) 3-3:30 PM</h4>
+             <ul>
+            <li>
+                <a href="http://tiny.cc/galaxykate-gdc17">
+                    Slides
+                </a>
+            </li>
+            <li>
+                <a href="http://tracery.io/">
+                    Tracery
+                </a>
+                - generative language/tool
+            </li>
+            <li>
+                <a href="https://twitter.com/GalaxyKate">Twitter</a>
+            </li>
+            <li>
+                <a href="http://galaxykate0.tumblr.com/post/139774965871/so-you-want-to-build-a-generator">
+                    "So you want to build a generator..."
+                </a>
+                - blog post the talk is based on.
+            </li>
+            <li>
+                Can generate a wide variety of things and reasons to do so
+            </li>
+            <li>
+                <a href="http://computationalcreativity.net/home/">iccc</a>
+                - international conference on computational creativity
+            </li>
+            <li>
+                Example bot:
+                <a href="https://twitter.com/tinycarebot">
+                    @tinycarebot
+                </a>
+            </li>
+            <li>
+                gdc tech toolbox 2016 (
+                <a href="https://www.youtube.com/watch?v=W_okgL6HJX8">
+                    youtube link
+                </a>
+                ) is a good background/talk to look at
+            </li>
+            <li>
+                <b>Distribution</b>
+                <ul>
+                    <li>
+                        <u>Footing</u> - objects interact to form
+                    </li>
+                    <li>
+                        <u>Barnacling</u> - building around objects
+                    </li>
+                    <li>
+                        <u>Greebling</u> - adding on top (glue on)
+                    </li>
+                </ul>
+                <b>Types of generation</b>
+                <ul>
+                    <li>
+                        <u>Parametric</u> - array of floats to build up and represent settings
+                    </li>
+                    <li>
+                        <u>Interpretive</u> - input -> other
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+        <div id="story">
+            <h2>Storytelling Tools to Boost Your Indie Game's Narrative and Gameplay</h2>
+            <h3>Mata Haggis (NHTV University, Breda, & Copper Stone Sea)</h3>
+            <h4>Monday (Feb 27) 3:50 - 4:20 PM</h4>
+            <ul>
+            <li>
+                Presents charts between challenge vs. difficulty, and narrative/conflict tension vs. time
+            </li>
+            <li>
+                Both these charts have pseudo x vs. y lines with sections around them - "flow channels"
+            </li>
+            <li>
+                It is very important to stay in "flow sections"
+            </li>
+            <li>
+                Story is about change - fueled by many factors
+            </li>
+            <li>
+                Players and designers have goals for game
+            </li>
+            <li>
+                Allow story and events to be built to, give all things meaning by contrasting it to past
+            </li>
+            <li>
+                World is built -> inciting incident -> player exploration -> player acts with intention -> challenges and complexity -> rise to action -> final choice -> end
+            </li>
+            <li>
+                Most stories follow above order but you may want to add introduction (possibly a "bite of power" to rebuild back to later) or a looming ending
+            </li>
+            <li>
+                Each scene has: objective, conflict, and outcome
+            </li>
+            <li>
+                Create rewarding experiences through "valleys of conflict"
+            </li>
+        </ul>
+        </div>
+        <div id="groove">
+            <h2>Still Grooving: Game Dev Life Set to Music</h2>
+            <h3>Teddy Dief (Square EnixMontreal), Daniel Rosenfield (C418)</h3>
+            <h4>Monday (Feb 27) 4:40 - 5:10 PM</h4>
+            <ul>
+            <li>
+                Artistic representation of game developer work and trying to get things done
+            </li>
+            <li>
+                Pains to be on time for release
+            </li>
+            <li>
+                Polishing game vs. finishing features vs. fixing bugs - it' always a race for time
+            </li>
+            <li>
+                Odd exploration of life philosophy and focus. The need for depth and shallow
+            </li>
+            <li>
+                The need to fully enjoy what one does
+            </li>
+            <li>
+                Starting is hard and so is finishing. At the end you get good as what you've done but resolve to start and complete anew is hard.
+            </li>
+            <li>
+                Need to understand what you desire and accept the rewards but not to just do things for them.
+            </li>
+        </ul>
+        </div>
+        <div id="render">
+            <h2>The Rendering of 'Below': Low Complexity, High Density Detail</h2>
+            <h3>Colin Weick (Capybara Games)</h3>
+            <h4>Monday (Feb 27) 5:30 - 6 PM</h4>
+            <ul>
+            <li>
+                Low-poly/resolution geometric art and 2D high detail assets combined for effect.
+            </li>
+            <li>
+                Trying to analyze how to best display picture/graphics before user modifies settings without hurtinglighting/mood
+            </li>
+            <li>
+                Noise: remove stray light/gamma distractions
+            </li>
+            <li>
+                Lighting - complexity of meshing 3D and 2D elements while still capturing mood
+            </li>
+        </ul>
+        </div>
+        <div id="toolbox">
+            <h2>Tech Toolbox</h2>
+            <h4>Tuesday (Feb 28) 11:20 AM - 12:20 PM</h4>
+            <ul>
+            <li>
+                Change/track metrics of content generation as well as analyze several pieces of content
+            </li>
+            <li>
+                Tuning metrics -> create desired output
+            </li>
+            <li>
+                <a href="http://www.danesh.procjam.com/">Link to page on project</a>
+            </li>
+        </ul>
+        <h3>Holden Link (Turbo Button) - TButt</h3>
+        <ul>
+            <li>
+                Multiplatform VR tool to allow building for several platforms
+            </li>
+        </ul>
+        <h3>Ryan Williams (Spry Fox) - Dark Config</h3>
+        <ul>
+            <li>
+                Using config files to dynamically create and set up game settings and background
+            </li>
+            <li>
+                Fast iteration; Express more experimental stuff
+            </li>
+        </ul>
+        <h3>Cukia "Sugar" Kimani (Nyamakop) - "Rectangles Are Life"</h3>
+        <ul>
+            <li>
+                Bezier curves on rectangles
+            </li>
+            <li>
+                Animate via mathof meh on top of sprite
+            </li>
+        </ul>
+        <h3>Chris Martens (North Carolina State University) - Ceptre</h3>
+        <ul>
+            <li>
+                Rapid prototyping
+            </li>
+            <li>
+                Linear logic rules for:
+                <ol>
+                    <li>
+                        Resource Economies
+                    </li>
+                    <li>
+                        Procedural Generation
+                    </li>
+                    <li>
+                        Interative fiction
+                    </li>
+                </ol>
+            </li>
+        </ul>
+        <h3>Innes McKendrick (Hello Games) - "Messing With Texture"</h3>
+        <ul>
+            <li>
+                Create large number of procedurally generated content during runtime and without large amount of pre-created content
+            </li>
+            <li>
+                Texture parts -> reused and recolored
+            </li>
+            <li>
+                Create patterns/layers on top of premade textures
+            </li>
+            <li>
+                <u>Don't use RGB!</u>
+                Used HSV as RGB doesn't give enough control over colors
+            </li>
+        </ul>
+        </div>
+        <div id="game_mech">
+            <h2>Building Game Mechanics to Elevate Narrative in "Oxenfree"</h2>
+            <h3>Sean Krankel (Night School Studios)</h3>
+            <h4>Tuesday (Feb 28) 1:20 PM - 1:50 PM</h4>
+            <ul>
+            <li>
+                Most games treat mechanics as separate from narrative moments
+            </li>
+            <li>
+                Goal: story and mechanics as one
+            </li>
+            <li>
+                <table>
+                    <tr>
+                        <th>
+                            What vs.
+                        </th>
+                        <th>
+                            Why
+                        </th>
+                        <th>
+                            Medium
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Plot
+                        </td>
+                        <td>
+                            Story
+                        </td>
+                        <td>
+                            "Film"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            "Toys"
+                        </td>
+                        <td>
+                            Narrative
+                        </td>
+                        <td>
+                            "Games"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Communication
+                        </td>
+                        <td>
+                            Alex's Story
+                        </td>
+                        <td>
+                            "Oxenfree"
+                        </td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                Escalate games to "why"
+            </li>
+            <li>
+                Communicationis ability - extension of play
+            </li>
+            <li>
+                Pre-mortem - look at end goals and play out anything that could go wrong in order to prepare for them -> writing needed to consider natural dialogue
+            </li>
+            <li>
+                Allow player to initiate talking but not need to always speak and give player concious choice/ability of when to speak
+            </li>
+            <li>
+                All further abilities are made an extension of the ability to communicate
+            </li>
+        </ul>
+        </div>
+        <div id="open">
+            <h2>Making "Night In the Woods" Better With Open Source</h2>
+            <h3>Jon Manning (Secret Lab)</h3>
+            <h4>Tuesday (Feb 28) 3-3:30 PM</h4>
+            <ul>
+            <li>
+                <b>Dialogue: Nodes vs. Scripts</b>
+                <ul>
+                    <li>
+                        Nodes - intuitive but can get large
+                    </li>
+                    <li>
+                        Scripts - Complex
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <u>Twine</u> - tool for writing dialogue in game
+                <ul>
+                    <li>
+                        <u>Yarn</u> - editor for Twine, open sourced
+                    </li>
+                    <li>
+                        <u>Yarn Spinner</u> - more robust version made
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Open Source: community contributions; useful to people; it lasts without an author
+            </li>
+            <li>
+                Open source services: Github, Gitlab, Bitbucket, etc.
+            </li>
+            <li>
+                There are many important parts to setting up an open source project and need consideration:
+            </li>
+            <li>
+                <u>Have a Clearly Defined License</u>
+                <ul>
+                    <li>
+                        Copyleft - make open source in turn if you reuse the code/work (ex: GPL)
+                    </li>
+                    <li>
+                        Permissive - requires attribution and allows closed source
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <u>Have a Contributor's Guide</u>
+                <ul>
+                     <li>
+                         Methods to log bugs, find help, get started, code of conduct, etc.
+                    </li>
+                    <li>
+                        Places for discussion - IRC, Slack, etc.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <u>List of Low-Hanging Fruit</u>
+                <ul>
+                    <li>
+                        Easy tasks for contributors to quickly finish
+                    </li>
+                    <li>
+                        Allows you to add user-desired features
+                    </li>
+                    <li>
+                        Important to be attentive to contributors
+                    </li>
+                    <li>
+                        Allows first comits for contributors to feel welcome to project
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <u>Have a Code of Conduct</u>
+                <ul>
+                    <li>
+                        Dealing with conflicts minimized tomitigate discussions on ludicrous stuff/distractions
+                    </li>
+                    <li>
+                        Allow others to police and prevent bad from good people and preserve image to future contributors
+                    </li>
+                    <li>
+                        "Contributor Covenant" - Accept help and offload burdens down to contributors/admins
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Takeaways
+                <ul>
+                    <li>
+                        Make first step easy.
+                    </li>
+                    <li>
+                        Marketing - ask around and encourage others
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Note: Whole presentation and slides were done in game engine
+            </li>
+        </ul>
+        </div>
+        <div id="trance">
+            <h2>Designing a Trance: Meditation and Game Design</h2>
+            <h3>Robin Arnott</h3>
+            <h4>Tuesday (Feb 28) 3:50-4:20 PM</h4>
+            <ul>
+            <li>
+                Hasworked on Antichamber, and Stanley Parable as sound designer. Currently working on "Soundself".
+            </li>
+            <li>
+                <u>Trance</u> - a self perpetuating mental loop
+            </li>
+            <li>
+                trance can be represented bt attention flow/loops of gameplay
+            </li>
+            <li>
+                Trance can be utilized to understand user's loops and mind in gameplay
+            </li>
+        </ul>
+        </div>
+        <div id="predict">
+            <h2>Using Predictive Text to Generate Lore in "Caves of Qud"</h2>
+            <h3>Jason Grinblat (Freehold Games)</h3>
+            <h4>Thursday (Mar 2) 1:20 - 1:45 PM</h4>
+            <ul>
+            <li>
+                Markov text generators - syntax correct but doesn't make sense to humans usually.
+            </li>
+            <li>
+                Replace certain words and iterate with different values
+            </li>
+            <li>
+                Predict values based on input words to generate chains of possible responses
+            </li>
+            <li>
+                Used in-game texts as base to build up generated lore texts
+            </li>
+            <li>
+                Project Gutenberg texts were alo used as a base, it's a resource withlots of texts touse as a base
+            </li>
+            <li>
+                Emily Short -> Procedurally Generated fiction
+            </li>
+            <li>
+                KateCompton -> characterful - random additions on top of text to add notoriety/unique feelings to text
+            </li>
+            <li>
+                Added actual game secrets/information to add more reality and reason for existence to generated texts
+            </li>
+        </ul>
+        </div>
+        <div id="low-poly">
+            <h2>Low Poly Modeling: Style Through Economy</h2>
+            <h3>Ethan Redd</h3>
+            <h4>Friday (Mar 3) 3:20 - 3:50 PM</h4>
+            <ul>
+            <li>
+                Working on: Blazing Legion Ignition, NE_01, and Radbird Rally (?)
+            </li>
+            <li>
+                <u>Low Poly</u> - discipline/aesthetic of "surface economy"; lo-fi to get point across
+                <ul>
+                    <li>
+                        Subjective definition ("5k per asset" - rough definition)
+                    </li>
+                    <li>
+                        Very hard to make high fidelity 3D assets for indie developers
+                    </li>
+                    <li>
+                        Therefore making low res assets are incentivized to save time and money
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <u>Benefits</u>
+                <ul>
+                    <li>
+                        Productivity - quicker to produce and build; allows you to make more assets with your time
+                    </li>
+                    <li>
+                        Computational Efficiency - can "move smoother" and work with many assets at once on screen as well as on many gamers' computers
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <u>Thinking the "Low Poly Way"</u>
+                <ol>
+                    <li>
+                        "Stylish Compatability" - design aesthetics to suit game; don't design assets that don't fit
+                    </li>
+                    <li>
+                        "Resolution Conciousness" - add consistency to all assets
+                    </li>
+                    <li>
+                        Consider Silhouette Always - assets need to be seen from all angles
+                    </li>
+                    <li>
+                        Render Tricks - particles, etc. Shaders are very important
+                    </li>
+                </ol>
+            </li>
+            <li>
+                Approximation - need to have enough details to lower "resolution" but not too far to be noticeably obscured
+            </li>
+            <li>
+                <u>"Atomic Consistency"</u>
+                <ul>
+                    <li>
+                        Using larger objects can allow for different sizes of polygons
+                    </li>
+                    <li>
+                        Scales allow for different "atom size" of composite polygons
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <u>"Fitting"</u>
+                <ul>
+                    <li>
+                        Rough vs. Accurate
+                    </li>
+                    <li>
+                        "Dispersal" vs. "Accumulation"
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Differentiate approaches to show details or highlight different aspects
+            </li>
+            <li>
+                <u>Silhouette Conciousness</u>
+                <ol>
+                    <li>
+                        How legible is the overall shape?
+                    </li>
+                    <li>
+                        How will light/shadow interact with it?
+                    </li>
+                    <li>
+                        Over/under selling curvatures?
+                    </li>
+                </ol>
+            </li>
+            <li>
+                When reducing, take care to simplify tolower geometries - personal touchto reduce without losing quality and clarity
+            </li>
+            <li>
+                <u>"Cheating"</u> - lightning round hacks to help
+                <ul>
+                    <li>
+                        <u>Low Resolution Rendering</u> - helps hide error in low poly details and forgives certain graphical bugs
+                    </li>
+                    <li>
+                        <u>Color Palettes as Textures</u> - simpler palette helps cohesion as well as rendering
+                    </li>
+                    <li>
+                        <u>"Fun With Normals"</u>
+                    </li>
+                    <li>
+                        <u>"Scrolling UVs"</u> - atmospheric effects
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+    </body>
+</html>
