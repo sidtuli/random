@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Explosion</title>
+    
+    <meta charset="utf-8">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="msapplication-tap-highlight" content="no" />
+	
+    <link rel="stylesheet" href="explodal_assets/css/normalize.css">
+    <link rel="stylesheet" href="explodal_assets/css/styles.css?v=001.1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <audio id="audio">
+        <source src="explodal_assets/Epic%20Maneuver%20Song.mp3" type="audio/mpeg">
+    </audio>
+    <div class="app">
+        <div class="canvas">
+            <div>
+                <a href="#explode" class="ui--button" onclick="explode()">Click</a>
+                <!-- ^^ necessary little bit of JS to make sure the animated GIF play (not affected by caching). -->
+                
+                <p><small><a href="https://www.youtube.com/user/ContinueShow" title="I got more to see">Tribute to Continue Show</a></small></p>
+                <p><small><a href="https://github.com/jessekorzan/expodal">Made With Explodal</a></small></p>
+            </div>
+        </div>
+    </div>
+    <div id="explode" class="ui--modal explode">
+        <div>
+            <a href="#close" class="material-icons ui--close">clear</a>
+            <h3 class="huge">Epic Maneuver</h3>
+        </div>
+        <div class="bg">
+            <img src="explodal_assets/img/explode-med.gif" id="boooom">
+        </div>  
+    </div>
+    <script>
+        function explode() {
+            document.getElementById('boooom').setAttribute('src', 'explodal_assets/img/explode-med.gif');
+            audio = document.getElementById("audio");
+            audio.currentTime = 0
+            audio.play();
+        }
+    </script>
+    
+</body>
+</html>
