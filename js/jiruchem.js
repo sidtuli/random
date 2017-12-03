@@ -12,7 +12,7 @@ var data = {
   "11": "Forging a new road may make a mess. But it may lead to  treasure",
   "12": "One should always remain flexible in their actions.",
   "13": "Size may give an advantage, but skill can offer one as well.",
-  "14": "Be in harmony with your partners, otherwise .",
+  "14": "Be in harmony with your partners, otherwise you will suffer.",
   "15": "Communication is key to a healthy relationship.",
   "16": "Each entrance should be considered carefully.",
   "17": "A part's designed purpose may ignore possible other ones.",
