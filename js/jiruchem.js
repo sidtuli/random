@@ -41,7 +41,7 @@ var data = {
   "40": "Sometimes the company of another can trump all other desires.",
   "41": "A pretty face may obfuscate dark intentions.",
   "42": "In all things, a desirable balance is best.",
-  "43": "One may need a to practice an ignorance on the path to conquer.",
+  "43": "One may need to practice an ignorance on the path to conquer.",
   "44": "Do not let looks blind you to possible benefits. One can always find wealth in many odd places.",
   "45": "The long or heavy sword does not a man make. Knowing how to wield is most important.",
   "46": "Boldy go into the undiscovered country.",

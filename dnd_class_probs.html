@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+            DND Class Probabilities
+        </title>
+        <script
+			     src="https://code.jquery.com/jquery-3.2.1.min.js"
+                 integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                 crossorigin="anonymous">
+          </script>
+          <link rel="stylesheet"
+                href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+                crossorigin="anonymous">
+          <script
+                src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"></script>
+          <script>
+          var data;
+          $.ajax({
+              dataType: "json",
+              url: "data/dnd_class_probs.json",
+              mimeType: "application/json",
+              success: function(result) {
+                  data = result;
+                  $("#prob_button").attr("disabled",false);
+              }
+          });
+
+          function compute_probs(){
+              dnd_class = $("#class").find(":selected").val();
+              dnd_race = $("#race").find(":selected").val();
+              //console.log(dnd_class)
+              //console.log(data["Total"][dnd_class])
+              class_prob = (data["Total"][dnd_class]/data["Total"]["Total"])*100;
+              race_prob = (data[dnd_race]["Total"]/data["Total"]["Total"])*100;
+              combo_prob = (data[dnd_race][dnd_class]/data["Total"]["Total"])*100;
+              $("#class_prob").text(round(class_prob,2))
+              $("#race_prob").text(round(race_prob,2))
+              $("#combo_prob").text(round(combo_prob,2))
+              $(".race_text").text(dnd_race);
+              $(".class_text").text(dnd_class);
+              $("#stats").show();
+          }
+          // Source for function:
+          // http://www.jacklmoore.com/notes/rounding-in-javascript/
+          function round(value, decimals) {
+              return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+          }
+          </script>
+          <style>
+            body {
+                text-align: center;
+            }
+            p {
+                font-size: 2em;
+            }
+            span {
+                font-weight: bold;
+            }
+            #stats{
+                display:none;
+            }
+          </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <label for="race">Select Race</label>
+                    <select class="form-control" id="race">
+                        <option value="Human">
+                            Human
+                        </option>
+                        <option value="Elf">
+                            Elf
+                        </option>
+                        <option value="Half-Elf">
+                            Half-Elf
+                        </option>
+                        <option value="Dwarf">
+                            Dwarf
+                        </option>
+                        <option value="Dragonborn">
+                            Dragonborn
+                        </option>
+                        <option value="Tiefling">
+                            Tiefling
+                        </option>
+                        <option value="Genasi">
+                            Genasi
+                        </option>
+                        <option value="Halfling">
+                            Halfling
+                        </option>
+                        <option value="Half-Orc">
+                            Half-Orc
+                        </option>
+                        <option value="Gnome">
+                            Gnome
+                        </option>
+                        <option value="Goliath">
+                            Goliath
+                        </option>
+                        <option value="Aarakocra">
+                            Aarakocra
+                        </option>
+                        <option value="Aasimar">
+                            Aasimar
+                        </option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <label for="class">Select Class</label>
+                    <select class="form-control" id="class">
+                        <option value="Fighter">
+                            Fighter
+                        </option>
+                        <option value="Rogue">
+                            Rogue
+                        </option>
+                        <option value="Wizard">
+                            Wizard
+                        </option>
+                        <option value="Barbarian">
+                            Barbarian
+                        </option>
+                        <option value="Cleric">
+                            Cleric
+                        </option>
+                        <option value="Ranger">
+                            Ranger
+                        </option>
+                        <option value="Paladin">
+                            Paladin
+                        </option>
+                        <option value="Warlock">
+                            Warlock
+                        </option>
+                        <option value="Monk">
+                            Monk
+                        </option>
+                        <option value="Bard">
+                            Bard
+                        </option>
+                        <option value="Sorcerer">
+                            Sorcerer
+                        </option>
+                        <option value="Druid">
+                            Druid
+                        </option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <button id="prob_button" class="btn btn-default" onclick="compute_probs();" disabled>
+                        <h3>Compute Probabilities</h3>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="stats">
+            <p><span id="race_prob"></span>% of players chose the <span class="race_text"></span> race.</p>
+            <p><span id="class_prob"></span>% of players chose the class of <span class="class_text"></span>.</p>
+            <p><span id="combo_prob"></span>% players chose <span class="race_text"></span> <span class="class_text"></span></p>
+        </div>
+
+
+        <a href="https://fivethirtyeight.com/features/is-your-dd-character-rare/">Data based on this article</a>
+    </body>
+</html>
