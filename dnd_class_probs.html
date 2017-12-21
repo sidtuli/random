@@ -36,9 +36,13 @@
               //console.log(data["Total"][dnd_class])
               class_prob = (data["Total"][dnd_class]/data["Total"]["Total"])*100;
               race_prob = (data[dnd_race]["Total"]/data["Total"]["Total"])*100;
+              class_given_race_prob = (data[dnd_race][dnd_class]/data[dnd_race]["Total"])*100;
+              race_given_class_prob = (data[dnd_race][dnd_class]/data["Total"][dnd_class])*100;
               combo_prob = (data[dnd_race][dnd_class]/data["Total"]["Total"])*100;
               $("#class_prob").text(round(class_prob,2))
               $("#race_prob").text(round(race_prob,2))
+              $("#class_given_race_prob").text(round(class_given_race_prob,2))
+              $("#race_given_class_prob").text(round(race_given_class_prob,2))
               $("#combo_prob").text(round(combo_prob,2))
               $(".race_text").text(dnd_race);
               $(".class_text").text(dnd_class);
@@ -161,9 +165,11 @@
             </div>
         </div>
         <div id="stats">
-            <p><span id="race_prob"></span>% of players chose the <span class="race_text"></span> race.</p>
-            <p><span id="class_prob"></span>% of players chose the class of <span class="class_text"></span>.</p>
-            <p><span id="combo_prob"></span>% players chose <span class="race_text"></span> <span class="class_text"></span></p>
+            <p>P(race=<span class="race_text"></span>) = <span id="race_prob"></span>%</p>
+            <p>P(class=<span class="class_text"></span>) = <span id="class_prob"></span>%</p>
+            <p>P(class=<span class="class_text"></span>|race=<span class="race_text"></span>) = <span id="class_given_race_prob"></span>%</p>
+            <p>P(race=<span class="race_text"></span>|class=<span class="class_text"></span>) = <span id="race_given_class_prob"></span>%</p>
+            <p>P(race=<span class="race_text"></span> ^ class=<span class="class_text"></span>) = <span id="combo_prob"></span>%</p>
         </div>
 
 
