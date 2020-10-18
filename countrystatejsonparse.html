@@ -1,0 +1,29 @@
+<html>
+    <head></head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <div id="names">
+        </div>
+        <br/>
+        <a href="https://gist.github.com/ebaranov/41bf38fdb1a2cb19a781">Made to parse this</a>
+        <script>
+            country_state_arr = [];
+            $.getJSON("data/countrystate.json", function(json) {
+                for(country in json['countries']) {
+                    country_state_arr.push(json['countries'][country]['country']);
+                    for(state in json['countries'][country]['states']) {
+                        country_state_arr.push(json['countries'][country]['states'][state]);
+                    }
+                }
+                country_state_arr.sort();
+                console.log(country_state_arr);
+                for(name in country_state_arr) {
+                    $("#names").append(country_state_arr[name]+"<br/>");
+                }
+            });
+            
+            
+        </script>
+    </body>
+</html>
