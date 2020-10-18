@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>DND Dice Roller</title>
+        <style>
+            button {
+                width: 10%;
+            }
+            .die {
+                width: 10%;
+                display: inline-block;
+                text-align: center;
+            }
+			td {
+				text-align: center;
+			}
+        </style>
+    </head>
+    <body>
+        <script>
+            function d6() {
+			    rolls = Number(document.getElementById("rolls").value)
+				roll_stats = {1:0,2:0,3:0,4:0,5:0,6:0}
+				if(rolls) {
+					while(rolls > 0) {
+						curr_roll = Math.floor(Math.random() * 6) + 1;
+						roll_stats[curr_roll] += 1;
+						rolls -= 1;
+					}
+				}
+				for(stat in roll_stats) {
+					document.getElementById(""+stat).innerHTML = roll_stats[stat]
+					console.log(stat)
+					console.log(document.getElementById(""+stat).text)
+				}
+                
+            }
+        </script>
+        <div>
+			<input type="number" id="rolls">
+            <button onclick="d6()">Roll</button>
+			<table style="width:100%">
+				<tr>
+					<th>Result</th>
+					<th>Rolls</th>
+					
+				</tr>
+				<tr>
+					<td>1</td>
+					<td id="1"></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td id="2"></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td id="3"></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td id="4"></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td id="5"></td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td id="6"></td>
+				</tr>
+			</table> 
+        </div>
+    </body>
+</html>
