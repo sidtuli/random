@@ -48,11 +48,71 @@ Just a place to store small web page examples or small side web projects I want 
 | [dice4.html](https://sidtuli.github.io/random/dice4.html ) | 🟩 | Fine. M |
 | [dice5.html](https://sidtuli.github.io/random/dice5.html ) | 🟩 | Fine. Maybe move js to separate file? Also remove cdn link for css stuff? Yellow d10 text looks bad? |
 | [dice6.html](https://sidtuli.github.io/random/dice6.html ) | 🟩 | Fine. Maybe move js to separate file? Also remove cdn link for css stuff? Yellow d10 text looks bad? |
-| Page              | Status | Notes |
-| Page              | Status | Notes |
-| Page              | Status | Notes |
-| Page              | Status | Notes |
-| Page              | Status | Notes |
-| Page              | Status | Notes |
-| Page              | Status | Notes |
-| Page              | Status | Notes |
+| [randuni.html](https://sidtuli.github.io/random/randuni.html ) | 🟩 | Fine. Maybe give abutton to generate new characters? |
+| [show1.html](https://sidtuli.github.io/random/show1.html ) | 🟨 | Works, update name. |
+| [show2.html](https://sidtuli.github.io/random/show2.html ) | 🟩 | Works. |
+| [show3.html](https://sidtuli.github.io/random/show3.html ) | 🟨 | Works, clean up pics. |
+| [show5.html](https://sidtuli.github.io/random/show5.html ) | 🟩 | Works. |
+| [show6.html](https://sidtuli.github.io/random/show6.html ) | 🟩 | Works. |
+| [show7.html](https://sidtuli.github.io/random/show7.html ) | 🟩 | Works. |
+| [show8.html](https://sidtuli.github.io/random/show8.html ) | 🟨 | Works. Swap the names - Sidhanth is the host, Siddy is the guest. |
+| [radio.html](https://sidtuli.github.io/random/radio.html ) | 🟩 | Fine, maybe clean up how links present a bit? |
+| [imgratio.html](https://sidtuli.github.io/random/imgratio.html ) | 🟩 | Seems to be working fine. Maybe try some validation on files or give error messages?? |
+| [checkflags.html](https://sidtuli.github.io/random/checkflags.html )| 🟥 | Seems to be broken? Not sure if it's not executing the script correctly or not loading the jsons properly? Also look into where we got flags from and where we got country codes from? |
+| [flagquiz.html](https://sidtuli.github.io/random/flagquiz.html ) | 🟨 | Works, maybe rework js on how to best setup the data array and json object as well as keep it clean, rework max size for image so its easy to click on buttons. Also not sure if I should add score, finall points, etc. to show player's score and how well they're doing. Also will need to look into overall process for updating this, keep it updated and clean as well as maybe look to add more flags. |
+| [neighbors.html](https://sidtuli.github.io/random/neighbors.html ) | 🟥 | Requests seem to be broken? Not sure if it's a change with the geoanmes API or js code. |
+| [printnearby.html](https://sidtuli.github.io/random/printnearby.html ) | 🟨 | Works, maybe rework js as well as of course make sure above data source works. Also look into organizing as table and maybe generate headers based on what is there as opposed to just have those static. |
+| [geoflagquiz.html](https://sidtuli.github.io/random/geoflagquiz.html ) | 🟨 | Works, maybe rework js on how to best setup the data array and json object as well as keep it clean, rework max size for image so its easy to click on buttons. Also not sure if I should add score, finall points, etc. to show player's score and how well they're doing. Also will need to look into overall process for updating this, keep it updated and clean as well as maybe look to add more flags. |
+| [ngauto.html](https://sidtuli.github.io/random/ngauto.html ) | 🟩 | Seems fine, maybe add more names for new friends? |
+| [dice7.html](https://sidtuli.github.io/random/dice7.html ) | 🟥 | I believe this was abandoned as it was very ambitious and lots of things weren't working. Not sure if it needs some retooling  |
+| [smashgraph7.html](https://sidtuli.github.io/random/smashgraph7.html ) | 🟩 | This graph has no data? Maybe resize |
+| [smashgraph14total.html](https://sidtuli.github.io/random/smashgraph14total.html ) | 🟩 | Seems good, maybe js to external file. |
+| [smashgraph8.html](https://sidtuli.github.io/random/smashgraph8.html ) | 🟩 | Seems fine, maybe move js to external file. |
+| [lazyloaded.html](https://sidtuli.github.io/random/lazyloaded.html ) | 🟩 | Seems fine, though I will admit that seems wonky on that first image not showing up. |
+| [notlazyloaded.html](https://sidtuli.github.io/random/notlazyloaded.html ) | 🟩 | Seems fine. |
+| [vidautoplay.html](https://sidtuli.github.io/random/vidautoplay.html ) | 🟥 | Auto play doesn't seem to work at first, not sure if no longer possible due to browser standards or something else? |
+| [gdc.html ](https://sidtuli.github.io/random/gdc.html ) | 🟩 | Seems fine. |
+| [explodal.html](https://sidtuli.github.io/random/explodal.html ) | 🟨 | Fine, maybe center text and rehost the google apis font content? |
+| [spamcomments.html](https://sidtuli.github.io/random/spamcomments.html ) | 🟩 | Okay, just kinda an old artifact now. Maybe at least list on the page? |
+| [jiruchem.html](https://sidtuli.github.io/random/jiruchem.html ) | 🟨 | Update to remove cdn links in order to self host? Also add link to index links? |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
+| []( ) | Status | Notes |
