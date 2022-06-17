@@ -56,7 +56,7 @@ Just a place to store small web page examples or small side web projects I want 
 | [show6.html](https://sidtuli.github.io/random/show6.html ) | 🟩 | Works. |
 | [show7.html](https://sidtuli.github.io/random/show7.html ) | 🟩 | Works. |
 | [show8.html](https://sidtuli.github.io/random/show8.html ) | 🟨 | Works. Swap the names - Sidhanth is the host, Siddy is the guest. |
-| [radio.html](https://sidtuli.github.io/random/radio.html ) | 🟩 | Fine, maybe clean up how links present a bit? |
+| [radio.html](https://sidtuli.github.io/random/radio.html ) | 🟩 | Fine, maybe clean up how links present a bit? Also work on adding newer shows in new pages? |
 | [imgratio.html](https://sidtuli.github.io/random/imgratio.html ) | 🟩 | Seems to be working fine. Maybe try some validation on files or give error messages?? |
 | [checkflags.html](https://sidtuli.github.io/random/checkflags.html )| 🟥 | Seems to be broken? Not sure if it's not executing the script correctly or not loading the jsons properly? Also look into where we got flags from and where we got country codes from? |
 | [flagquiz.html](https://sidtuli.github.io/random/flagquiz.html ) | 🟨 | Works, maybe rework js on how to best setup the data array and json object as well as keep it clean, rework max size for image so its easy to click on buttons. Also not sure if I should add score, finall points, etc. to show player's score and how well they're doing. Also will need to look into overall process for updating this, keep it updated and clean as well as maybe look to add more flags. |
