@@ -75,44 +75,11 @@ Just a place to store small web page examples or small side web projects I want 
 | [explodal.html](https://sidtuli.github.io/random/explodal.html ) | 🟨 | Fine, maybe center text and rehost the google apis font content? |
 | [spamcomments.html](https://sidtuli.github.io/random/spamcomments.html ) | 🟩 | Okay, just kinda an old artifact now. Maybe at least list on the page? |
 | [jiruchem.html](https://sidtuli.github.io/random/jiruchem.html ) | 🟨 | Update to remove cdn links in order to self host? Also add link to index links? |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
-| []( ) | Status | Notes |
+| [dnd_class_probs.html](https://sidtuli.github.io/random/dnd_class_probs.html ) | 🟨 | Self host cdn links, move css and js to links? |
+| [alphabet.html](https://sidtuli.github.io/random/alphabet.html ) | 🟨 | Self host cdn links, move css and js to links? |
+| [countrystatejsonparse.html](https://sidtuli.github.io/random/countrystatejsonparse.html ) | 🟩 | Seems fine, may need to rework cdn link and display of states? |
+| [flag_svg_convert.html](https://sidtuli.github.io/random/flag_svg_convert.html ) | 🟩 | Used for flag bot, seems fine but maybe move out js and css to files? |
+| [modulo_cipher.html](https://sidtuli.github.io/random/modulo_cipher.html ) | 🟨 | The code seems to break on negative so maybe restrict negatives or similar conditions or modulo that too? Also move css and js out? |
+| [d6_stats.html](https://sidtuli.github.io/random/d6_stats.html ) | 🟩 | Seems fine, maybe move js and css into separate files? Fix display and then link?|
+| [drunk_scrambler.html](https://sidtuli.github.io/random/drunk_scrambler.html ) | 🟨 | Move js out and make slight additions to display. More importantly rework the logic or options to change text - probabiliy of change, make random roll between how far it goes, and then the range of how far it an go. Also add link to index. |
 | []( ) | Status | Notes |
