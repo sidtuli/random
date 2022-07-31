@@ -29,19 +29,19 @@
             }
             
             function postToken() {
-                AUTH_POST_URL = "https://cors-anywhere.herokuapp.com/https://www.reddit.com/api/v1/access_token";
+                AUTH_POST_URL = "https://cors-anywhere.herokuapp.com/https://www.reddit.com/api/v1/access_token?";
                 AUTH_POST_BODY_GRANT_PARAM = "grant_type=authorization_code";
                 AUTH_POST_BODY_CODE_PARAM = "&code=" + document.getElementById("auth-code").value;
                 AUTH_POST_BODY_REDIRECT_URI_PARAM = "&redirect_uri=" + document.getElementById("redirect-uri").value;
                 
-                AUTH_POST_BODY = AUTH_POST_BODY_GRANT_PARAM + AUTH_POST_BODY_CODE_PARAM + AUTH_POST_BODY_REDIRECT_URI_PARAM;
+                AUTH_POST_REQUEST_URL = AUTH_POST_URL + AUTH_POST_BODY_GRANT_PARAM + AUTH_POST_BODY_CODE_PARAM + AUTH_POST_BODY_REDIRECT_URI_PARAM;
                 
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", AUTH_POST_URL, true);
+                xhr.open("POST", AUTH_POST_REQUEST_URL, true);
                 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhr.setRequestHeader("Access-Control-Allow-Origin","*");
                 xhr.setRequestHeader("User-Agent","SiddyTuliTelexonClient/0.1 by Telexon");
-                xhr.send(AUTH_POST_BODY);
+                xhr.send();
                 
                 console.log(xhr);
                 
