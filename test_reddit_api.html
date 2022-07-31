@@ -39,7 +39,7 @@
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", AUTH_POST_URL, true);
                 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                //xhr.setRequestHeader("Access-Control-Allow-Origin","*");
+                xhr.setRequestHeader("Access-Control-Allow-Origin","*");
                 xhr.send(AUTH_POST_BODY);
                 
                 console.log(xhr);
