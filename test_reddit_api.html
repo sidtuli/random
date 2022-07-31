@@ -29,7 +29,7 @@
             }
             
             function postToken() {
-                AUTH_POST_URL = "https://cors-anywhere.herokuapp.com/https://www.reddit.com/api/v1/access_token?";
+                AUTH_POST_URL = "https://www.reddit.com/api/v1/access_token?";
                 AUTH_POST_BODY_GRANT_PARAM = "grant_type=authorization_code";
                 AUTH_POST_BODY_CODE_PARAM = "&code=" + document.getElementById("auth-code").value;
                 AUTH_POST_BODY_REDIRECT_URI_PARAM = "&redirect_uri=" + document.getElementById("redirect-uri").value;
@@ -45,7 +45,7 @@
                 xhr.send();
                 
                 console.log(xhr);*/
-                document.getElementById("redirect-uri").value = AUTH_POST_REQUEST_URL;
+                document.getElementById("token-link").text = AUTH_POST_REQUEST_URL;
             }
         </script>
     </head>
