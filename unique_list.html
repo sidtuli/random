@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Lister
+        </title>
+        <script>
+            function convertTextToList(){
+                // Split  result
+                text = document.getElementById("input-text").value
+                lineBreakedText = text.split(/\r\n|\n/);
+                
+                resultsObj = {};
+                
+                resultText = "";
+                
+                for(i = 0; i < lineBreakedText.length; i++) {
+                    curr_text = lineBreakedText[i];
+                    if(curr_text.replace(/\s/g, '').length >= 1)
+                    {
+                        resultsObj[curr_text] = true;
+                    }
+                }
+                
+                for(key in resultsObj) {
+                    resultText += key + "\n\n";
+                }
+                
+                document.getElementById("result-text").textContent = resultText;
+            }
+            
+            // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+            function copyText() {
+                var copyText = document.getElementById("result-text");
+                navigator.clipboard.writeText(copyText.textContent);
+            }
+        </script>
+    </head>
+    <body>
+        <textarea id="input-text"></textarea>
+        <button onclick="convertTextToList()">convert</button>
+        <button onclick="copyText()">copy</button>
+        <div id="result-text"></div>
+    </body>
+</html>

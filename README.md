@@ -82,4 +82,5 @@ Just a place to store small web page examples or small side web projects I want 
 | [modulo_cipher.html](https://sidtuli.github.io/random/modulo_cipher.html ) | 🟨 | The code seems to break on negative so maybe restrict negatives or similar conditions or modulo that too? Also move css and js out? |
 | [d6_stats.html](https://sidtuli.github.io/random/d6_stats.html ) | 🟩 | Seems fine, maybe move js and css into separate files? Fix display and then link?|
 | [drunk_scrambler.html](https://sidtuli.github.io/random/drunk_scrambler.html ) | 🟨 | Move js out and make slight additions to display. More importantly rework the logic or options to change text - probabiliy of change, make random roll between how far it goes, and then the range of how far it an go. Also add link to index. |
+| [unique_list.html](https://sidtuli.github.io/random/unique_list.html ) | 🟩 | Seems fine, new page to make unique lists from input |
 | []( ) | Status | Notes |
