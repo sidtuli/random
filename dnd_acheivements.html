@@ -1,0 +1,303 @@
+<html>
+    <head>
+        <title>D&D Acheivements</title>
+        <style>
+            table{
+                border: 1px solid #333;
+                width: 450px;
+            }
+            img,.icon{
+                width: 100px;
+            }
+            h1,h3 {
+                text-align:left;
+            }
+            .lvl{
+                font-size:2.75em;
+            }
+            #title{
+                font-size:3em;
+                text-decoration: underline;
+            }
+        </style>
+        <script>
+            window.addEventListener('load', function() {
+                onStart();
+            });
+               
+            function onStart() {
+                charArray = ["abbadiah","gorb","janus","kerith","zehnes"];
+                for(i = 0; i < charArray.length; i++) {
+                    characterCheck(charArray[i]);
+                }
+            }
+            
+            function characterCheck(character) {
+                achievementDisplayType = document.querySelector("#"+character+"-checkbox").checked ? 'block' : 'none';
+                    
+                achievementBoxes = document.querySelectorAll("."+character+"-lvl");
+                achievementBoxes.forEach(achievementBox => {
+                    achievementBox.style.display = achievementDisplayType;
+                });
+                
+                characterHeaders = document.querySelectorAll("."+character+"-header");
+                characterHeaders.forEach(characterHeader => {
+                    characterHeader.style.display = achievementDisplayType;
+                });
+            }
+            
+            function numChecked() {
+                checkboxSum = 0;
+                if(document.querySelector('#abbadiah-checkbox').checked) {
+                    checkboxSum += 1;
+                }
+                if(document.querySelector('#gorb-checkbox').checked) {
+                    checkboxSum += 1;
+                }
+                if(document.querySelector('#janus-checkbox').checked) {
+                    checkboxSum += 1;
+                }
+                if(document.querySelector('#kerith-checkbox').checked) {
+                    checkboxSum += 1;
+                }
+                if(document.querySelector('#zehnes-checkbox').checked) {
+                    checkboxSum += 1;
+                }
+                return checkboxSum;
+            }
+        </script>
+    </head>
+    <body>
+    
+        <h1 id="title">D&D Achievements</h1>
+        
+        <div id="char-select">
+            <input type="checkbox" id="abbadiah-checkbox" checked="true" onchange="characterCheck('abbadiah')"/>
+            <label for="abbadiah-checkbox">Abbadiah</label>
+            
+            <input type="checkbox" id="gorb-checkbox" checked="true" onchange="characterCheck('gorb')"/>
+            <label for="gorb-checkbox">Gorb</label>
+            
+            <input type="checkbox" id="janus-checkbox" checked="true" onchange="characterCheck('janus')"/>
+            <label for="janus-checkbox">Janus</label>
+            
+            <input type="checkbox" id="kerith-checkbox" checked="true" onchange="characterCheck('kerith')"/>
+            <label for="kerith-checkbox">Kerith</label>
+            
+            <input type="checkbox" id="zehnes-checkbox" checked="true" onchange="characterCheck('zehnes')"/>
+            <label for="zehnes-checkbox">Zehnes</label>
+        </div>
+    
+        <h1 class="lvl"> Level 6 </h1>
+        
+        <h2 class="zehnes-header char-header">Zehnes</h2>
+        
+        <table class="zehnes-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/ocean.jpg"/></td>
+                <td>
+                    <h1>Haishen's Five</h1>
+                    <h3>Pull off a daring heist.</h3>
+                </td>
+            </tr>
+        </table>
+        
+        <h2 class="gorb-header char-header">Gorb</h2>
+        
+        <table class="gorb-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/paranoia.png"/></td>
+                <td>
+                    <h1>Dark Dreams Don't Die</h1>
+                    <h3>Acquire mental scars.</h3>
+                </td>
+            </tr>
+        </table>
+                
+        <h2 class="janus-header char-header">Janus</h2>
+        
+        <table class="janus-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/gamble.jpg"/></td>
+                <td>
+                    <h1>Unlucky</h1>
+                    <h3>Lost it all.</h3>
+                </td>
+            </tr>
+        </table>
+        
+        <h2 class="kerith-header char-header">Kerith</h2>
+        
+        <table class="kerith-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/heart.jpg"/></td>
+                <td>
+                    <h1>Matchmaker</h1>
+                    <h3>Encouraged new love.</h3>
+                </td>
+            </tr>
+        </table>
+        
+        <h2 class="abbadiah-header char-header">Abbadiah</h2>
+        
+        <table class="abbadiah-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/sobreity.jpg"/></td>
+                <td>
+                    <h1>Straight Edge</h1>
+                    <h3>Never came close to being tempted.</h3>
+                </td>
+            </tr>
+        </table>
+        
+        <h1 class="lvl">Level 7</h1>
+        
+        <h2 class="janus-header char-header">Janus</h2>
+        
+        <table class="janus-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/potion.png"/></td>
+                <td>
+                    <h1>Potionmaker</h1>
+                    <h3>You can't handle <i>these</i> potions</h3>
+                </td>
+            </tr>
+        </table>
+        
+        <h2 class="gorb-header char-header">Gorb</h2>
+        
+        <table class="gorb-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/woodworker.jpg"/></td>
+                <td>
+                    <h1>Woodworker</h1>
+                    <h3>Carvin' out your piece of the world</h3>
+                </td>
+            </tr>
+        </table>
+                
+        <h2 class="kerith-header char-header">Kerith</h2>
+        
+        <table class="kerith-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/prisonbreak.jpg"/></td>
+                <td>
+                    <h1>Prison Break</h1>
+                    <h3>Made the great escape</h3>
+                </td>
+            </tr>
+        </table>
+                
+        <h2 class="abbadiah-header char-header">Abbadiah</h2>
+        
+        <table class="abbadiah-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/peace.png"/></td>
+                <td>
+                    <h1>Pacifist</h1>
+                    <h3>Can't we all give peace a chance?</h3>
+                </td>
+            </tr>
+        </table>
+        
+        <h1 class="lvl">Level 8</h1>
+        
+        <h2 class="gorb-header char-header">Gorb</h2>
+        
+        <table class="gorb-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/sword.jpg"/></td>
+                <td>
+                    <h1>Package Delivered</h1>
+                    <h3>Returned a sword to its owner</h3>
+                </td>
+            </tr>
+        </table>
+                
+        <h2 class="abbadiah-header char-header">Abbadiah</h2>
+        
+        <table class="abbadiah-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/dagger.jpg"/></td>
+                <td>
+                    <h1>Dark Arts</h1>
+                    <h3>Getting stronger takes a lot of sacrifice</h3>
+                </td>
+            </tr>
+        </table>
+                
+        <h2 class="kerith-header char-header">Kerith</h2>
+        
+        <table class="kerith-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/wheel.jpg"/></td>
+                <td>
+                    <h1>O Captain! My Captain!</h1>
+                    <h3>Find a ship and crew it</h3>
+                </td>
+            </tr>
+        </table>
+                
+        <h2 class="janus-header char-header">Janus</h2>
+        
+        <table class="janus-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/new_quest.png"/></td>
+                <td>
+                    <h1>New Quest!</h1>
+                    <h3>Become an errand boy for nobles.</h3>
+                </td>
+            </tr>
+        </table>
+        
+        <h1 class="lvl">Level 9</h1>
+                
+        <h2 class="kerith-header char-header">Kerith</h2>
+        
+        <table class="kerith-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/bigbro.png"/></td>
+                <td>
+                    <h1>Big Brother Program</h1>
+                    <h3>Took care of your little sister</h3>
+                </td>
+            </tr>
+        </table>
+                
+        <h2 class="janus-header char-header">Janus</h2>
+        
+        <table class="janus-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/psyduck.jpg"/></td>
+                <td>
+                    <h1>Where Is My Mind?</h1>
+                    <h3>What are these haunting spectres?!?</h3>
+                </td>
+            </tr>
+        </table>
+                
+        <h2 class="abbadiah-header char-header">Abbadiah</h2>
+        
+        <table class="abbadiah-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/air_ship.jpg"/></td>
+                <td>
+                    <h1>Pilot's License</h1>
+                    <h3>Time to travel out on the open skies</h3>
+                </td>
+            </tr>
+        </table>
+                
+        <h2 class="gorb-header char-header">Gorb</h2>
+        
+        <table class="gorb-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/buzzbuzz.png"/></td>
+                <td>
+                    <h1>Bug Buddy</h1>
+                    <h3>Met a cool friend in the desert</h3>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
