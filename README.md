@@ -83,5 +83,5 @@ Just a place to store small web page examples or small side web projects I want 
 | [d6_stats.html](https://sidtuli.github.io/random/d6_stats.html ) | 🟩 | Seems fine, maybe move js and css into separate files? Fix display and then link?|
 | [drunk_scrambler.html](https://sidtuli.github.io/random/drunk_scrambler.html ) | 🟨 | Move js out and make slight additions to display. More importantly rework the logic or options to change text - probabiliy of change, make random roll between how far it goes, and then the range of how far it an go. Also add link to index. |
 | [unique_list.html](https://sidtuli.github.io/random/unique_list.html ) | 🟩 | Seems fine, new page to make unique lists from input |
-| [dnd_acheivements.html](https://sidtuli.github.io/random/dnd_acheivements.html ) | 🟩 | Very simple so all good |
+| [dnd_acheivements.html](https://sidtuli.github.io/random/dnd_acheivements.html ) | 🟩 | Very simple so all good, maybe small cleaning and ordering later|
 | []( ) | Status | Notes |
