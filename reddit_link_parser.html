@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Reddit Link Parser
+        </title>
+        <script>
+            function convertTextToList(){
+                // Split  result
+                text = document.getElementById("input-text").value
+                lineBreakedText = text.split(/\r\n|\n/);
+                
+                resultsObj = {};
+                
+                resultText = "";
+                
+                for(i = 0; i < lineBreakedText.length; i++) {
+                    curr_text = lineBreakedText[i];
+                    if(curr_text.replace(/\s/g, '').length >= 1)
+                    {
+                        resultsObj[curr_text] = true;
+                    }
+                }
+                
+                for(key in resultsObj) {
+                    resultText += key + "\n\n";
+                }
+                
+                document.getElementById("result-list").textContent = resultText;
+            }
+            
+            // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+            function copyText() {
+                var copyText = document.getElementById("result-list");
+                navigator.clipboard.writeText(copyText.textContent);
+            }
+            
+            function list() {
+                subredditMap = {}
+                redditPrefix = "https://www.reddit.com/r/";
+                
+                text = document.getElementById("input-text").value
+                lineBreakedText = text.split(/\r\n|\n/);
+                
+                listHtml = "<ul>\n"
+                for(i = 0; i < lineBreakedText.length; i++) {
+                    
+                    if(lineBreakedText[i] !== '' && lineBreakedText[i].startsWith(redditPrefix)) {
+                        listHtml += "<li><a href='" + lineBreakedText[i] + "' target='_blank'>" + lineBreakedText[i] + "</a></li>";
+                        var redditSuffix = lineBreakedText[i].replace(redditPrefix,'')
+                        var subredditName = redditSuffix.split("/")[0];
+                        
+                        if(subredditMap[redditPrefix + subredditName]) {
+                            subredditMap[redditPrefix + subredditName] += 1;
+                        } else {
+                            subredditMap[redditPrefix + subredditName] = 1;
+                        }
+                    }
+                }
+                listHtml += "</ul>\n"
+                
+                document.getElementById("result-list").innerHTML = listHtml;
+                
+                listHtml = "<ul>\n"
+                
+                
+                // https://stackoverflow.com/questions/1069666/sorting-object-property-by-values
+                sortedSubreddits = [];                
+                
+                for(key in subredditMap) {
+                    sortedSubreddits.push([key, subredditMap[key]]);
+                }
+                
+                sortedSubreddits.sort(function(a, b) {
+                    if(a[1] === b[1]) {
+                        // https://stackoverflow.com/questions/51165/how-to-sort-strings-in-javascript
+                        return a[0].localeCompare(b[0]);
+                    } else {
+                        return b[1] - a[1];
+                    }
+                    
+                });
+                
+                for(i = 0; i < sortedSubreddits.length; i++) {
+                    listHtml += "<li><a href='" + sortedSubreddits[i][0] + "' target='_blank'>" + sortedSubreddits[i][0] + "</a> - " + sortedSubreddits[i][1] +  "</li>";
+                }
+                
+                listHtml += "</ul>\n"
+                
+                document.getElementById("subreddit-list").innerHTML = listHtml;
+            }
+            
+            function randomLink() {
+                // Split  result
+                text = document.getElementById("input-text").value
+                lineBreakedText = text.split(/\r\n|\n/);
+                
+                randIndex = Math.floor(Math.random() * lineBreakedText.length);
+                
+                while(lineBreakedText[randIndex].length === 0) {
+                    randIndex = Math.floor(Math.random() * lineBreakedText.length);
+                }
+                randRedditLink = lineBreakedText[randIndex];
+                
+                document.getElementById("random-link").innerHTML = "<a href=\"" +randRedditLink + "\" target='_blank'>random link</a>" ;
+                
+                //console.log(randRedditLink);
+                
+               /* iframePrefix="<iframe id='reddit-embed' src='";
+                https://www.redditmedia.com/r/technology/comments/uovhmk/att_has_bankrolled_politicians_behind/?ref_source=embed&amp;ref=share&amp;embed=true&amp;theme=dark" 
+                iframeSuffix = " sandbox='allow-scripts allow-same-origin allow-popups' style='border: none;' scrolling='no' width='640' height='144'></iframe>";*/
+            }
+            
+        </script>
+    </head>
+    <body>
+        <textarea id="input-text"></textarea>
+        <button onclick="convertTextToList()">convert</button>
+        <button onclick="copyText()">copy</button>
+        <button onclick="list()">list links and subreddits</button>
+        <button onclick="randomLink()">random link</button>
+        
+        <div id="random-link"></div>
+        <div id="subreddit-list"></div>
+        <div id="result-list"></div>
+    </body>
+</html>
