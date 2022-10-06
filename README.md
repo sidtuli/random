@@ -39,7 +39,7 @@ Just a place to store small web page examples or small side web projects I want 
 | [smashgraph4.html](https://sidtuli.github.io/random/smashgraph4.html ) | 🟩 | Fine. Maybe move js to separate file? |
 | [smashgraph5.html](https://sidtuli.github.io/random/smashgraph5.html ) | 🟩 | Fine. Maybe move js to separate file? Not sure how I made my color choices? |
 | [randarray.html](https://sidtuli.github.io/random/randarray.html ) | 🟩 | Fine. Maybe move js to separate file? |
-| [tavernname.html](https://sidtuli.github.io/random/tavernname.html ) | 🟩 | Fine. Maybe move js to separate file? |
+| [tavernname.html](https://sidtuli.github.io/random/tavernname.html ) | 🟩 | Fine. Maybe move js to separate file? Also look to make button size reactive |
 | [pointbuy.html](https://sidtuli.github.io/random/pointbuy.html ) | 🟩 | Fine. Maybe move js to separate file? |
 | [dice.html](https://sidtuli.github.io/random/dice.html ) | 🟩 | Fine. Maybe move js to separate file? Also maybe rename to dice1.html? |
 | [dice2.html](https://sidtuli.github.io/random/dice2.html ) | 🟩 | Fine. Maybe move js to separate file? |
@@ -48,7 +48,7 @@ Just a place to store small web page examples or small side web projects I want 
 | [dice4.html](https://sidtuli.github.io/random/dice4.html ) | 🟩 | Fine. M |
 | [dice5.html](https://sidtuli.github.io/random/dice5.html ) | 🟩 | Fine. Maybe move js to separate file? Also remove cdn link for css stuff? Yellow d10 text looks bad? |
 | [dice6.html](https://sidtuli.github.io/random/dice6.html ) | 🟩 | Fine. Maybe move js to separate file? Also remove cdn link for css stuff? Yellow d10 text looks bad? |
-| [randuni.html](https://sidtuli.github.io/random/randuni.html ) | 🟩 | Fine. Maybe give abutton to generate new characters? |
+| [randuni.html](https://sidtuli.github.io/random/randuni.html ) | 🟩 | Fine. Maybe give a button to generate new characters? |
 | [show1.html](https://sidtuli.github.io/random/show1.html ) | 🟨 | Works, update name. |
 | [show2.html](https://sidtuli.github.io/random/show2.html ) | 🟩 | Works. |
 | [show3.html](https://sidtuli.github.io/random/show3.html ) | 🟨 | Works, clean up pics. |
@@ -84,4 +84,6 @@ Just a place to store small web page examples or small side web projects I want 
 | [drunk_scrambler.html](https://sidtuli.github.io/random/drunk_scrambler.html ) | 🟨 | Move js out and make slight additions to display. More importantly rework the logic or options to change text - probabiliy of change, make random roll between how far it goes, and then the range of how far it an go. Also add link to index. |
 | [unique_list.html](https://sidtuli.github.io/random/unique_list.html ) | 🟩 | Seems fine, new page to make unique lists from input |
 | [dnd_acheivements.html](https://sidtuli.github.io/random/dnd_acheivements.html ) | 🟩 | Very simple so all good, maybe small cleaning and ordering later|
+| [reddit_link_parser.html](https://sidtuli.github.io/random/reddit_link_parser.html ) | 🟩 | Very simple, maybe some cleaning and add link to main index |
 | []( ) | Status | Notes |
+
