@@ -1447,7 +1447,7 @@
             "Grease",
             "Invisibility",
             "Restoration",
-            "Green",-"Flame",
+            "Green-Flame",
             "Guardian",
             "Faith",
             "Guards",
@@ -1704,11 +1704,12 @@
         ];
         
         function makeNewSpell() {
+            
             name = names[randIndex(names)];
             adjective = adjectives[randIndex(adjectives)];
             noun = nouns[randIndex(nouns)];
             
-            document.getElementById("spell-name").innerHTML = convertPossesiveNoun(name) + " " + adjective + " " + noun;
+            document.getElementById("spell-name").innerHTML = convertPossesiveName(name) + " " + adjective + " " + noun;
         }
         
         // Random - https://www.w3schools.com/JS/js_random.asp
@@ -1716,9 +1717,8 @@
             return Math.floor(Math.random()*arr.length);
         }
         
-        function convertPossesiveNoun(name) {
+        function convertPossesiveName(name) {
             lastChar = name.charAt(name.length - 1);
-            console.log(lastChar);
             if(lastChar === 's'){
                 return name + "'";
             } else {
