@@ -87,5 +87,6 @@ Just a place to store small web page examples or small side web projects I want 
 | [reddit_link_parser.html](https://sidtuli.github.io/random/reddit_link_parser.html ) | 🟩 | Very simple, maybe some cleaning and add link to main index |
 | [dnd_wizard_spell_generator.html](https://sidtuli.github.io/random/dnd_wizard_spell_generator.html ) | 🟩 | Very simple, can be added to over time and might need slight css tweaks |
 | [pep_talk.html](https://sidtuli.github.io/random/pep_talk.html ) | 🟩 | Very simple, probably harder to add new entries |
+| [dnd_calender_converter.html](https://sidtuli.github.io/random/dnd_calender_converter.html ) | 🟩 | Simple little page, might want to rework some of the css or styling a bit but it's fine for now |
 | []( ) | Status | Notes |
 

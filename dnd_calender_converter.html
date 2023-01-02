@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- reference - https://css-tricks.com/emoji-as-a-favicon/ -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📅</text></svg>">
+    <title>
+        D&D Calendar Converter
+    </title>
+    <style>
+    </style>
+    <script>
+        Zhulin_Seasons = ["Green","Red","Orange","Blue"]
+        function convertToZhulinCalendar(dayNumber) {
+            fixedDayNumber =  fixAndCheckDayNumber(dayNumber);
+            
+            zhulinSeason = Zhulin_Seasons[Math.floor(dayNumber/(360/Zhulin_Seasons.length))];
+            
+            zhulinDay = (fixedDayNumber % (360/Zhulin_Seasons.length)) + 1;
+            document.getElementById("zhulin-date").innerText = "Day " + zhulinDay + " of " + zhulinSeason;
+            
+            fixZhulinInputs(zhulinSeason, zhulinDay);
+        }
+        
+        Vashlosi_Months = ["Iron","Mithral / Mithril / Mithrael","Bronze","Steel","Electrum","Silver","Gold","Platinum","Targath"]
+        function convertToVashlosiCalendar(dayNumber) {
+            fixedDayNumber =  fixAndCheckDayNumber(dayNumber);
+            
+            monthIndex = Math.floor(dayNumber/(360/Vashlosi_Months.length))
+            
+            weekFormatted = Math.floor((dayNumber%(360/Vashlosi_Months.length))/10) + 1
+            
+            weekDayFormatted = (dayNumber%(360/Vashlosi_Months.length) - (10 * (weekFormatted - 1))) + 1;
+            
+            document.getElementById("vashlos-date").innerText = "Day " + weekDayFormatted + " of Week " + weekFormatted + " in the Month of " + Vashlosi_Months[monthIndex];
+            
+            fixVashlosiInputs(Vashlosi_Months[monthIndex],weekFormatted,weekDayFormatted);
+        }
+        
+        function fixAndCheckDayNumber(dayNumber) {
+            if(dayNumber < 0) {
+                return 0;
+            } else if (dayNumber >= 360) {
+                return  359;
+            } else {
+                return dayNumber;
+            }
+        }
+        
+        function fixZhulinInputs(zhulinSeason, zhulinDay) {
+            document.getElementById("zhulin-season").value = zhulinSeason;
+            document.getElementById("zhulin-day").value = zhulinDay
+        }
+        
+        function fixVashlosiInputs(vashlosiMonth, vashlosiWeek, vashlosiDay) {
+            document.getElementById("vashlosi-month").value = vashlosiMonth;
+            document.getElementById("vashlosi-week").value = vashlosiWeek;
+            document.getElementById("vashlosi-day").value = vashlosiDay;
+        }
+        
+        window.onload = function() {
+            convertZhulinInputs();
+            convertVashlosiInputs();
+        }
+        
+        zhulinMonthsToNumber = { "Green": 0, "Red" : 1, "Orange": 2, "Blue": 3};
+        function convertZhulinInputs() {
+            zhulinSelectElement = document.getElementById("zhulin-season");
+            zhulinSeason = zhulinSelectElement.options[zhulinSelectElement.selectedIndex].text;
+            zhulinSeasonNumber = zhulinMonthsToNumber[zhulinSeason] * 90;
+            
+            dayNumber = document.getElementById("zhulin-day").valueAsNumber;
+            
+            convertToZhulinCalendar(zhulinSeasonNumber + dayNumber - 1);
+            convertToVashlosiCalendar(zhulinSeasonNumber + dayNumber - 1);
+        }
+        
+        vashlosiMonthsToNumber = {"Iron": 0,"Mithral / Mithril / Mithrael": 1,"Bronze": 2,"Steel": 3,"Electrum": 4,"Silver": 5,"Gold": 6,"Platinum": 7,"Targath": 8};
+        function convertVashlosiInputs() {
+            vashlosiMonthSelectElement = document.getElementById("vashlosi-month");
+            vashlosiMonth = vashlosiMonthSelectElement.options[vashlosiMonthSelectElement.selectedIndex].text;
+            vashlosiMonthNumber = vashlosiMonthsToNumber[vashlosiMonth] * 40;
+            
+            weekNumber = (document.getElementById("vashlosi-week").valueAsNumber - 1) * 10;
+            
+            dayNumber = document.getElementById("vashlosi-day").valueAsNumber;
+            
+            convertToZhulinCalendar(vashlosiMonthNumber + weekNumber + dayNumber - 1);
+            convertToVashlosiCalendar(vashlosiMonthNumber + weekNumber + dayNumber - 1);
+        }
+    </script>
+</head>
+<body>
+    <div style="width:80%; margin: auto;">
+        <div style="width: 45%; float: left; text-align: center;">
+            <span>Season: </span>
+            <select id="zhulin-season" onchange="convertZhulinInputs()">
+                <option value="Green">Green</option>
+                <option value="Red">Red</option>
+                <option value="Orange">Orange</option>
+                <option value="Blue">Blue</option>
+            </select>
+            <br/>
+            <span>Day:</span>
+            <input type="number" id="zhulin-day" name="quantity" min="1" max="90" value="1" onchange="convertZhulinInputs()">
+        </div>
+        <div style="width: 10%;">
+        </div>
+        </div>
+        <div style="width: 45%;float: left; text-align: center;">
+            <span>Month: </span>
+            <select id ="vashlosi-month" onchange="convertVashlosiInputs()">
+                <option value="Iron">Iron</option>
+                <option value="Mithral / Mithril / Mithrael">Mithral / Mithril / Mithrael</option>
+                <option value="Bronze">Bronze</option>
+                <option value="Steel">Steel</option>
+                <option value="Electrum">Electrum</option>
+                <option value="Silver">Silver</option>
+                <option value="Gold">Gold</option>
+                <option value="Platinum">Platinum</option>
+                <option value="Targath">Targath</option>
+            </select>
+            <br/>
+            <span>Week: </span>
+            <input type="number" id="vashlosi-week" name="quantity" min="1" max="4" value="1" onchange="convertVashlosiInputs()">
+            <br/>
+            <span>Day: </span>
+            <input type="number" id="vashlosi-day" name="quantity" min="1" max="10" value="1" onchange="convertVashlosiInputs()">
+        </div>
+    </div>
+    
+    <div style="width: 80%; margin: auto;">
+        <div id="zhulin-container" style="float: left; width: 45%; text-align: center;">
+            <h2 id="zhulin-date"></h2>
+        </div>
+        <div id="mid-container" style="float: left; width:10%">
+            <h1>=</h1>
+        </div>
+        <div id="vashlosi-container" style="float: left; width: 45%; text-align: center;">
+            <h2 id="vashlos-date"></h2>
+        </div>
+    </div>
+    
+    
+    
+</body>
+</html> 
