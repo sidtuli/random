@@ -10,9 +10,9 @@ Just a place to store small web page examples or small side web projects I want 
 | [testingjson3.html](https://sidtuli.github.io/random/testingjson3.html ) | 🟥 | [FDA label API](https://open.fda.gov/apis/drug/label/example-api-queries/ ) structure has changed, brand_name -> openfda.brand_name in query. Beyond that, maybe clean up the js comments and html? |
 | [testingjson4.html](https://sidtuli.github.io/random/testingjson4.html ) | 🟥 | [FDA label API](https://open.fda.gov/apis/drug/label/example-api-queries/ ) and [FDA event API](https://open.fda.gov/apis/drug/event/example-api-queries/ ) structure has changed: for label - brand_name -> openfda.brand_name; for event - brand_name -> patient.drug.openfda.brand_name.  Also maybe slight clean up on js? |
 | [capitals.html](https://sidtuli.github.io/random/capitals.html ) | 🟥 | Seems like the [REST countries API](https://restcountries.eu/ ) is no longer working or up? Maybe we'll need a replacement. |
-| [angtut1.html](https://sidtuli.github.io/random/angtut1.html ) | 🟧 | Seems to be working fine but we should remove that angular js cdn and self host it on github. |
-| [angtut2.html](https://sidtuli.github.io/random/angtut2.html ) | 🟧 | Seems to be working fine but we should remove that angular js cdn and self host it on github. |
-| [angtut3.html](https://sidtuli.github.io/random/angtut3.html ) | 🟧 | Seems to be working fine but we should remove that angular js cdn and self host it on github. |
+| [angtut1.html](https://sidtuli.github.io/random/angtut1.html ) | 🟩 | Seems to be working fine |
+| [angtut2.html](https://sidtuli.github.io/random/angtut2.html ) | 🟩 | Seems to be working fine |
+| [angtut3.html](https://sidtuli.github.io/random/angtut3.html ) | 🟩 | Seems to be working fine |
 | [testingjson5.html](https://sidtuli.github.io/random/testingjson5.html ) | 🟥 | [FDA label API](https://open.fda.gov/apis/drug/label/example-api-queries/ ) structure has changed, brand_name -> openfda.brand_name in query. Remove that angular js cdn and self host it on github. Beyond that, maybe clean up the js comments and html? |
 | [wikiparsing1.html](https://sidtuli.github.io/random/wikiparsing1.html ) | 🟥 | Remove angularjs cdn. Honestly should be left alone, wikipedia parsing is difficult as it doesn't stay uniform and is hard to parse. |
 | [gametut.html](https://sidtuli.github.io/random/gametut.html ) | 🟩 | Seems fine though not sure on that console.log or  |
@@ -88,5 +88,7 @@ Just a place to store small web page examples or small side web projects I want 
 | [dnd_wizard_spell_generator.html](https://sidtuli.github.io/random/dnd_wizard_spell_generator.html ) | 🟩 | Very simple, can be added to over time and might need slight css tweaks |
 | [pep_talk.html](https://sidtuli.github.io/random/pep_talk.html ) | 🟩 | Very simple, probably harder to add new entries |
 | [dnd_calender_converter.html](https://sidtuli.github.io/random/dnd_calender_converter.html ) | 🟩 | Simple little page, might want to rework some of the css or styling a bit but it's fine for now |
+<!--
 | []( ) | Status | Notes |
+-->
 
