@@ -83,9 +83,13 @@
                         // If the current country has max number of nearby countries then we print all ofthat info out to page
                         if(countryData[i].nearby.length == max) {
                             document.body.innerHTML += "<b>Country: " + countryData[i].name + ", Nearby:</b> ";
+                            flagCountries = countryData[i].nearby.length > 0
+                            countriesText = ""
                             for(j = 0; j < countryData[i].nearby.length; j++) {
-                                document.body.innerHTML += countries[countryData[i].nearby[j]]+", ";
+                                countriesText += countries[countryData[i].nearby[j]]+", ";
                             }
+                            document.body.innerHTML += countriesText.slice(0,-2)
+
                             document.body.innerHTML += "<br>"
                         }
                     }
