@@ -32,7 +32,7 @@ var footnotes = [
         album:"Like I Said",
         artist:"Ani DiFranco",
         song:"The Whole Night",
-        host:"Jonah",
+        host:"Noa",
         start:787,
         end:923
     },
@@ -68,7 +68,7 @@ var footnotes = [
         album:"Who Are We Living For?",
         artist:"Dispatch",
         song:"Even (Headman)",
-        host:"Jonah",
+        host:"Noa",
         start:1604,
         end:1884
     },
@@ -104,7 +104,7 @@ var footnotes = [
         album:"It's A Wonderful Life",
         artist:"Sparklehorse",
         song:"Piano Fire",
-        host:"Jonah",
+        host:"Noa",
         start:2472,
         end:2631
     },
@@ -140,7 +140,7 @@ var footnotes = [
         album:"Honeymoon",
         artist:"Lana Del Ray",
         song:"Art Deco",
-        host:"Jonah",
+        host:"Noa",
         start:3170,
         end:3465
     },
