@@ -57,7 +57,7 @@
                         if (httpRequest.status === 200) {
                             var data = JSON.parse(httpRequest.responseText);
                             printCountries(data);
-                            console.log(data.length)
+                            //console.log(data.length)
                         }
                     }
                 };
@@ -77,30 +77,25 @@
                 // Now a loop to perform a loop for each country from max to zero
                 while (max >= 0) {
                     sectionText = ""
-                    // Add a h2 tag to create a section for countries with the current number of nearby countries of max
-                    // document.body.innerHTML += "<h2>Countries with "+ String(max) + " Nearby Countries </h2>";
                     // Loop through all of the json country data
                     for(i = 0; i < countryData.length; i++) {
-                        // If the current country has max number of nearby countries then we print all ofthat info out to page
+                        // If the current country has max number of nearby countries then we print all of that info out to page
                         if(countryData[i].nearby.length == max) {
                             sectionText += "<b>Country: " + countryData[i].name + ", Nearby:</b> ";
-                            //document.body.innerHTML += "<b>Country: " + countryData[i].name + ", Nearby:</b> ";
                             flagCountries = countryData[i].nearby.length > 0
                             countriesText = ""
                             for(j = 0; j < countryData[i].nearby.length; j++) {
                                 countriesText += countries[countryData[i].nearby[j]]+", ";
                             }
                             sectionText += countriesText.slice(0,-2) + "<br>"
-                            //document.body.innerHTML += countriesText.slice(0,-2)
-
-                            //document.body.innerHTML += "<br>"
                         }
                     }
                     if(sectionText !== "") {
-                        document.body.innerHTML = "<h2>Countries with " + String(max) + " Nearby Countries</h2>" + sectionText;
+                        // Add a h2 tag to create a section for countries with the current number of nearby countries of max
+                        document.body.innerHTML += "<h2>Countries with " + String(max) + " Nearby Countries</h2>" + sectionText;
                     }
                     sectionText = "<h2>Countries with " + String(max) + " Nearby Countries </h2>" + sectionText;
-                    console.log(sectionText)
+                    //console.log(sectionText)
                     // Decrement max by 1 to find countries with fewer nearby countries
                     max -= 1;
                 }
