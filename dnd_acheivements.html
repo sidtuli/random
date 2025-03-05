@@ -3,7 +3,7 @@
         <title>D&D Acheivements</title>
         <style>
             table{
-                border: 1px solid #333;
+
                 width: 450px;
             }
             img,.icon{
@@ -26,7 +26,7 @@
             });
                
             function onStart() {
-                charArray = ["abbadiah","gorb","janus","kerith","zehnes"];
+                charArray = ["abbadiah","cucurucu","gorb","janus","kerith","zehnes"];
                 for(i = 0; i < charArray.length; i++) {
                     characterCheck(charArray[i]);
                 }
@@ -63,6 +63,9 @@
                 if(document.querySelector('#zehnes-checkbox').checked) {
                     checkboxSum += 1;
                 }
+                if(document.querySelector('#cucurucu-checkbox').checked) {
+                    checkboxSum += 1;
+                }
                 return checkboxSum;
             }
         </script>
@@ -75,6 +78,9 @@
         <div id="char-select">
             <input type="checkbox" id="abbadiah-checkbox" checked="true" onchange="characterCheck('abbadiah')"/>
             <label for="abbadiah-checkbox">Abbadiah</label>
+            
+            <input type="checkbox" id="cucurucu-checkbox" checked="true" onchange="characterCheck('cucurucu')"/>
+            <label for="cucurucu-checkbox">Cucurucu</label>
             
             <input type="checkbox" id="gorb-checkbox" checked="true" onchange="characterCheck('gorb')"/>
             <label for="gorb-checkbox">Gorb</label>
@@ -297,6 +303,68 @@
                 <td>
                     <h1>Big Brother Program</h1>
                     <h3>Took care of your little sister</h3>
+                </td>
+            </tr>
+        </table>
+        
+        <h1 class="lvl">Level 10</h1>
+        
+        <h2 class="abbadiah-header char-header">Abbadiah</h2>
+        
+        <table class="abbadiah-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/weeding.png"/></td>
+                <td>
+                    <h1>Weed Killer</h1>
+                    <h3>Plucked Ozmarin out</h3>
+                </td>
+            </tr>
+        </table>
+        
+        <h2 class="cucurucu-header char-header">Cucurucu</h2>
+        
+        <table class="cucurucu-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/comedy_and_tragedy_masks.svg"/></td>
+                <td>
+                    <h1>Jester Shapeshifter Rebel Spy</h1>
+                    <h3>Change is the only constant in life</h3>
+                </td>
+            </tr>
+        </table>
+        
+        <h2 class="gorb-header char-header">Gorb</h2>
+        
+        <table class="gorb-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/whiskey.png"/></td>
+                <td>
+                    <h1>Humours of Whiskey</h1>
+                    <h3>Drink to forget, drink to remember</h3>
+                </td>
+            </tr>
+        </table>
+        
+        <h2 class="janus-header char-header">Janus</h2>
+        
+        <table class="janus-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/accounting.png"></td>
+                <td>
+                    <h1>Balance The Accounts</h1>
+                    <h3>Divy the loot, fund the ship!</h3>
+                </td>
+            </tr>
+        </table>
+        
+        <h2 class="kerith-header char-header">Kerith</h2>
+        
+        <table class="kerith-lvl">
+            <tr>
+                <td class="icon"><img src="imgs/dndachievements/one_piece.jpg"/></td>
+                <td>
+                    <h1>Assembling the Crew</h1>
+                    <h3>Set sail for the high seas!</h3>
                 </td>
             </tr>
         </table>
