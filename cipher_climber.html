@@ -1,0 +1,181 @@
+<html>
+    <head>
+        <title>Simple Climber Cipher</title>
+        <script>
+            // Negative modulo sourced from here - https://web.archive.org/web/20090717035140if_/javascript.about.com/od/problemsolving/a/modulobug.htm
+            Number.prototype.mod = function(n) {
+                return ((this%n)+n)%n;
+            }
+
+            function processClimberCipher(isEncrypting) {
+                text = grabText();
+                outputText = ""
+
+                previousChar = null
+                currChar = ''
+
+                for (let i = 0; i < text.length; i++) {
+                    currChar = text.charAt(i)
+
+                    if (currChar.match(/[A-z]/i)) {
+                        if (isEncrypting) {
+                            outputText = outputText.concat("", encryptChar(currChar, previousChar))
+                            previousChar = currChar
+                        } else {
+                            previousSymbol = null
+                            if(i > 0) {
+                                previousSymbol = text.charAt(i - 1)
+                            }
+                            outputText = outputText.concat("", decryptChar(currChar, previousChar, previousSymbol))
+                            previousChar = decryptChar(currChar, previousChar)
+                        }
+                        
+                    } else {
+                        if (!isEncrypting && currChar == "|") {
+                            outputText = outputText.concat("", '')
+                        } else {
+                            outputText = outputText.concat("", currChar)
+                        }
+                    }
+                }
+                document.getElementById("post-cipher-text").value = outputText
+            }
+
+            function grabText() {
+                return document.getElementById("pre-cipher-text").value;
+            }
+
+            function encryptChar(currChar, previousChar) {
+                if (previousChar == null) {
+                    return currChar;
+                }
+
+                bound = 0
+                if(currChar.toUpperCase() == currChar) {
+                    // Upper Case ASCII char range - 65 to 90
+                    bound = 65
+                } else {
+                    // Lower Case ASCII char range - 97 to 122
+                    bound = 97
+                }
+
+                charCode = currChar.toLowerCase().charCodeAt(0) - 97
+                previousCharCode = previousChar.toLowerCase().charCodeAt(0) - 97
+
+                charRange = charCode - previousCharCode;
+
+                console.log(charCode)
+                console.log(previousCharCode)
+                console.log(charRange)
+
+                newCharCode = charCode + charRange
+
+                resultChar = ""
+
+                console.log(newCharCode)
+
+                if (newCharCode >= 26 || newCharCode < 0) {
+                    resultChar = resultChar.concat("", "|")
+                }
+
+                newCharCode = (charCode + charRange).mod(26);
+
+                console.log(newCharCode)
+
+                console.log(String.fromCharCode(newCharCode + bound))
+                return resultChar.concat("",String.fromCharCode(newCharCode + bound)); 
+                
+            }
+
+            function decryptChar(currChar, previousChar) {
+                if (previousChar == null) {
+                    return currChar;
+                }
+
+                bound = 0
+                if(currChar.toUpperCase() == currChar) {
+                    // Upper Case ASCII char range - 65 to 90
+                    bound = 65
+                } else {
+                    // Lower Case ASCII char range - 97 to 122
+                    bound = 97
+                }
+
+                charCode = currChar.toLowerCase().charCodeAt(0) - 97
+                previousCharCode = previousChar.toLowerCase().charCodeAt(0) - 97
+
+                charRange = (charCode - previousCharCode) / 2;
+
+                console.log(charRange)
+
+                if (previousSymbol != null) {
+                    if (previousSymbol == "|") {
+                        charRange = ((26 - (charRange*2)) / 2) * -1
+                    }
+                }
+
+                console.log(charCode)
+                console.log(previousCharCode)
+                console.log(charRange)
+
+                newCharCode = (charCode - charRange).mod(26);
+
+                console.log(newCharCode)
+
+                console.log(String.fromCharCode(newCharCode + bound))
+                return String.fromCharCode(newCharCode + bound);
+
+            }
+
+            // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+            function copyText() {
+                var copyText = document.getElementById("post-cipher-text");
+                navigator.clipboard.writeText(copyText.value);
+            }
+
+            window.onload = () => {
+            }
+        </script>
+        <style>
+            textarea {
+                width:80%;
+                height: 30%;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            h1 {
+                text-align: center;
+            }
+            #button-row {
+                text-align: center;
+                margin-top: 2%;
+                margin-bottom: 2%;
+            }
+            #cipher-factor-container {
+                width: 20%;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Simple "Climber Cipher" Tool</h1>
+        <textarea id="pre-cipher-text"></textarea>
+        
+        <div id="button-row">
+            <button onclick="processClimberCipher(true)">
+            <h1>ENCRYPT</h1>
+            </button>
+            
+            <button onclick="processClimberCipher(false)">
+                <h1>DECRYPT</h1>
+            </button>
+        </div>
+        
+        <textarea id="post-cipher-text"></textarea>
+        <div id="button-row">
+            <button onclick="copyText()">
+                <h1>COPY OUTPUT</h1>
+            </button>
+        </div>
+    </body>
+</html>

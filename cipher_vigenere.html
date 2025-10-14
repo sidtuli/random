@@ -1,0 +1,182 @@
+<html>
+    <head>
+        <title>Simple Vigenere Cipher</title>
+        <!-- Wikipedia article about vigenere cipher - https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher -->
+        <!-- Informative tool talking about vigenere cipher - https://www.dcode.fr/vigenere-cipher -->
+        <script>
+            alphabet_arrs = []
+            function createAlphabetTable() {
+                alphabet_arrs = []
+                for (var i = 0 ; i < 26; i++) {
+                    letter_row_arr = []
+                    for (let j = 0; j < 26; j++) {
+                        char_number = (i + j) % 26;
+                        character = String.fromCharCode(char_number + 97)
+                        letter_row_arr.push(character)
+                    }
+                    alphabet_arrs.push(letter_row_arr)
+                }
+                return alphabet_arrs
+
+                // console.log(alphabet_arrs)
+            }
+
+            function processVigenereCipher(isEncrypting) {
+                text = grabText();
+                cipherPassword = grabCipherPassword().toLowerCase();
+                console.log(cipherPassword)
+                outputText = ""
+                passwordIndex = 0;
+                
+                for (let i = 0; i < text.length; i++) {
+                    
+                    currChar = text.charAt(i);
+                    // console.log(currChar)
+                    if (currChar.match(/[A-z]/i)) {
+                        currPassChar = cipherPassword.charAt(passwordIndex)
+                        if (isEncrypting) {
+                            outputText = outputText.concat("", encryptChar(currChar, currPassChar))
+                        } else {
+                            outputText = outputText.concat("", decryptChar(currChar, currPassChar))
+                        }
+                        passwordIndex = (passwordIndex + 1) % cipherPassword.length
+                    } else {
+                        outputText = outputText.concat("", currChar)
+                    }
+                }
+                // console.log(outputText)
+                document.getElementById("post-cipher-text").value = outputText
+            }
+
+            function grabText() {
+                return document.getElementById("pre-cipher-text").value;
+            }
+
+            function grabCipherPassword() {
+                return document.getElementById("cipher-password").value;
+            }
+
+            function encryptChar(character, cipherCharacter) {
+                charCode = character.charCodeAt(0)
+                bound = 0
+                if(character.toUpperCase() == character) {
+                    // Upper Case ASCII char range - 65 to 90
+                    bound = 65
+                } else {
+                    // Lower Case ASCII char range - 97 to 122
+                    bound = 97
+                }
+                charCode -= bound
+
+                console.log(cipherCharacter)
+                cipherCharCode = cipherCharacter.charCodeAt(0)
+                console.log(cipherCharCode)
+                cipherCharCode -= 97
+
+                console.log(charCode)
+                
+                if (bound == 65) {
+                    console.log(alphabet_arrs[charCode])
+                    console.log(cipherCharCode)
+                    console.log(alphabet_arrs[charCode][cipherCharCode])
+                    return alphabet_arrs[charCode][cipherCharCode].toUpperCase()
+                } else {
+                    console.log(alphabet_arrs[charCode][cipherCharCode])
+                    return alphabet_arrs[charCode][cipherCharCode].toLowerCase()
+                }
+            }
+
+            function decryptChar(character, cipherCharacter) {
+                charCode = character.charCodeAt(0)
+                bound = 0
+                if(character.toUpperCase() == character) {
+                    // Upper Case ASCII char range - 65 to 90
+                    bound = 65
+                } else {
+                    // Lower Case ASCII char range - 97 to 122
+                    bound = 97
+                }
+                charCode -= bound
+
+                console.log(cipherCharacter)
+                cipherCharCode = cipherCharacter.charCodeAt(0)
+                console.log(cipherCharCode)
+                cipherCharCode -= 97
+
+                row = alphabet_arrs[cipherCharCode]
+
+                for (let i = 0; i < row.length; i++) {
+                    if (row[i].toLowerCase() == character.toLowerCase()) {
+                        charCode = i;
+                        break;
+                    }
+                }
+                
+                if (bound == 65) {
+                    return String.fromCharCode(charCode + 65)
+                } else {
+                    return String.fromCharCode(charCode + 97)
+                }
+
+                
+            }
+
+            // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+            function copyText() {
+                var copyText = document.getElementById("post-cipher-text");
+                navigator.clipboard.writeText(copyText.value);
+            }
+
+            window.onload = () => {
+                document.getElementById("cipher-password").value = "";
+                alphabet_arrs = createAlphabetTable();
+                console.log(alphabet_arrs)
+            }
+        </script>
+        <style>
+            textarea {
+                width:80%;
+                height: 30%;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            h1 {
+                text-align: center;
+            }
+            #button-row {
+                text-align: center;
+                margin-top: 2%;
+                margin-bottom: 2%;
+            }
+            #cipher-factor-container {
+                width: 20%;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Simple Vigenere Cipher Tool</h1>
+        <textarea id="pre-cipher-text"></textarea>
+        
+        <div id="button-row">
+            <button onclick="processVigenereCipher(true)">
+            <h1>ENCRYPT</h1>
+            </button>
+            <div id="cipher-factor-container">
+                <h3>Cipher Password</h3>
+                <input type="text" id="cipher-password"/>
+            </div>
+            
+            <button onclick="processVigenereCipher(false)">
+                <h1>DECRYPT</h1>
+            </button>
+        </div>
+        
+        <textarea id="post-cipher-text"></textarea>
+        <div id="button-row">
+            <button onclick="copyText()">
+                <h1>COPY OUTPUT</h1>
+            </button>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <title>Simple Affine Cipher</title>
+        <!-- Wikipedia article for Affine Cipher - https://en.wikipedia.org/wiki/Affine_cipher -->
+        <!-- Interesting but not used, a description of the decrypt logic - https://crypto.stackexchange.com/questions/8743/knowing-the-key-how-do-i-decrypt-the-affine-cipher -->
+        <!-- Interesting but not used, a description of the cipher pkus a cipher tool - https://www.dcode.fr/affine-cipher#q12 -->
+        <!-- NOT USED but interesting take on modular inverse function - https://stackoverflow.com/questions/26985808/calculating-the-modular-inverse-in-javascript -->
+
+        <script>
+            function processAffineCipher(isEncrypting) {
+                text = grabText();
+                addFactor = parseInt(grabAddCipherFactor());
+                multiplyFactor = parseInt(grabMultiplyCipherFactor());
+
+                outputText = ""
+                for (let i = 0; i < text.length; i++) {
+                    
+                    currChar = text.charAt(i);
+                    console.log(currChar)
+                    if(currChar.match(/[A-z]/i)) {
+                        if (isEncrypting) {
+                            outputText = outputText.concat("", encryptChar(currChar, addFactor, multiplyFactor))
+                        } else {
+                            outputText = outputText.concat("", decryptChar(currChar, addFactor, multiplyFactor))
+                        }
+                        
+                    } else {
+                        outputText = outputText.concat("", currChar)
+                    }
+                }
+                console.log(outputText)
+                document.getElementById("post-cipher-text").value = outputText
+            }
+
+            function grabText() {
+                return document.getElementById("pre-cipher-text").value;
+            }
+
+            function grabAddCipherFactor() {
+                return document.getElementById("add-cipher-factor").value;
+            }
+
+            function grabMultiplyCipherFactor() {
+                return document.getElementById("multiply-cipher-factor").value;
+            }
+
+            function encryptChar(character, addFactor, multiplyFactor) {
+                charCode = character.charCodeAt(0)
+                
+                bound = 0
+                if(character.toUpperCase() == character) {
+                    // Upper Case ASCII char range - 65 to 90
+                    bound = 65
+                } else {
+                    // Lower Case ASCII char range - 97 to 122
+                    bound = 97
+                }
+                charCode -= bound;
+                console.log(charCode)
+                charCode = (charCode * multiplyFactor);
+                console.log(charCode)
+                charCode += addFactor
+                console.log(charCode)
+                charCode = charCode % 26
+                console.log(charCode)
+                charCode += bound
+                console.log(charCode)
+                console.log(String.fromCharCode(charCode))
+                return String.fromCharCode(charCode);
+            }
+
+            // Stolen from here - https://stackoverflow.com/a/38936525 (source article - https://stackoverflow.com/questions/38930473/encrypting-and-decrypting-affine-coded-words-using-javascript)
+            function decryptChar(character, addFactor, multiplyFactor) {
+                charCode = character.charCodeAt(0)
+                
+                bound = 0
+                if(character.toUpperCase() == character) {
+                    // Upper Case ASCII char range - 65 to 90
+                    bound = 65
+                } else {
+                    // Lower Case ASCII char range - 97 to 122
+                    bound = 97
+                }
+                charCode -= bound;
+                console.log(charCode)
+
+                invert = 0;
+
+                //Bruteforce the modular invert of the a
+
+                for (var j = 1; j < 26; j++) {
+                    if ((multiplyFactor * j) % 26 == 1)
+                        var invert = j;
+                }
+
+                console.log(invert)
+
+                var charCode = (invert * (charCode - addFactor)) % 26;
+                if (charCode < 0) {
+                    charCode += 26;
+                }
+                console.log(charCode)
+
+                charCode += bound
+
+                return String.fromCharCode(charCode);
+            }
+
+            // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+            function copyText() {
+                var copyText = document.getElementById("post-cipher-text");
+                navigator.clipboard.writeText(copyText.value);
+            }
+
+            window.onload = () => {
+                document.getElementById("add-cipher-factor").value = 0;
+                document.getElementById("multiply-cipher-factor").value = 1;
+            }
+        </script>
+        <style>
+            textarea {
+                width:80%;
+                height: 30%;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            h1 {
+                text-align: center;
+            }
+            #button-row {
+                text-align: center;
+                margin-top: 2%;
+                margin-bottom: 2%;
+            }
+            #cipher-factor-container {
+                width: 20%;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Simple Affine Cipher Tool</h1>
+        <textarea id="pre-cipher-text"></textarea>
+        
+        <div id="button-row">
+            <button onclick="processAffineCipher(true)">
+                <h1>ENCRYPT</h1>
+            </button>
+            <div id="cipher-factor-container">
+                <h3>Multiply Cipher Factor</h3>
+                <input type="number" id="multiply-cipher-factor"/>
+                <h3>Addition Cipher Factor</h3>
+                <input type="number" id="add-cipher-factor"/>
+            </div>
+            <button onclick="processAffineCipher(false)">
+                <h1>DECRYPT</h1>
+            </button>
+        </div>
+        
+        <textarea id="post-cipher-text"></textarea>
+        <div id="button-row">
+            <button onclick="copyText()">
+                <h1>COPY OUTPUT</h1>
+            </button>
+        </div>
+    </body>
+</html>
