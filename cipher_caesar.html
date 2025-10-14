@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <title>Simple Caeser Cipher</title>
+        <script>
+            function processCaeserCipher(isEncrypting) {
+                text = grabText();
+                cipherFactor = parseInt(grabCipherFactor()) % 26;
+
+                //console.log(text)
+                //console.log(cipherFactor)
+                outputText = ""
+                for (let i = 0; i < text.length; i++) {
+                    
+                    currChar = text.charAt(i);
+                    console.log(currChar)
+                    if(currChar.match(/[A-z]/i)) {
+                        if (isEncrypting) {
+                            outputText = outputText.concat("", encryptChar(currChar, cipherFactor))
+                        } else {
+                            outputText = outputText.concat("", decryptChar(currChar, cipherFactor))
+                        }
+                        
+                    } else {
+                        outputText = outputText.concat("", currChar)
+                    }
+                }
+                console.log(outputText)
+                document.getElementById("post-cipher-text").value = outputText
+            }
+
+            function grabText() {
+                return document.getElementById("pre-cipher-text").value;
+            }
+
+            function grabCipherFactor() {
+                return document.getElementById("cipher-factor").value;
+            }
+
+            function encryptChar(character, cipherFactor) {
+                charCode = character.charCodeAt(0)
+                
+                bound = 0
+                if(character.toUpperCase() == character) {
+                    // Upper Case ASCII char range - 65 to 90
+                    bound = 65
+                } else {
+                    // Lower Case ASCII char range - 97 to 122
+                    bound = 97
+                }
+
+                charCode += cipherFactor
+
+                charCode -= bound
+                charCode = charCode % 26
+                charCode += bound
+                //console.log(String.fromCharCode(charCode))
+                return String.fromCharCode(charCode);
+            }
+
+            function decryptChar(character, cipherFactor) {
+                charCode = character.charCodeAt(0)
+                
+                bound = 0
+                if(character.toUpperCase() == character) {
+                    // Upper Case ASCII char range - 65 to 90
+                    bound = 65
+                } else {
+                    // Lower Case ASCII char range - 97 to 122
+                    bound = 97
+                }
+
+                charCode -= cipherFactor
+
+                charCode -= bound
+                charCode = charCode % 26
+                charCode += bound
+                //console.log(String.fromCharCode(charCode))
+                return String.fromCharCode(charCode);
+            }
+
+            // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+            function copyText() {
+                var copyText = document.getElementById("post-cipher-text");
+                navigator.clipboard.writeText(copyText.value);
+            }
+
+            window.onload = () => {
+                document.getElementById("cipher-factor").value = 0;
+            }
+        </script>
+        <style>
+            textarea {
+                width:80%;
+                height: 30%;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            h1 {
+                text-align: center;
+            }
+            #button-row {
+                text-align: center;
+                margin-top: 2%;
+                margin-bottom: 2%;
+            }
+            #cipher-factor-container {
+                width: 20%;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Simple Caeser Cipher Tool</h1>
+        <textarea id="pre-cipher-text">
+        </textarea>
+        
+        <div id="button-row">
+            <button onclick="processCaeserCipher(true)">
+            <h1>ENCRYPT</h1>
+            </button>
+            <div id="cipher-factor-container">
+                <h3>Cipher Factor</h3>
+                <input type="number" id="cipher-factor"/>
+            </div>
+            
+            <button onclick="processCaeserCipher(false)">
+                <h1>DECRYPT</h1>
+            </button>
+        </div>
+        
+        <textarea id="post-cipher-text">
+        </textarea>
+        <div id="button-row">
+            <button onclick="copyText()">
+                <h1>COPY OUTPUT</h1>
+            </button>
+        </div>
+    </body>
+</html>
