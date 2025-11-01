@@ -1,0 +1,303 @@
+<html>
+
+    <head>
+        <title>Simple Pigpen Cipher</title>
+        <!-- Wikipedia article on Pigpen cipher - https://en.wikipedia.org/wiki/Pigpen_cipher -->
+        <!-- SVGs stolen from here and some styling stuff as well - https://caesarcipher.org/ciphers/pigpen -->
+        <script>
+            function processPigpenCipher() {
+                text = grabText();
+                document.getElementById("encrypted-text").innerHTML = '';
+                for (let i = 0; i < text.length; i++) {
+                    
+                    currChar = text.charAt(i);
+
+                    new_div = document.createElement("DIV");
+                    new_div.className = "class-letter"
+
+                    if(currChar.match(/[A-z]/i)) {
+                        lowercase_char = currChar.toLowerCase()
+
+                        pigpen_letter = document.getElementById("letter-"+lowercase_char)
+                        cloned_letter = pigpen_letter.cloneNode(true)
+                        new_div.appendChild(cloned_letter)
+
+                        document.getElementById("encrypted-text").appendChild(new_div)
+                    } else {
+                        new_div.textContent = currChar
+                        document.getElementById("encrypted-text").appendChild(new_div)
+                    }
+                }
+                
+            }
+
+            function grabText() {
+                return document.getElementById("pre-cipher-text").value;
+            }
+        </script>
+        <style>
+            textarea {
+                width:80%;
+                height: 30%;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            h1 {
+                text-align: center;
+            }
+            #button-row {
+                text-align: center;
+                margin-top: 2%;
+                margin-bottom: 2%;
+            }
+
+            #letter-holder {
+                display: none;
+            }
+
+            #encrypted-text {
+                display: inline-block;
+                line-height: 1.5;
+                font-size: 32px;
+            }
+            .class-letter {
+                margin-block: .25rem;
+                margin-inline: .25rem;
+                margin-top: .5rem;
+                margin-bottom: .5rem;
+                display: inline-block;
+            }
+            svg {
+                vertical-align: middle;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Simple Pigpen Cipher Tool</h1>
+        <div id="letter-holder">
+            <!-- Letter A-->
+            <svg id="letter-a" width="32" height="32" viewBox="0 0 24 24" style="background-color:transparent">
+                <path d="M0,24 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M24,0 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter B-->
+            <svg id="letter-b" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,24 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,0 L0,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M24,0 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter C-->
+            <svg id="letter-c" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,24 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,0 L0,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter D-->
+            <svg id="letter-d" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,0 L24,0" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,24 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M24,0 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter E-->
+            <svg id="letter-e" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,0 L24,0" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,24 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,0 L0,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M24,0 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter F-->
+            <svg id="letter-f" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,0 L24,0" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,24 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,0 L0,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter G-->
+            <svg id="letter-g" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,0 L24,0" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M24,0 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter H-->
+            <svg id="letter-h" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,0 L24,0" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,0 L0,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M24,0 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter I-->
+            <svg id="letter-i" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,0 L24,0" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,0 L0,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter J-->
+            <svg id="letter-j" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,24 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M24,0 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="12" cy="12" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+            <!-- Letter K-->
+            <svg id="letter-k" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,24 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,0 L0,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M24,0 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="12" cy="12" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+            <!-- Letter L-->
+            <svg id="letter-l" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,24 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,0 L0,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="12" cy="12" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+            <!-- Letter M-->
+            <svg id="letter-m" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,0 L24,0" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,24 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M24,0 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="12" cy="12" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+            <!-- Letter N-->
+            <svg id="letter-n" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,0 L24,0" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,24 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,0 L0,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M24,0 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="12" cy="12" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+            <!-- Letter O-->
+            <svg id="letter-o" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,0 L24,0" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,24 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,0 L0,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="12" cy="12" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+            <!-- Letter P-->
+            <svg id="letter-p" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,0 L24,0" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M24,0 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="12" cy="12" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+            <!-- Letter Q-->
+            <svg id="letter-q" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,0 L24,0" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,0 L0,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M24,0 L24,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="12" cy="12" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+            <!-- Letter R-->
+            <svg id="letter-r" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M0,0 L24,0" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <path d="M0,0 L0,24" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="12" cy="12" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+            <!-- Letter S-->
+            <svg id="letter-s" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M4,20 L12,4 L20,20" stroke="#000000" stroke-width="1.6" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter T-->
+            <svg id="letter-t" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M4,4 L20,12 L4,20" stroke="#000000" stroke-width="1.6" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter U-->
+            <svg id="letter-u" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M20,4 L4,12 L20,20" stroke="#000000" stroke-width="1.6" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter V-->
+            <svg id="letter-v" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M4,4 L12,20 L20,4" stroke="#000000" stroke-width="1.6" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+            </svg>
+            <!-- Letter W-->
+            <svg id="letter-w" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M4,20 L12,4 L20,20" stroke="#000000" stroke-width="1.6" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="12" cy="16" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+            <!-- Letter X-->
+            <svg id="letter-x" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M4,4 L20,12 L4,20" stroke="#000000" stroke-width="1.6" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="8" cy="12" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+            <!-- Letter Y-->
+            <svg id="letter-y" width="32" height="32" viewBox="0 0 24 24" style="background-color:transparent">
+                <path d="M20,4 L4,12 L20,20" stroke="#000000" stroke-width="1.6" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="16" cy="12" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+            <!-- Letter Z-->
+            <svg id="letter-z" width="32" height="32" viewBox="0 0 24 24"  style="background-color:transparent">
+                <path d="M4,4 L12,20 L20,4" stroke="#000000" stroke-width="1.6" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                </path>
+                <circle cx="12" cy="8" r="1.5" fill="#000000">
+                </circle>
+            </svg>
+        </div>
+        <textarea id="pre-cipher-text"></textarea>
+        <div id="button-row">
+            <button onclick="processPigpenCipher()">
+            <h1>ENCRYPT</h1>
+            </button>
+        </div>
+        <div id="encrypted-text"></div>
+    </body>
+</html>
