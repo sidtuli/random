@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <title>"Inverse" Cipher</title>
+    <script>
+        function cipher(isEncrypting) {
+            text = grabText()
+            encoded = ""
+
+            for (let i = 0; i < text.length; i++) {
+                currChar = text.charAt(i);
+                if(currChar.match(/[A-z]/i)) {
+                    if (isEncrypting) {
+                        encoded = encoded.concat("", encryptChar(currChar))
+                    } else {
+                        encoded = encoded.concat("", decryptChar(currChar))
+                    }
+                }
+            }
+
+            document.getElementById("encoded").innerHTML = encoded
+        }
+
+        function grabText() {
+            return document.getElementById("message").value;
+        }
+
+        function encryptChar(character) {
+            charCode = character.charCodeAt(0)
+            
+            bound = 0
+            if(character.toUpperCase() == character) {
+                // Upper Case ASCII char range - 65 to 90
+                bound = 65
+            } else {
+                // Lower Case ASCII char range - 97 to 122
+                bound = 97
+            }
+
+            // Brought to 0 - 25 bound
+            charCode -= bound
+
+            // Create new char code from inverse position
+            charCode = (25 - charCode)
+
+            // Then return new char code
+            charCode += bound
+            return String.fromCharCode(charCode);
+        }
+
+        function decryptChar(character) {
+            charCode = character.charCodeAt(0)
+            
+            bound = 0
+            if(character.toUpperCase() == character) {
+                // Upper Case ASCII char range - 65 to 90
+                bound = 65
+            } else {
+                // Lower Case ASCII char range - 97 to 122
+                bound = 97
+            }
+
+            // Brought to 0 - 25 bound
+            charCode -= bound
+
+            // Create new char code from inverse position
+            charCode = Math.abs(charCode - 25)
+
+            // Then return new char code
+            charCode += bound
+            //console.log(String.fromCharCode(charCode))
+            return String.fromCharCode(charCode);
+        }
+    </script>
+  </head>
+  <body>
+    <textarea id="message"></textarea>
+    <button onclick="cipher(true)">Encode</button>
+    <button onclick="cipher(false)">Decode</button>
+    <div id="encoded">
+    </div>
+  </body>
+</html>
