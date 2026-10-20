@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+    <head>
+        <title>"Caeser Box" Cipher </title>
+        <script>
+            // General flow
+            // 1. Process all text into lines and from there a 2D grid array of arrays
+            // 2. Measure the max height and length for later computations
+            // 3. From that process over each cell 
+            // 4. Determine the cell content and see if it is a character or not
+            // 5. From there then compute caeser cipher from the minimum distance from vertical or horizontal distance 
+            // For example:
+            /*
+            * 11111  
+            * 12221
+            * 12321
+            * 12221
+            * 11111
+            */
+        function encrypt() {
+            textGrid = grabTextGrid()
+            console.log(textGrid)
+
+            cipherFactorGrid = []
+
+            for (let i = 0; i < textGrid.length; i++) {
+                textGridLine = textGrid[i]
+                cipherFactorLine = []
+                for (let j = 0 ; j < textGridLine.length; j++) {
+                    cipherFactorLine.push(computeMinExitDistance(j, i, textGridLine.length-1, textGrid.length-1))
+                }
+                cipherFactorGrid.push(cipherFactorLine)
+            }
+            console.log(cipherFactorGrid)
+
+            encryptedGrid = []
+
+            for (let i = 0; i < textGrid.length; i++) {
+                textGridLine = textGrid[i]
+                encryptedLine = []
+                for (let j = 0 ; j < textGridLine.length; j++) {
+                    currChar = textGridLine[j]
+                    if (currChar.match(/[A-z]/i)) {
+                        currCipherFactor = cipherFactorGrid[i][j]
+                        encryptedLine.push(encryptChar(currChar, currCipherFactor))
+                    } else {
+                        encryptedLine.push(currChar)
+                    }
+                    
+                }
+                encryptedGrid.push(encryptedLine)
+            }
+            console.log(encryptedGrid)
+
+            encryptedText = ""
+
+            for (let i = 0; i < encryptedGrid.length; i++) {
+                encryptedLine = encryptedGrid[i].join("") + '\n'
+                encryptedText = encryptedText.concat(encryptedLine)
+            }
+
+            console.log(encryptedText)
+
+            document.getElementById("encoded").innerHTML = encryptedText
+
+
+            //console.log(computeMinExitDistance(0,0,textGrid[0].length, textGrid.length))
+        }
+
+        // grabbing lines - https://codingtechroom.com/question/read-text-line-by-line-text-area
+
+        function grabTextGrid() {
+            rawText = document.getElementById("message").value;
+            textLineArrs = rawText.split('\n')
+            textGrid = []
+            for (let i = 0 ; i < textLineArrs.length; i++) {
+                currentLine = textLineArrs[i]
+                // https://www.geeksforgeeks.org/javascript/how-to-iterate-over-characters-of-a-string-in-javascript/
+                textGrid.push(currentLine.split(''))
+            }
+            return textGrid
+        }
+
+        function encryptChar(character, cipherFactor) {
+            charCode = character.charCodeAt(0)
+            
+            bound = 0
+            if(character.toUpperCase() == character) {
+                // Upper Case ASCII char range - 65 to 90
+                bound = 65
+            } else {
+                // Lower Case ASCII char range - 97 to 122
+                bound = 97
+            }
+
+            charCode += cipherFactor
+
+            charCode -= bound
+            charCode = charCode % 26
+            charCode += bound
+            //console.log(String.fromCharCode(charCode))
+            return String.fromCharCode(charCode);
+        } 
+
+        // TODO: Figure this out???
+        function computeMinExitDistance(xPosition, yPosition, gridWidth, gridHeight) {
+            computeLengthGap = Math.min(Math.abs(xPosition - gridWidth), Math.abs(xPosition - 0))
+            computeHeightGap = Math.min(Math.abs(yPosition - gridHeight), Math.abs(yPosition - 0))
+
+            return Math.min(computeLengthGap, computeHeightGap) + 1
+            /*computeLengthGapRight = Math.abs(xPosition - gridWidth)
+            computeLengthGapLeft = Math.abs(xPosition - 0)
+
+            computeHeightGapTop = Math.abs(yPosition - 0)
+            computeHeightGapBottom = Math.abs(yPosition - gridHeight)
+
+            //console.log(computeLengthGapRight)
+            //console.log(computeLengthGapLeft)
+            //console.log(computeHeightGapTop)
+            //console.log(computeHeightGapBottom)
+
+            return Math.max(Math.min(computeLengthGapRight, computeLengthGapLeft, computeHeightGapTop, computeHeightGapBottom), 1)
+            */
+        }
+        </script>
+    </head>
+    <body>
+        <textarea id="message"></textarea>
+        <br/>
+        <button onclick="encrypt()">Encode</button>
+        <br/>
+        <textarea id="encoded"></textarea>
+    </body>
+</html>
