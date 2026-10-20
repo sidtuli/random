@@ -19,7 +19,7 @@
             */
         function encrypt() {
             textGrid = grabTextGrid()
-            console.log(textGrid)
+            //console.log(textGrid)
 
             cipherFactorGrid = []
 
@@ -31,7 +31,7 @@
                 }
                 cipherFactorGrid.push(cipherFactorLine)
             }
-            console.log(cipherFactorGrid)
+            //console.log(cipherFactorGrid)
 
             encryptedGrid = []
 
@@ -50,7 +50,7 @@
                 }
                 encryptedGrid.push(encryptedLine)
             }
-            console.log(encryptedGrid)
+            //console.log(encryptedGrid)
 
             encryptedText = ""
 
@@ -62,9 +62,6 @@
             console.log(encryptedText)
 
             document.getElementById("encoded").innerHTML = encryptedText
-
-
-            //console.log(computeMinExitDistance(0,0,textGrid[0].length, textGrid.length))
         }
 
         // grabbing lines - https://codingtechroom.com/question/read-text-line-by-line-text-area
@@ -102,25 +99,11 @@
             return String.fromCharCode(charCode);
         } 
 
-        // TODO: Figure this out???
         function computeMinExitDistance(xPosition, yPosition, gridWidth, gridHeight) {
             computeLengthGap = Math.min(Math.abs(xPosition - gridWidth), Math.abs(xPosition - 0))
             computeHeightGap = Math.min(Math.abs(yPosition - gridHeight), Math.abs(yPosition - 0))
 
             return Math.min(computeLengthGap, computeHeightGap) + 1
-            /*computeLengthGapRight = Math.abs(xPosition - gridWidth)
-            computeLengthGapLeft = Math.abs(xPosition - 0)
-
-            computeHeightGapTop = Math.abs(yPosition - 0)
-            computeHeightGapBottom = Math.abs(yPosition - gridHeight)
-
-            //console.log(computeLengthGapRight)
-            //console.log(computeLengthGapLeft)
-            //console.log(computeHeightGapTop)
-            //console.log(computeHeightGapBottom)
-
-            return Math.max(Math.min(computeLengthGapRight, computeLengthGapLeft, computeHeightGapTop, computeHeightGapBottom), 1)
-            */
         }
         </script>
     </head>
